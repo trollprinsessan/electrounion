@@ -41,18 +41,20 @@
   position:relative;
 }
 
-/* ═══ TOP BAR (the button) ═══ */
+/* ═══ TOP BAR (the button — before click) ═══ */
 .eu-bar{
   background:#fff;
   padding:clamp(28px,5vw,56px) 20px;
   cursor:pointer;user-select:none;
   position:relative;
   border-bottom:2px solid #ddd;
+  transition:padding .3s, background .15s;
 }
 .eu-bar:hover{background:#fafafa}
-.eu-bar__top{
+.eu-bar__initial{
   display:flex;align-items:center;justify-content:center;
   gap:clamp(12px,2vw,20px);
+  transition:opacity .4s ease;
 }
 .eu-checkbox{
   width:clamp(28px,4vw,44px);
@@ -87,6 +89,173 @@
   letter-spacing:-0.01em;
   line-height:1;
   text-transform:uppercase;
+}
+
+/* ═══ BAR: APPROVED (the magic unfold) ═══ */
+.eu-bar__campaign{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;flex-direction:column;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .6s ease;
+}
+.eu-bar.is-approved{
+  position:sticky;
+  top:0;
+  z-index:100;
+  cursor:default;
+  background:var(--gold);
+  border-bottom:none;
+  padding:0;
+}
+.eu-bar.is-approved:hover{background:var(--gold)}
+.eu-bar.is-approved .eu-bar__initial{
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .4s ease;
+}
+.eu-bar.is-approved .eu-bar__campaign{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ── Main row ── */
+.eu-bar__main{
+  display:flex;
+  align-items:center;
+  padding:clamp(8px,1.2vw,14px) clamp(16px,3vw,32px);
+  gap:clamp(8px,1.2vw,16px);
+  background:var(--gold);
+}
+
+/* Title */
+.eu-bar__title{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(18px,3vw,34px);
+  font-weight:bold;
+  text-transform:uppercase;
+  color:#000;
+  line-height:1;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+/* Rotating star separator */
+.eu-bar__star{
+  font-size:clamp(10px,1.2vw,14px);
+  color:#000;
+  animation:eu-spin 6s linear infinite;
+  flex-shrink:0;
+}
+@keyframes eu-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+/* Equalizer */
+.eu-bar__eq{
+  display:flex;
+  align-items:flex-end;
+  gap:2px;
+  height:clamp(14px,1.8vw,22px);
+  flex-shrink:0;
+}
+.eu-bar__eq-bar{
+  width:clamp(2px,.3vw,3px);
+  background:var(--blue);
+  animation:eu-eq 1s ease-in-out infinite alternate;
+}
+.eu-bar__eq-bar:nth-child(1){height:40%;animation-delay:0s;animation-duration:.8s}
+.eu-bar__eq-bar:nth-child(2){height:70%;animation-delay:.15s;animation-duration:.6s}
+.eu-bar__eq-bar:nth-child(3){height:50%;animation-delay:.3s;animation-duration:.9s}
+.eu-bar__eq-bar:nth-child(4){height:80%;animation-delay:.1s;animation-duration:.7s}
+.eu-bar__eq-bar:nth-child(5){height:30%;animation-delay:.25s;animation-duration:1.1s}
+@keyframes eu-eq{
+  0%{height:15%}
+  100%{height:100%}
+}
+
+/* Playlist */
+.eu-bar__playlist{
+  display:flex;
+  align-items:center;
+  gap:clamp(4px,.5vw,6px);
+}
+.eu-bar__track-name{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(12px,1.4vw,16px);
+  color:#000;
+  text-align:center;
+  font-style:italic;
+  white-space:nowrap;
+}
+.eu-playlist__btn{
+  width:clamp(18px,2vw,22px);height:clamp(18px,2vw,22px);
+  background:#000;
+  color:var(--gold);
+  border:none;
+  cursor:pointer;
+  font-size:clamp(7px,.8vw,10px);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.eu-playlist__btn:hover{background:var(--blue);color:#fff}
+
+/* Spacer */
+.eu-bar__spacer{flex:1}
+
+/* Count */
+.eu-bar__count{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(9px,1vw,12px);
+  color:#000;
+  white-space:nowrap;
+  flex-shrink:0;
+  font-style:italic;
+}
+
+/* Sharables link */
+.eu-bar__sharables{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(10px,1.1vw,13px);
+  color:#000;
+  background:none;
+  padding:0;
+  cursor:pointer;
+  white-space:nowrap;
+  border:none;
+  border-bottom:1px solid #000;
+  font-style:italic;
+  flex-shrink:0;
+}
+.eu-bar__sharables:hover{color:var(--blue);border-color:var(--blue)}
+
+/* ── Ticker strip ── */
+.eu-bar__ticker{
+  background:#fff;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:clamp(3px,.4vw,5px) 0;
+  border-top:1.5px solid #000;
+}
+.eu-bar__ticker-track{
+  display:inline-block;
+  animation:eu-ticker 45s linear infinite;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(9px,1vw,12px);
+  letter-spacing:.06em;
+  color:#000;
+}
+.eu-bar__ticker-track span{
+  color:var(--blue);
+  font-style:italic;
+}
+.eu-bar__ticker-track .eu-t-star{
+  display:inline-block;
+  animation:eu-spin 4s linear infinite;
+  margin:0 .3em;
+  font-style:normal;
+}
+@keyframes eu-ticker{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 
 /* ═══ FOLDOUT ═══ */
@@ -210,54 +379,69 @@
 
 /* ═══ SHARABLES FOLDOUT ═══ */
 .eu-sharables{
-  padding:clamp(8px,1.5vw,16px) clamp(20px,4vw,56px) 0;
   text-align:center;
 }
 .eu-sharables__toggle{
-  font-family:var(--mono);
-  font-size:clamp(10px,1.2vw,14px);
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(18px,3vw,32px);
   text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--blue);
+  letter-spacing:.02em;
+  color:#000;
   cursor:pointer;
-  display:inline-flex;
+  display:flex;
   align-items:center;
-  gap:6px;
-  padding:clamp(8px,1.2vw,12px) clamp(16px,2.5vw,28px);
-  border:1px solid var(--blue);
-  background:transparent;
-  transition:background .15s, color .15s;
+  justify-content:center;
+  gap:10px;
+  padding:clamp(16px,2.5vw,28px) clamp(20px,4vw,56px);
+  border:none;
+  background:var(--gold);
+  transition:background .15s;
+  width:100%;
 }
-.eu-sharables__toggle:hover{background:var(--blue);color:#fff}
+.eu-sharables__toggle:hover{background:#ffdf33}
 .eu-sharables__arrow{
   display:inline-block;
   transition:transform .3s;
-  font-size:.7em;
+  font-size:.5em;
 }
 .eu-sharables.is-open .eu-sharables__arrow{transform:rotate(180deg)}
 .eu-sharables__content{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .5s ease;
+  display:none;
 }
 .eu-sharables.is-open .eu-sharables__content{
-  max-height:4000px;
+  display:block;
 }
 .eu-sharables__inner{
-  padding:clamp(16px,2.5vw,28px) 0;
+  padding:clamp(16px,2.5vw,28px) clamp(20px,4vw,56px);
 }
 
 /* ═══ PRET-A-PORTER CARDS ═══ */
+.eu-pap__nav{
+  display:flex;
+  gap:clamp(16px,3vw,32px);
+  margin-bottom:clamp(16px,2.5vw,28px);
+}
+.eu-pap__nav-item{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(10px,1.1vw,13px);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--dim);
+  cursor:pointer;
+  padding-bottom:4px;
+  border-bottom:2px solid transparent;
+  transition:color .15s, border-color .15s;
+}
+.eu-pap__nav-item:hover{color:var(--ink)}
+.eu-pap__nav-item.is-active{color:var(--ink);border-bottom-color:var(--ink)}
 .eu-pap__cat{
-  font-size:clamp(8px,.9vw,10px);
-  font-family:var(--mono);
+  font-size:clamp(9px,1vw,12px);
+  font-family:Arial,Helvetica,sans-serif;
   text-transform:uppercase;
   letter-spacing:.12em;
-  color:var(--red);
+  color:var(--dim);
   margin-bottom:clamp(10px,1.5vw,16px);
-  margin-top:clamp(18px,2.5vw,28px);
-  padding-bottom:clamp(4px,.5vw,7px);
-  border-bottom:1px solid var(--red);
+  margin-top:clamp(24px,3vw,36px);
   text-align:left;
 }
 .eu-pap__cat:first-child{margin-top:0}
@@ -275,19 +459,17 @@
 .eu-pap-card:hover{transform:translateY(-2px)}
 .eu-pap-card__img{
   width:100%;
-  aspect-ratio:1080/1350;
-  object-fit:cover;
-  border:1px solid rgba(0,0,0,.08);
   display:block;
-  background:#f5f5f5;
+  background:transparent;
 }
-.eu-pap-card__img--sq{aspect-ratio:1/1}
 .eu-pap-card__name{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
   font-size:clamp(11px,1.3vw,14px);
   font-weight:bold;
   margin-top:clamp(5px,.7vw,8px);
 }
 .eu-pap-card__desc{
+  font-family:Arial,Helvetica,sans-serif;
   font-size:clamp(9px,1vw,11px);
   color:var(--dim);
   font-style:italic;
@@ -298,7 +480,7 @@
   display:inline-block;
   margin-top:clamp(5px,.7vw,8px);
   padding:clamp(4px,.5vw,6px) clamp(10px,1.4vw,16px);
-  font-family:var(--mono);
+  font-family:Arial,Helvetica,sans-serif;
   font-size:clamp(8px,.85vw,10px);
   text-transform:uppercase;
   letter-spacing:.08em;
@@ -317,10 +499,40 @@
   margin-top:clamp(18px,2.5vw,28px);
   padding-top:clamp(12px,1.5vw,18px);
   border-top:1px solid rgba(0,0,0,.06);
+  font-family:Arial,Helvetica,sans-serif;
   font-size:clamp(9px,1.1vw,12px);
   color:var(--dim);
   font-style:italic;
 }
+.eu-pap__msg{
+  text-align:left;
+  margin-top:clamp(6px,1vw,12px);
+  padding:clamp(10px,1.5vw,16px);
+  background:#f9f9f9;
+  border:1px solid #eee;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(12px,1.4vw,16px);
+  line-height:1.5;
+  color:var(--ink);
+  position:relative;
+  cursor:pointer;
+}
+.eu-pap__msg:hover{background:#f4f4f4}
+.eu-pap__msg-copy{
+  position:absolute;
+  top:clamp(6px,1vw,10px);
+  right:clamp(6px,1vw,10px);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(8px,.85vw,10px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--blue);
+  background:#fff;
+  border:1px solid var(--blue);
+  padding:3px 8px;
+  cursor:pointer;
+}
+.eu-pap__msg-copy:hover{background:var(--blue);color:#fff}
 
 /* ═══ BIG STATEMENT ═══ */
 .eu-statement{
@@ -402,6 +614,9 @@
 }
 .eu-merch-item{
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
 }
 .eu-merch-item__img{
   width:100%;
@@ -451,7 +666,7 @@
   gap:clamp(16px,2.5vw,28px);
   align-items:flex-start;
   justify-content:center;
-  max-width:1050px;
+  max-width:1200px;
   margin:0 auto;
 }
 .eu-draw__tools{
@@ -551,7 +766,7 @@
   display:flex;
   flex-direction:column;
   align-items:center;
-  max-width:700px;
+  max-width:875px;
 }
 .eu-draw__desc{
   font-size:clamp(12px,1.6vw,18px);
@@ -589,6 +804,44 @@
   width:100%;
   height:100%;
   cursor:crosshair;
+}
+.eu-draw__bg-row{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+}
+.eu-draw__bg-opt{
+  width:30px;height:30px;
+  cursor:pointer;
+  border:2px solid transparent;
+  padding:2px;
+  background:#fff;
+}
+.eu-draw__bg-opt.is-active{border-color:var(--blue)}
+.eu-draw__bg-opt img{
+  width:100%;height:100%;
+  object-fit:contain;
+}
+.eu-draw__bg-color{
+  width:30px;height:30px;
+  border:2px solid transparent;
+  padding:0;
+  cursor:pointer;
+  background:#fff;
+  position:relative;
+}
+.eu-draw__bg-color.is-active{border-color:var(--blue)}
+.eu-draw__bg-color input{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  opacity:0;
+  cursor:pointer;
+}
+.eu-draw__bg-color__swatch{
+  width:100%;height:100%;
+  background:#fff;
+  border:1px solid #ccc;
 }
 .eu-draw__dl{
   display:block;
@@ -696,9 +949,35 @@
 
   <!-- ═══ TOP BAR ═══ -->
   <div class="eu-bar" id="euBtn">
-    <div class="eu-bar__top">
+    <!-- Before click -->
+    <div class="eu-bar__initial">
       <div class="eu-checkbox"><div class="eu-checkbox__check"><img src="GIFS/4YCZ5UYFPSM2TS36QSYGFSWQDIVKJIWN.gif" alt="EU Flag" class="eu-checkbox__gif"></div></div>
-      <div class="eu-bar__cta">I approve this message</div>
+      <div class="eu-bar__cta" id="euBarCta">I approve this message</div>
+    </div>
+    <!-- After click: the Electro Union dashboard -->
+    <div class="eu-bar__campaign">
+      <div class="eu-bar__main">
+        <div class="eu-bar__title">Electro Union</div>
+        <div class="eu-bar__star">&#10022;</div>
+        <div class="eu-bar__eq">
+          <div class="eu-bar__eq-bar"></div>
+          <div class="eu-bar__eq-bar"></div>
+          <div class="eu-bar__eq-bar"></div>
+          <div class="eu-bar__eq-bar"></div>
+          <div class="eu-bar__eq-bar"></div>
+        </div>
+        <div class="eu-bar__playlist" id="euPlaylist">
+          <button class="eu-playlist__btn" id="euPlayPrev">&#9664;</button>
+          <div class="eu-bar__track-name" id="euTrackName">Kraftwerk &mdash; Autobahn</div>
+          <button class="eu-playlist__btn" id="euPlayNext">&#9654;</button>
+        </div>
+        <div class="eu-bar__spacer"></div>
+        <div class="eu-bar__count" id="euBarCount"></div>
+        <button class="eu-bar__sharables" id="euBarSharables">Sharables &#8595;</button>
+      </div>
+      <div class="eu-bar__ticker">
+        <div class="eu-bar__ticker-track" id="euTicker"></div>
+      </div>
     </div>
   </div>
 
@@ -735,71 +1014,93 @@
       <div class="eu-sharables__toggle" id="euSharablesBtn">View all sharables <span class="eu-sharables__arrow">&#9660;</span></div>
       <div class="eu-sharables__content">
         <div class="eu-sharables__inner">
-
-          <div class="eu-pap__cat">Social Media</div>
-          <div class="eu-pap__grid">
-            <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" download>
-              <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" alt="">
-              <div class="eu-pap-card__name">Prosciutto</div>
-              <div class="eu-pap-card__desc">The good life, EU-branded. Instagram story ready.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
-            <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" download>
-              <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" alt="">
-              <div class="eu-pap-card__name">Seaside</div>
-              <div class="eu-pap-card__desc">Mediterranean energy for your feed.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
-            <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" download>
-              <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" alt="">
-              <div class="eu-pap-card__name">Caf&eacute;</div>
-              <div class="eu-pap-card__desc">Espresso and electrification.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
-            <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" download>
-              <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" alt="">
-              <div class="eu-pap-card__name">Beach</div>
-              <div class="eu-pap-card__desc">Sun, sand, and a cleaner continent.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
+          <div class="eu-pap__nav">
+            <span class="eu-pap__nav-item is-active" data-cat="social">Social Media</span>
+            <span class="eu-pap__nav-item" data-cat="stickers">Stickers</span>
+            <span class="eu-pap__nav-item" data-cat="messaging">Messaging</span>
           </div>
 
-          <div class="eu-pap__cat">Stickers</div>
-          <div class="eu-pap__grid">
-            <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo.png" download>
-              <img class="eu-pap-card__img eu-pap-card__img--sq" src="DOWNLOADS/STICKERS/testlogo.png" alt="">
-              <div class="eu-pap-card__name">Logo</div>
-              <div class="eu-pap-card__desc">Transparent PNG. Put it on anything.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
-            <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo2.png" download>
-              <img class="eu-pap-card__img eu-pap-card__img--sq" src="DOWNLOADS/STICKERS/testlogo2.png" alt="">
-              <div class="eu-pap-card__name">Sticker</div>
-              <div class="eu-pap-card__desc">Transparent PNG. Slap it everywhere.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
-            <a class="eu-pap-card" href="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" download>
-              <img class="eu-pap-card__img eu-pap-card__img--sq" src="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" alt="">
-              <div class="eu-pap-card__name">Green Badge</div>
-              <div class="eu-pap-card__desc">The retro classic. Green on white.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
+          <div class="eu-pap__section" data-section="social">
+            <div class="eu-pap__grid">
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" alt="">
+                <div class="eu-pap-card__name">Loop I</div>
+                <div class="eu-pap-card__desc">Animated GIF. For stories, slides, and emails.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" alt="">
+                <div class="eu-pap-card__name">Loop II</div>
+                <div class="eu-pap-card__desc">Animated GIF. Keep the message moving.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" alt="">
+                <div class="eu-pap-card__name">Prosciutto</div>
+                <div class="eu-pap-card__desc">The good life, EU-branded. Instagram story ready.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" alt="">
+                <div class="eu-pap-card__name">Seaside</div>
+                <div class="eu-pap-card__desc">Mediterranean energy for your feed.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" alt="">
+                <div class="eu-pap-card__name">Caf&eacute;</div>
+                <div class="eu-pap-card__desc">Espresso and electrification.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" alt="">
+                <div class="eu-pap-card__name">Beach</div>
+                <div class="eu-pap-card__desc">Sun, sand, and a cleaner continent.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+            </div>
           </div>
 
-          <div class="eu-pap__cat">Motion</div>
-          <div class="eu-pap__grid">
-            <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" download>
-              <img class="eu-pap-card__img eu-pap-card__img--sq" src="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" alt="">
-              <div class="eu-pap-card__name">Loop I</div>
-              <div class="eu-pap-card__desc">Animated GIF. For stories, slides, and emails.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
-            <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" download>
-              <img class="eu-pap-card__img eu-pap-card__img--sq" src="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" alt="">
-              <div class="eu-pap-card__name">Loop II</div>
-              <div class="eu-pap-card__desc">Animated GIF. Keep the message moving.</div>
-              <span class="eu-pap-card__btn">Download</span>
-            </a>
+          <div class="eu-pap__section" data-section="stickers" style="display:none">
+            <div class="eu-pap__grid">
+              <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo.png" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/STICKERS/testlogo.png" alt="">
+                <div class="eu-pap-card__name">Logo</div>
+                <div class="eu-pap-card__desc">Transparent PNG. Put it on anything.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo2.png" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/STICKERS/testlogo2.png" alt="">
+                <div class="eu-pap-card__name">Sticker</div>
+                <div class="eu-pap-card__desc">Transparent PNG. Slap it everywhere.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+              <a class="eu-pap-card" href="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" download>
+                <img class="eu-pap-card__img" src="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" alt="">
+                <div class="eu-pap-card__name">Green Badge</div>
+                <div class="eu-pap-card__desc">The retro classic. Green on white.</div>
+                <span class="eu-pap-card__btn">Download</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="eu-pap__section" data-section="messaging" style="display:none">
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">Europe has always been electro. Let's make it electric.</span>
+            </div>
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">The good life deserves resilience. Make Europe the Electro-Union.</span>
+            </div>
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">EU is for Electro Union. For the continent that invented electricity.</span>
+            </div>
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">Make Europe the first Electro Continent.</span>
+            </div>
           </div>
 
           <div class="eu-pap__free">All assets are free to use, share, remix, and redistribute. No permission needed. Spread the message.</div>
@@ -831,7 +1132,7 @@
           <div class="eu-merch-item__name">Espresso Cup<br>(Coming Soon)</div>
         </div>
         <div class="eu-merch-item">
-          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt="" style="max-width:110%;max-height:110%"></div>
+          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt="" style="max-width:90%;max-height:90%"></div>
           <div class="eu-merch-item__name">Napkins<br>(Coming Soon)</div>
         </div>
       </div>
@@ -870,7 +1171,23 @@
         <div class="eu-draw__anim" data-anim="beat">Beat</div>
         <div class="eu-draw__anim" data-anim="rotate">Rotate</div>
         <div class="eu-draw__divider"></div>
+        <div class="eu-draw__label">Sticker</div>
+        <div class="eu-draw__bg-row">
+          <div class="eu-draw__bg-opt is-active" data-bg="Updated Imagery/Greenlogo.png"><img src="Updated Imagery/Greenlogo.png" alt="Green Logo"></div>
+          <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
+          <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
+          <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
+        </div>
+        <div class="eu-draw__label">Color</div>
+        <div class="eu-draw__bg-row">
+          <div class="eu-draw__bg-color is-active">
+            <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
+            <input type="color" id="euBgColorPicker" value="#ffffff">
+          </div>
+        </div>
+        <div class="eu-draw__divider"></div>
         <img class="eu-draw__dl" id="euDrawDl" src="GIFS/XDQQ5HQDG67LJGROJ5ZLQIQ237PAZW5K.gif" alt="Download GIF">
+        <span class="eu-draw__clear" id="euDrawUndo">Undo</span>
         <span class="eu-draw__clear" id="euDrawClear">Clear</span>
       </div>
     </div>
@@ -941,20 +1258,140 @@
 
   bg.style.backgroundImage='url('+BG[0]+')';
 
-  // Toggle (with auto-shuffle on first open)
+  // Toggle (with auto-shuffle on first open) + sticky bar
   var firstOpen=true;
-  document.getElementById('euBtn').onclick=function(){
-    el.classList.toggle('is-open');
-    if(firstOpen&&el.classList.contains('is-open')){
-      firstOpen=false;
-      setTimeout(sh,400);
-    }
+  var barEl=document.getElementById('euBtn');
+  var barCta=document.getElementById('euBarCta');
+  var barCount=document.getElementById('euBarCount');
+  var approveCount=12847;
+  var approved=false;
+
+  function animateCount(target){
+    var start=target-Math.floor(Math.random()*200)-50;
+    var current=start;
+    var iv=setInterval(function(){
+      current+=Math.floor(Math.random()*7)+1;
+      if(current>=target){current=target;clearInterval(iv);}
+      barCount.textContent=current.toLocaleString()+' have approved this message';
+    },30);
+  }
+
+  function startTrickle(){
+    (function tick(){
+      setTimeout(function(){
+        approveCount++;
+        barCount.textContent=approveCount.toLocaleString()+' have approved this message';
+        tick();
+      },3000+Math.random()*5000);
+    })();
+  }
+
+  barEl.onclick=function(e){
+    if(approved){return;}
+    // Don't trigger approve when clicking playlist controls
+    if(e.target.closest('.eu-bar__playlist')){return;}
+    approved=true;
+    el.classList.add('is-open');
+    barEl.classList.add('is-approved');
+    barCta.textContent='I approve this message ✓';
+    animateCount(approveCount);
+    startTrickle();
+    if(firstOpen){firstOpen=false;setTimeout(sh,400);}
   };
+
+
+  // Playlist (prev/next)
+  var trackNames=[
+    'Kraftwerk \u2014 Autobahn',
+    'Giorgio Moroder \u2014 Chase',
+    'Jean-Michel Jarre \u2014 Oxygene Pt. 4',
+    'Depeche Mode \u2014 Enjoy the Silence',
+    'Daft Punk \u2014 Around the World',
+    'R\u00f6yksopp \u2014 Eple',
+    'Yello \u2014 Oh Yeah'
+  ];
+  var currentTrack=0;
+  var trackNameEl=document.getElementById('euTrackName');
+  document.getElementById('euPlayPrev').onclick=function(e){
+    e.stopPropagation();
+    currentTrack=(currentTrack-1+trackNames.length)%trackNames.length;
+    trackNameEl.textContent=trackNames[currentTrack];
+  };
+  document.getElementById('euPlayNext').onclick=function(e){
+    e.stopPropagation();
+    currentTrack=(currentTrack+1)%trackNames.length;
+    trackNameEl.textContent=trackNames[currentTrack];
+  };
+
+  // Sharables button in bar scrolls to sharables section
+  document.getElementById('euBarSharables').onclick=function(e){
+    e.stopPropagation();
+    var sharablesEl=document.getElementById('euSharables');
+    sharablesEl.classList.add('is-open');
+    sharablesEl.scrollIntoView({behavior:'smooth'});
+  };
+
+  // Ticker: European capitals with live local times
+  var euCities=[
+    {name:'Berlin',tz:'Europe/Berlin'},
+    {name:'Paris',tz:'Europe/Paris'},
+    {name:'Amsterdam',tz:'Europe/Amsterdam'},
+    {name:'Stockholm',tz:'Europe/Stockholm'},
+    {name:'Rome',tz:'Europe/Rome'},
+    {name:'Madrid',tz:'Europe/Madrid'},
+    {name:'Athens',tz:'Europe/Athens'},
+    {name:'Lisbon',tz:'Europe/Lisbon'},
+    {name:'Vienna',tz:'Europe/Vienna'},
+    {name:'Brussels',tz:'Europe/Brussels'},
+    {name:'Copenhagen',tz:'Europe/Copenhagen'},
+    {name:'Helsinki',tz:'Europe/Helsinki'},
+    {name:'Warsaw',tz:'Europe/Warsaw'},
+    {name:'Prague',tz:'Europe/Prague'}
+  ];
+  var euMessages=[
+    'Welcome to the Electro Union',
+    'The good life deserves resilience',
+    'Make Europe the first Electro Continent',
+    'For the continent that invented electricity'
+  ];
+  function buildTicker(){
+    var parts=[];
+    var msgIdx=0;
+    for(var i=0;i<euCities.length;i++){
+      var c=euCities[i];
+      var t=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:c.tz});
+      parts.push(c.name.toUpperCase()+' '+t);
+      if(i%4===3&&msgIdx<euMessages.length){
+        parts.push('<span>'+euMessages[msgIdx]+'</span>');
+        msgIdx++;
+      }
+    }
+    var star='<span class="eu-t-star">\u2726</span>';
+    var str=parts.join(' '+star+' ')+' '+star+' ';
+    document.getElementById('euTicker').innerHTML=str+str;
+  }
+  buildTicker();
+  setInterval(buildTicker,30000);
 
   // Sharables foldout toggle
   document.getElementById('euSharablesBtn').onclick=function(){
     document.getElementById('euSharables').classList.toggle('is-open');
   };
+
+  // Sharables tab navigation
+  var navItems=document.querySelectorAll('.eu-pap__nav-item');
+  var papSections=document.querySelectorAll('.eu-pap__section');
+  navItems.forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.stopPropagation();
+      navItems.forEach(function(t){t.classList.remove('is-active')});
+      tab.classList.add('is-active');
+      var cat=tab.getAttribute('data-cat');
+      papSections.forEach(function(s){
+        s.style.display=s.getAttribute('data-section')===cat?'block':'none';
+      });
+    });
+  });
 
   // Preload images
   BG.forEach(function(src){var i=new Image();i.src=src});
@@ -1005,6 +1442,33 @@
   var animRAF=null;
 
   var sizeSlider=document.getElementById('euDrawSize');
+  var bgImageSrc='Updated Imagery/Greenlogo.png';
+  var bgColor='#ffffff';
+  var bgImg=new Image();bgImg.src=bgImageSrc;
+
+  // Background selectors — sticker + color are independent, both always apply
+  var bgOpts=document.querySelectorAll('.eu-draw__bg-opt');
+  var bgColorPicker=document.getElementById('euBgColorPicker');
+  var bgSwatch=document.getElementById('euBgSwatch');
+
+  bgOpts.forEach(function(o){
+    o.onclick=function(){
+      bgOpts.forEach(function(x){x.classList.remove('is-active')});
+      o.classList.add('is-active');
+      bgImageSrc=o.getAttribute('data-bg');
+      bgImg=new Image();bgImg.src=bgImageSrc;
+      bgImg.onload=function(){renderAll();};
+    };
+  });
+
+  if(bgColorPicker){
+    bgColorPicker.addEventListener('input',function(){
+      bgColor=bgColorPicker.value;
+      bgSwatch.style.background=bgColor;
+      renderAll();
+    });
+  }
+
   var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava.png'];
   var stampImgs=[];
   stampSrcs.forEach(function(src){
@@ -1015,7 +1479,8 @@
   function resizeDrawCanvas(){
     drawCanvas.width=drawWrap.clientWidth;
     drawCanvas.height=drawWrap.clientHeight;
-    renderAll();
+    if(placements.length>0) renderAll();
+    else drawBg(drawCtx,drawCanvas.width,drawCanvas.height);
   }
 
   // Stamp selectors
@@ -1041,9 +1506,21 @@
   });
 
   // Render all placements with optional animation
+  function drawBg(ctx,w,h){
+    ctx.fillStyle=bgColor;
+    ctx.fillRect(0,0,w,h);
+    if(bgImg.complete&&bgImg.naturalWidth>0){
+      var scale=Math.min(w*0.5/bgImg.naturalWidth,h*0.5/bgImg.naturalHeight);
+      var bw=bgImg.naturalWidth*scale;
+      var bh=bgImg.naturalHeight*scale;
+      ctx.drawImage(bgImg,(w-bw)/2,(h-bh)/2,bw,bh);
+    }
+  }
+
   function renderAll(timeOverride){
     var t=(timeOverride!==undefined)?timeOverride:Date.now()/1000;
     drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+    drawBg(drawCtx,drawCanvas.width,drawCanvas.height);
     for(var i=0;i<placements.length;i++){
       var p=placements[i];
       var img=stampImgs[p.si];
@@ -1083,10 +1560,7 @@
     lastPlaceTime=now;
     var size=Math.max(30,drawCanvas.width*0.06)*parseFloat(sizeSlider.value);
     placements.push({x:x,y:y,sz:size,si:activeStamp});
-    if(animMode==='none'){
-      var img=stampImgs[activeStamp];
-      if(img.complete) drawCtx.drawImage(img,x-size/2,y-size/2,size,size);
-    }
+    if(animMode==='none') renderAll();
   }
 
   drawCanvas.addEventListener('mousedown',function(e){
@@ -1115,10 +1589,18 @@
   });
   drawCanvas.addEventListener('touchend',function(){drawing=false});
 
-  // Clear
+  // Undo last stamp
+  document.getElementById('euDrawUndo').onclick=function(){
+    if(placements.length>0){
+      placements.pop();
+      renderAll();
+    }
+  };
+
+  // Clear all
   document.getElementById('euDrawClear').onclick=function(){
     placements=[];
-    drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+    renderAll();
   };
 
   // ── GIF Encoder ──
@@ -1201,8 +1683,7 @@
     for(var f=0;f<numFrames;f++){
       var t=f*(cycleDur/numFrames);
       tmpCtx.clearRect(0,0,cw,ch);
-      tmpCtx.fillStyle='#fff';
-      tmpCtx.fillRect(0,0,cw,ch);
+      drawBg(tmpCtx,cw,ch);
       for(var i=0;i<placements.length;i++){
         var p=placements[i];
         var img=stampImgs[p.si];
