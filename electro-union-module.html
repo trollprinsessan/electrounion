@@ -398,7 +398,7 @@
 .eu-merch__grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:clamp(16px,2.5vw,28px);
+  gap:clamp(30px,5vw,60px);
 }
 .eu-merch-item{
   text-align:center;
@@ -450,20 +450,29 @@
   display:flex;
   gap:clamp(16px,2.5vw,28px);
   align-items:flex-start;
+  justify-content:center;
+  max-width:1050px;
+  margin:0 auto;
 }
 .eu-draw__tools{
   flex:0 0 auto;
   display:flex;
   flex-direction:column;
-  gap:clamp(8px,1.2vw,14px);
+  gap:clamp(6px,1vw,10px);
+  min-width:clamp(60px,8vw,90px);
 }
 .eu-draw__label{
-  font-family:var(--mono);
-  font-size:clamp(10px,1.3vw,16px);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(9px,1.1vw,13px);
   text-transform:uppercase;
   color:var(--ink);
-  margin-bottom:clamp(4px,.6vw,8px);
+  margin-bottom:clamp(2px,.3vw,4px);
   white-space:nowrap;
+}
+.eu-draw__divider{
+  width:100%;height:1px;
+  background:#ddd;
+  margin:clamp(4px,.5vw,8px) 0;
 }
 .eu-draw__stamp{
   width:clamp(40px,6vw,70px);
@@ -475,28 +484,80 @@
   background:#fff;
 }
 .eu-draw__stamp.is-active{border-color:var(--blue)}
-.eu-draw__colors{
-  display:flex;
-  flex-direction:column;
-  gap:clamp(4px,.6vw,8px);
-}
-.eu-draw__color{
-  width:clamp(28px,4vw,40px);
-  height:clamp(28px,4vw,40px);
-  border:2px solid #ccc;
-  cursor:pointer;
-  transition:border-color .15s;
-}
-.eu-draw__color.is-active{border-color:var(--blue);border-width:3px}
 .eu-draw__stamp img{
   width:100%;height:100%;
   object-fit:contain;
+}
+.eu-draw__size-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(2px,.3vw,4px);
+}
+.eu-draw__size-label{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,12px);
+  text-transform:uppercase;
+  color:var(--dim);
+  text-align:center;
+}
+.eu-draw__size-slider{
+  -webkit-appearance:none;
+  appearance:none;
+  width:100%;
+  height:3px;
+  background:#ccc;
+  outline:none;
+  border-radius:2px;
+}
+.eu-draw__size-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:14px;height:14px;
+  background:var(--ink);
+  border-radius:50%;
+  cursor:pointer;
+}
+.eu-draw__size-slider::-moz-range-thumb{
+  width:14px;height:14px;
+  background:var(--ink);
+  border-radius:50%;
+  cursor:pointer;
+  border:none;
+}
+.eu-draw__anim{
+  width:88px;height:31px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:10px;
+  font-weight:normal;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:31px;
+  text-align:center;
+  cursor:pointer;
+  color:#000;
+  background:#fff;
+  border:none;
+  transition:none;
+}
+.eu-draw__anim:hover{
+  background:#f0f0f0;
+}
+.eu-draw__anim.is-active{
+  background:#000;
+  color:#fff;
 }
 .eu-draw__area{
   flex:1;
   display:flex;
   flex-direction:column;
   align-items:center;
+  max-width:700px;
+}
+.eu-draw__desc{
+  font-size:clamp(12px,1.6vw,18px);
+  color:var(--ink);
+  margin-bottom:clamp(8px,1.2vw,16px);
+  text-align:center;
 }
 .eu-draw__framed{
   position:relative;
@@ -515,25 +576,47 @@
 }
 .eu-draw__canvas-wrap{
   width:88%;
-  margin:6% auto;
-  aspect-ratio:4/5;
+  margin:5% auto;
+  aspect-ratio:4/3;
   position:relative;
   border:none;
-  background:transparent;
-  cursor:crosshair;
+  background:#fff;
   z-index:1;
+  overflow:hidden;
 }
 .eu-draw__canvas{
+  display:block;
   width:100%;
   height:100%;
+  cursor:crosshair;
+}
+.eu-draw__dl{
   display:block;
+  width:88px;height:31px;
+  object-fit:contain;
+  cursor:pointer;
+  border:none;
+  transition:none;
 }
-.eu-draw__desc{
-  font-size:clamp(12px,1.6vw,18px);
-  color:var(--ink);
-  margin-top:clamp(8px,1.2vw,16px);
+.eu-draw__dl:hover{
+  filter:brightness(0) saturate(100%) invert(13%) sepia(95%) saturate(6000%) hue-rotate(0deg) brightness(95%);
+}
+.eu-draw__clear{
+  display:block;
+  width:88px;height:31px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:10px;
+  font-weight:normal;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  line-height:31px;
   text-align:center;
+  cursor:pointer;
+  color:#000;
+  background:#fff;
+  border:none;
 }
+.eu-draw__clear:hover{background:#f0f0f0}
 
 /* ═══ WELCOME ═══ */
 .eu-welcome{
@@ -744,11 +827,11 @@
           <div class="eu-merch-item__name">Supporter Scarf<br>(Coming Soon)</div>
         </div>
         <div class="eu-merch-item">
-          <div class="eu-merch-item__img"><img src="Updated Imagery/Espressocup.png" alt="" style="max-width:85%;max-height:85%"></div>
+          <div class="eu-merch-item__img"><img src="Updated Imagery/Espressocup.png" alt="" style="max-width:65%;max-height:65%"></div>
           <div class="eu-merch-item__name">Espresso Cup<br>(Coming Soon)</div>
         </div>
         <div class="eu-merch-item">
-          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt="" style="max-width:100%;max-height:100%"></div>
+          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt="" style="max-width:110%;max-height:110%"></div>
           <div class="eu-merch-item__name">Napkins<br>(Coming Soon)</div>
         </div>
       </div>
@@ -765,24 +848,30 @@
         <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
         <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
         <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava.png" alt="Baklava"></div>
-        <div class="eu-draw__label" style="margin-top:clamp(8px,1.2vw,16px)">Background</div>
-        <div class="eu-draw__colors">
-          <div class="eu-draw__color is-active" data-color="#ffffff" style="background:#ffffff"></div>
-          <div class="eu-draw__color" data-color="#003399" style="background:#003399"></div>
-          <div class="eu-draw__color" data-color="#CC0000" style="background:#CC0000"></div>
-          <div class="eu-draw__color" data-color="#FFD700" style="background:#FFD700"></div>
-          <div class="eu-draw__color" data-color="#1a1a1a" style="background:#1a1a1a"></div>
-          <div class="eu-draw__color" data-color="#f5e6d0" style="background:#f5e6d0"></div>
+        <div class="eu-draw__divider"></div>
+        <div class="eu-draw__size-wrap">
+          <div class="eu-draw__label">Size</div>
+          <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="3" step="0.1" value="1">
         </div>
       </div>
       <div class="eu-draw__area">
+        <div class="eu-draw__desc">Draw with your favourite European bake.</div>
         <div class="eu-draw__framed">
           <img class="eu-draw__frame" src="Updated Imagery/Frame 2_.png" alt="">
           <div class="eu-draw__canvas-wrap">
             <canvas class="eu-draw__canvas" id="euDrawCanvas"></canvas>
           </div>
         </div>
-        <div class="eu-draw__desc">Draw with your favourite European bake.</div>
+      </div>
+      <div class="eu-draw__tools eu-draw__tools--right">
+        <div class="eu-draw__label">Animation</div>
+        <div class="eu-draw__anim is-active" data-anim="none">None</div>
+        <div class="eu-draw__anim" data-anim="bounce">Bounce</div>
+        <div class="eu-draw__anim" data-anim="beat">Beat</div>
+        <div class="eu-draw__anim" data-anim="rotate">Rotate</div>
+        <div class="eu-draw__divider"></div>
+        <img class="eu-draw__dl" id="euDrawDl" src="GIFS/XDQQ5HQDG67LJGROJ5ZLQIQ237PAZW5K.gif" alt="Download GIF">
+        <span class="eu-draw__clear" id="euDrawClear">Clear</span>
       </div>
     </div>
 
@@ -906,10 +995,16 @@
   };
 
   // ═══ Drawing tool ═══
+  /* ── Drawing tool with animation + GIF export ── */
   var drawCanvas=document.getElementById('euDrawCanvas');
   var drawWrap=drawCanvas.parentElement;
   var drawCtx=drawCanvas.getContext('2d');
   var activeStamp=0;
+  var animMode='none';
+  var placements=[];
+  var animRAF=null;
+
+  var sizeSlider=document.getElementById('euDrawSize');
   var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava.png'];
   var stampImgs=[];
   stampSrcs.forEach(function(src){
@@ -920,6 +1015,7 @@
   function resizeDrawCanvas(){
     drawCanvas.width=drawWrap.clientWidth;
     drawCanvas.height=drawWrap.clientHeight;
+    renderAll();
   }
 
   // Stamp selectors
@@ -932,71 +1028,214 @@
     };
   });
 
-  // Background color selectors
-  var colors=document.querySelectorAll('.eu-draw__color');
-  colors.forEach(function(c){
-    c.onclick=function(){
-      colors.forEach(function(x){x.classList.remove('is-active')});
-      c.classList.add('is-active');
-      var col=c.getAttribute('data-color');
-      drawWrap.style.backgroundColor=col;
-      resizeDrawCanvas();
-      drawCtx.fillStyle=col;
-      drawCtx.fillRect(0,0,drawCanvas.width,drawCanvas.height);
+  // Animation selectors
+  var animBtns=document.querySelectorAll('.eu-draw__anim');
+  animBtns.forEach(function(b){
+    b.onclick=function(){
+      animBtns.forEach(function(x){x.classList.remove('is-active')});
+      b.classList.add('is-active');
+      animMode=b.getAttribute('data-anim');
+      if(animMode!=='none'&&!animRAF) startAnimLoop();
+      if(animMode==='none'){cancelAnimationFrame(animRAF);animRAF=null;renderAll();}
     };
   });
 
-  // Draw on click
+  // Render all placements with optional animation
+  function renderAll(timeOverride){
+    var t=(timeOverride!==undefined)?timeOverride:Date.now()/1000;
+    drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+    for(var i=0;i<placements.length;i++){
+      var p=placements[i];
+      var img=stampImgs[p.si];
+      if(!img.complete) continue;
+      var cx=p.x,cy=p.y,s=p.sz,rot=0,sc=1;
+      var phase=i*0.4;
+      if(animMode==='bounce'){
+        cy+=Math.sin(t*4+phase)*p.sz*0.3;
+      }else if(animMode==='beat'){
+        sc=1+Math.sin(t*5+phase)*0.25;
+      }else if(animMode==='rotate'){
+        rot=Math.sin(t*3+phase)*0.5;
+      }
+      drawCtx.save();
+      drawCtx.translate(cx,cy);
+      if(rot) drawCtx.rotate(rot);
+      if(sc!==1) drawCtx.scale(sc,sc);
+      drawCtx.drawImage(img,-s/2,-s/2,s,s);
+      drawCtx.restore();
+    }
+  }
+
+  function startAnimLoop(){
+    function tick(){
+      renderAll();
+      animRAF=requestAnimationFrame(tick);
+    }
+    animRAF=requestAnimationFrame(tick);
+  }
+
+  // Draw on click/drag — stores placements
   var drawing=false;
+  var lastPlaceTime=0;
+  function addPlacement(x,y){
+    var now=Date.now();
+    if(drawing&&now-lastPlaceTime<30) return;
+    lastPlaceTime=now;
+    var size=Math.max(30,drawCanvas.width*0.06)*parseFloat(sizeSlider.value);
+    placements.push({x:x,y:y,sz:size,si:activeStamp});
+    if(animMode==='none'){
+      var img=stampImgs[activeStamp];
+      if(img.complete) drawCtx.drawImage(img,x-size/2,y-size/2,size,size);
+    }
+  }
+
   drawCanvas.addEventListener('mousedown',function(e){
-    resizeDrawCanvas();
-    drawing=true;
-    placeStamp(e);
+    resizeDrawCanvas();drawing=true;
+    var r=drawCanvas.getBoundingClientRect();
+    addPlacement(e.clientX-r.left,e.clientY-r.top);
   });
   drawCanvas.addEventListener('mousemove',function(e){
-    if(drawing) placeStamp(e);
+    if(!drawing) return;
+    var r=drawCanvas.getBoundingClientRect();
+    addPlacement(e.clientX-r.left,e.clientY-r.top);
   });
   drawCanvas.addEventListener('mouseup',function(){drawing=false});
   drawCanvas.addEventListener('mouseleave',function(){drawing=false});
-
-  // Touch support
   drawCanvas.addEventListener('touchstart',function(e){
-    e.preventDefault();
-    resizeDrawCanvas();
-    drawing=true;
-    placeTouchStamp(e);
+    e.preventDefault();resizeDrawCanvas();drawing=true;
+    var r=drawCanvas.getBoundingClientRect();
+    var t=e.touches[0];
+    addPlacement(t.clientX-r.left,t.clientY-r.top);
   });
   drawCanvas.addEventListener('touchmove',function(e){
-    e.preventDefault();
-    if(drawing) placeTouchStamp(e);
+    e.preventDefault();if(!drawing) return;
+    var r=drawCanvas.getBoundingClientRect();
+    var t=e.touches[0];
+    addPlacement(t.clientX-r.left,t.clientY-r.top);
   });
   drawCanvas.addEventListener('touchend',function(){drawing=false});
 
-  function placeStamp(e){
-    var rect=drawCanvas.getBoundingClientRect();
-    var x=e.clientX-rect.left;
-    var y=e.clientY-rect.top;
-    var size=Math.max(30,drawCanvas.width*0.06);
-    var img=stampImgs[activeStamp];
-    if(img.complete) drawCtx.drawImage(img,x-size/2,y-size/2,size,size);
+  // Clear
+  document.getElementById('euDrawClear').onclick=function(){
+    placements=[];
+    drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+  };
+
+  // ── GIF Encoder ──
+  function lzwEncode(pixels,minCode){
+    var clr=1<<minCode,eoi=clr+1,cs=minCode+1,nx=eoi+1;
+    var dict={},bits=0,bc=0,out=[];
+    function emit(c){bits|=(c<<bc);bc+=cs;while(bc>=8){out.push(bits&0xff);bits>>=8;bc-=8;}}
+    function reset(){dict={};for(var i=0;i<clr;i++)dict[String.fromCharCode(i)]=i;nx=eoi+1;cs=minCode+1;}
+    reset();emit(clr);
+    var w=String.fromCharCode(pixels[0]);
+    for(var i=1;i<pixels.length;i++){
+      var c=String.fromCharCode(pixels[i]),wc=w+c;
+      if(dict[wc]!==undefined){w=wc;}
+      else{emit(dict[w]);if(nx<4096){dict[wc]=nx++;if(nx>(1<<cs)&&cs<12)cs++;}else{emit(clr);reset();}w=c;}
+    }
+    emit(dict[w]);emit(eoi);
+    if(bc>0)out.push(bits&0xff);
+    return out;
   }
 
-  function placeTouchStamp(e){
-    var touch=e.touches[0];
-    var rect=drawCanvas.getBoundingClientRect();
-    var x=touch.clientX-rect.left;
-    var y=touch.clientY-rect.top;
-    var size=Math.max(30,drawCanvas.width*0.06);
-    var img=stampImgs[activeStamp];
-    if(img.complete) drawCtx.drawImage(img,x-size/2,y-size/2,size,size);
+  function buildGIF(frames,w,h,delay){
+    var buf=[];
+    function ws(s){for(var i=0;i<s.length;i++)buf.push(s.charCodeAt(i));}
+    function w16(v){buf.push(v&0xff,(v>>8)&0xff);}
+    function wb(v){buf.push(v&0xff);}
+    // palette: 6x6x6 uniform = 216 + pad to 256
+    var pal=[];
+    for(var r=0;r<6;r++)for(var g=0;g<6;g++)for(var b=0;b<6;b++){pal.push(r*51,g*51,b*51);}
+    while(pal.length<768)pal.push(0,0,0);
+    // header
+    ws('GIF89a');w16(w);w16(h);wb(0xf7);wb(0);wb(0);
+    for(var i=0;i<768;i++)wb(pal[i]);
+    // NETSCAPE loop
+    wb(0x21);wb(0xff);wb(11);ws('NETSCAPE2.0');wb(3);wb(1);w16(0);wb(0);
+    // frames
+    for(var f=0;f<frames.length;f++){
+      wb(0x21);wb(0xf9);wb(4);wb(0x00);w16(delay);wb(0);wb(0);
+      wb(0x2c);w16(0);w16(0);w16(w);w16(h);wb(0);
+      wb(8);
+      var comp=lzwEncode(frames[f],8);
+      var p=0;
+      while(p<comp.length){var bl=Math.min(255,comp.length-p);wb(bl);for(var j=0;j<bl;j++)wb(comp[p++]);}
+      wb(0);
+    }
+    wb(0x3b);
+    return new Blob([new Uint8Array(buf)],{type:'image/gif'});
   }
+
+  function quantizeFrame(ctx,w,h){
+    var data=ctx.getImageData(0,0,w,h).data;
+    var idx=new Uint8Array(w*h);
+    for(var i=0;i<idx.length;i++){
+      var ri=Math.round(data[i*4]/51);if(ri>5)ri=5;
+      var gi=Math.round(data[i*4+1]/51);if(gi>5)gi=5;
+      var bi=Math.round(data[i*4+2]/51);if(bi>5)bi=5;
+      idx[i]=ri*36+gi*6+bi;
+    }
+    return idx;
+  }
+
+  // Download GIF (or PNG if no animation)
+  document.getElementById('euDrawDl').onclick=function(){
+    if(placements.length===0) return;
+    if(animMode==='none'){
+      var link=document.createElement('a');
+      link.download='electro-union-drawing.png';
+      link.href=drawCanvas.toDataURL('image/png');
+      link.click();
+      return;
+    }
+    // Render animation frames to GIF
+    var cw=drawCanvas.width,ch=drawCanvas.height;
+    var tmpCanvas=document.createElement('canvas');
+    tmpCanvas.width=cw;tmpCanvas.height=ch;
+    var tmpCtx=tmpCanvas.getContext('2d');
+    var numFrames=20;
+    var cycleDur=1.5;
+    var gifFrames=[];
+    var savedMode=animMode;
+    for(var f=0;f<numFrames;f++){
+      var t=f*(cycleDur/numFrames);
+      tmpCtx.clearRect(0,0,cw,ch);
+      tmpCtx.fillStyle='#fff';
+      tmpCtx.fillRect(0,0,cw,ch);
+      for(var i=0;i<placements.length;i++){
+        var p=placements[i];
+        var img=stampImgs[p.si];
+        if(!img.complete)continue;
+        var cx=p.x,cy=p.y,s=p.sz,rot=0,sc=1;
+        var phase=i*0.4;
+        if(savedMode==='bounce'){cy+=Math.sin(t*4+phase)*p.sz*0.3;}
+        else if(savedMode==='beat'){sc=1+Math.sin(t*5+phase)*0.25;}
+        else if(savedMode==='rotate'){rot=Math.sin(t*3+phase)*0.5;}
+        tmpCtx.save();
+        tmpCtx.translate(cx,cy);
+        if(rot)tmpCtx.rotate(rot);
+        if(sc!==1)tmpCtx.scale(sc,sc);
+        tmpCtx.drawImage(img,-s/2,-s/2,s,s);
+        tmpCtx.restore();
+      }
+      gifFrames.push(quantizeFrame(tmpCtx,cw,ch));
+    }
+    var delay=Math.round(cycleDur/numFrames*100);
+    var blob=buildGIF(gifFrames,cw,ch,delay);
+    var link=document.createElement('a');
+    link.download='electro-union-drawing.gif';
+    link.href=URL.createObjectURL(blob);
+    link.click();
+    setTimeout(function(){URL.revokeObjectURL(link.href);},5000);
+  };
 
   // Init canvas size on first open
-  var observer=new MutationObserver(function(){
+  var drawObserver=new MutationObserver(function(){
     if(el.classList.contains('is-open')){
       setTimeout(resizeDrawCanvas,100);
     }
   });
-  observer.observe(el,{attributes:true,attributeFilter:['class']});
+  drawObserver.observe(el,{attributes:true,attributeFilter:['class']});
 })();
 </script>
