@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electro Union — Module Preview</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 4rem 1.5rem;
+      background: #E8E5DE;
+      font-family: Georgia, serif;
+      color: #1a1a1a;
+    }
+    .article-stub {
+      max-width: 680px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+    }
+    .article-stub p { margin-bottom: 1em; }
+    .article-stub hr {
+      border: none;
+      border-top: 1px solid #aaa;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="article-stub">
+    <p><em>This is a preview wrapper. The module below is what gets embedded in Webflow after the open letter article.</em></p>
+    <hr>
+    <p>...and that is why we believe Europe can lead the transition to clean energy independence. Not because it's easy, but because it's already happening in kitchens and workshops and server rooms across the continent.</p>
+    <p>The question isn't whether we can. The question is whether we choose to.</p>
+    <hr>
+  </div>
+
+  <!-- ▼ THE MODULE ▼ -->
+  <div style="max-width:780px; margin:0 auto;">
+    <!-- #include the module HTML here in Webflow -->
+  </div>
+
+  <script>
+    // Load the module
+    fetch('electro-union-module.html')
+      .then(r => r.text())
+      .then(html => {
+        document.querySelector('[style*="max-width:780px"]').innerHTML = html;
+        // Re-execute script tags
+        var scripts = document.querySelector('[style*="max-width:780px"]').querySelectorAll('script');
+        scripts.forEach(function(s) {
+          var ns = document.createElement('script');
+          ns.textContent = s.textContent;
+          document.body.appendChild(ns);
+        });
+      });
+  </script>
+</body>
+</html>
