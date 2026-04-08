@@ -694,60 +694,90 @@
 
 /* ═══ DRAWING SECTION ═══ */
 .eu-draw{
-  padding:clamp(24px,4vw,44px) clamp(20px,4vw,56px);
-  display:flex;
-  gap:clamp(16px,2.5vw,28px);
-  align-items:flex-start;
-  justify-content:center;
-  max-width:1200px;
+  padding:clamp(40px,6vw,80px) clamp(40px,6vw,80px);
+  max-width:1400px;
   margin:0 auto;
 }
-.eu-draw__tools-left,
-.eu-draw__tools-right{
+.eu-draw__intro{
+  text-align:center;
+  margin-bottom:clamp(28px,4vw,48px);
+  max-width:520px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.eu-draw__intro-title{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(28px,4.5vw,56px);
+  font-weight:bold;
+  font-style:italic;
+  color:var(--blue);
+  line-height:1.1;
+  margin-bottom:clamp(10px,1.5vw,16px);
+}
+.eu-draw__intro-text{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.5vw,17px);
+  color:#333;
+  line-height:1.5;
+}
+.eu-draw__workspace{
+  display:flex;
+  gap:clamp(30px,4vw,56px);
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.eu-draw__panel{
   flex:0 0 auto;
   display:flex;
   flex-direction:column;
-  gap:clamp(12px,1.8vw,20px);
-  min-width:clamp(80px,10vw,140px);
+  gap:clamp(16px,2vw,24px);
+  width:clamp(140px,18vw,220px);
+  align-self:stretch;
 }
 .eu-draw__tools-left,
-.eu-draw__tools-right{
-  align-self:stretch;
-  justify-content:flex-start;
+.eu-draw__tools-right{display:none}
+.eu-draw__dl-group{display:none}
+.eu-draw__message{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(12px,1.4vw,15px);
+  font-weight:normal;
+  border:none;
+  border-bottom:1px solid #ccc;
+  background:none;
+  color:var(--ink);
+  padding:4px 0;
+  width:100%;
+  outline:none;
+  letter-spacing:0.01em;
 }
-.eu-draw__dl-group{
-  margin-top:auto;
-  border-bottom:none!important;
-  padding-bottom:0!important;
+.eu-draw__message::placeholder{
+  color:#aaa;
+  font-style:italic;
+}
+.eu-draw__message:focus{
+  border-bottom-color:var(--blue);
 }
 .eu-draw__toolbar{display:none}
 .eu-draw__toolbar-group{
   display:flex;
   flex-direction:column;
-  gap:clamp(4px,.5vw,6px);
-  padding-bottom:clamp(10px,1.5vw,18px);
+  gap:clamp(6px,.7vw,8px);
+  padding-bottom:0;
   border-bottom:none;
 }
 .eu-draw__toolbar-group:last-child{
   border-bottom:none;
   padding-bottom:0;
 }
-.eu-draw__toolbar-group--row{
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  gap:4px;
-  flex-wrap:wrap;
-}
 .eu-draw__tools{display:none}
 .eu-draw__label{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(11px,1.3vw,15px);
-  text-transform:none;
-  color:var(--ink);
-  margin-bottom:clamp(3px,.4vw,6px);
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--dim);
+  margin-bottom:clamp(2px,.3vw,4px);
   white-space:nowrap;
-  letter-spacing:.01em;
 }
 .eu-draw__divider{
   width:100%;height:1px;
@@ -756,12 +786,12 @@
 }
 .eu-draw__stamp-row{
   display:flex;
-  gap:4px;
+  gap:6px;
   flex-wrap:wrap;
 }
 .eu-draw__stamp{
-  width:clamp(36px,5vw,50px);
-  height:clamp(36px,5vw,50px);
+  width:clamp(38px,5vw,52px);
+  height:clamp(38px,5vw,52px);
   cursor:pointer;
   border:2px solid transparent;
   padding:4px;
@@ -773,23 +803,11 @@
   width:100%;height:100%;
   object-fit:contain;
 }
-.eu-draw__size-wrap{
-  display:flex;
-  flex-direction:column;
-  gap:clamp(2px,.3vw,4px);
-}
-.eu-draw__size-label{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(10px,1.1vw,13px);
-  text-transform:none;
-  color:var(--dim);
-  text-align:center;
-}
 .eu-draw__size-slider{
   -webkit-appearance:none;
   appearance:none;
   width:100%;
-  height:3px;
+  height:2px;
   background:#ccc;
   outline:none;
   border-radius:2px;
@@ -797,51 +815,51 @@
 .eu-draw__size-slider::-webkit-slider-thumb{
   -webkit-appearance:none;
   appearance:none;
-  width:14px;height:14px;
-  background:var(--ink);
+  width:12px;height:12px;
+  background:var(--blue);
   border-radius:50%;
   cursor:pointer;
 }
 .eu-draw__size-slider::-moz-range-thumb{
-  width:14px;height:14px;
-  background:var(--ink);
+  width:12px;height:12px;
+  background:var(--blue);
   border-radius:50%;
   cursor:pointer;
   border:none;
 }
+.eu-draw__anim-row{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
 .eu-draw__anim{
   display:inline-block;
   align-self:flex-start;
-  padding:3px 7px;
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:12px;
+  padding:4px 10px;
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
   font-weight:normal;
-  text-transform:none;
-  letter-spacing:.01em;
+  text-transform:uppercase;
+  letter-spacing:.08em;
   line-height:1;
   text-align:center;
   cursor:pointer;
   color:#000;
   border:none;
-  transition:opacity .12s;
+  transition:all .12s;
 }
 .eu-draw__anim:hover{opacity:.7}
-.eu-draw__anim:nth-child(2){background:#FDFCB9}
-.eu-draw__anim:nth-child(3){background:#A67BC5}
-.eu-draw__anim:nth-child(4){background:#44EEBB}
-.eu-draw__anim:nth-child(5){background:#F0C87C}
+.eu-draw__anim:nth-child(1){background:#FDFCB9}
+.eu-draw__anim:nth-child(2){background:#A67BC5}
+.eu-draw__anim:nth-child(3){background:#44EEBB}
+.eu-draw__anim:nth-child(4){background:#F0C87C}
+.eu-draw__anim.is-active{outline:2px solid var(--blue);outline-offset:1px;}
 .eu-draw__area{
   flex:1;
   display:flex;
   flex-direction:column;
   align-items:center;
-  max-width:540px;
-}
-.eu-draw__desc{
-  font-size:clamp(12px,1.6vw,18px);
-  color:var(--ink);
-  margin:clamp(12px,2vw,24px) 0 clamp(16px,2.5vw,28px);
-  text-align:center;
+  max-width:660px;
 }
 .eu-draw__framed{
   position:relative;
@@ -916,42 +934,72 @@
   border:1px solid #ccc;
 }
 .eu-draw__below-canvas{display:none}
+.eu-draw__below{
+  margin-top:clamp(16px,2vw,24px);
+  width:100%;
+}
+.eu-draw__message-wrap{
+  margin-bottom:clamp(12px,1.5vw,18px);
+}
+.eu-draw__actions{
+  display:flex;
+  gap:clamp(8px,1vw,12px);
+  flex-wrap:wrap;
+}
+.eu-draw__dl-btn--guestbook{
+  background:#fff;
+  color:var(--blue);
+  border:1px solid var(--blue);
+}
+.eu-draw__dl-btn--guestbook:hover{
+  background:var(--blue);
+  color:#fff;
+}
 .eu-draw__dl-row{
   display:flex;
   flex-direction:column;
-  gap:4px;
+  gap:6px;
 }
 .eu-draw__dl-btn{
-  display:inline-block;
-  padding:3px 7px;
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:12px;
+  display:block;
+  flex:1;
+  padding:clamp(8px,1vw,12px) clamp(12px,1.5vw,18px);
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
   font-weight:normal;
   line-height:1;
   text-align:center;
   cursor:pointer;
-  color:#000;
-  border:none;
-  transition:opacity .12s;
-  background:#ccc;
+  color:var(--ink);
+  border:1px solid #ccc;
+  transition:all .15s;
+  background:#fff;
   text-transform:uppercase;
+  letter-spacing:.08em;
 }
-.eu-draw__dl-btn:hover{opacity:.7}
+.eu-draw__dl-btn:hover{border-color:var(--blue);color:var(--blue)}
+.eu-draw__dl-btn--primary{
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue);
+}
+.eu-draw__dl-btn--primary:hover{background:#002d8a;color:#fff}
 .eu-draw__undo-row{
   display:flex;
-  flex-direction:column;
-  gap:4px;
+  gap:clamp(10px,1.2vw,16px);
 }
 .eu-draw__arrow{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:12px;
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
   cursor:pointer;
-  color:#000;
+  color:var(--dim);
   line-height:1;
-  transition:opacity .12s;
+  transition:color .12s;
   user-select:none;
 }
-.eu-draw__arrow:hover{opacity:.5}
+.eu-draw__arrow:hover{color:var(--ink)}
 
 /* ═══ WELCOME ═══ */
 /* ═══ ROMAN GATE (scroll-driven) ═══ */
@@ -1306,61 +1354,81 @@
 
     <!-- Drawing section -->
     <div class="eu-draw">
-      <div class="eu-draw__tools-left">
-        <div class="eu-draw__toolbar-group">
-          <div class="eu-draw__label">pick a pencil</div>
-          <div class="eu-draw__stamp is-active" data-stamp="0"><img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette"></div>
-          <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
-          <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
-          <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava.png" alt="Baklava"></div>
-        </div>
-        <div class="eu-draw__toolbar-group">
-          <div class="eu-draw__label">animation</div>
-          <div class="eu-draw__anim is-active" data-anim="none">none</div>
-          <div class="eu-draw__anim" data-anim="bounce">bounce</div>
-          <div class="eu-draw__anim" data-anim="beat">beat</div>
-          <div class="eu-draw__anim" data-anim="rotate">rotate</div>
-        </div>
-        <div class="eu-draw__toolbar-group">
-          <div class="eu-draw__label">size</div>
-          <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="4.5" step="0.1" value="1">
-        </div>
+      <div class="eu-draw__intro">
+        <div class="eu-draw__intro-title">Make your own.</div>
+        <div class="eu-draw__intro-text">Pick a pastry, tap to draw, add a sticker. Download it as a GIF or a still. If you're feeling generous, add it to the guestbook below.</div>
       </div>
-      <div class="eu-draw__area">
-        <div class="eu-draw__framed">
-          <img class="eu-draw__frame" src="Updated Imagery/FRAME2_UPDATED.png" alt="">
-          <div class="eu-draw__canvas-wrap">
-            <canvas class="eu-draw__canvas" id="euDrawCanvas"></canvas>
+      <div class="eu-draw__workspace">
+        <div class="eu-draw__panel">
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__label">Pencil</div>
+            <div class="eu-draw__stamp-row">
+              <div class="eu-draw__stamp is-active" data-stamp="0"><img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette"></div>
+              <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
+              <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
+              <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava.png" alt="Baklava"></div>
+              <div class="eu-draw__stamp" data-stamp="4"><img src="Updated Imagery/kürtőskalács.png" alt="K&uuml;rt&odblac;skalács"></div>
+              <div class="eu-draw__stamp" data-stamp="5"><img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant"></div>
+              <div class="eu-draw__stamp" data-stamp="6"><img src="Updated Imagery/danish.png" alt="Danish"></div>
+              <div class="eu-draw__stamp" data-stamp="7"><img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata"></div>
+              <div class="eu-draw__stamp" data-stamp="8"><img src="Updated Imagery/sernik.png" alt="Sernik"></div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="eu-draw__tools-right">
-        <div class="eu-draw__toolbar-group">
-          <div class="eu-draw__label">sticker</div>
-          <div class="eu-draw__bg-row">
-            <div class="eu-draw__bg-opt is-active" data-bg="Updated Imagery/Greenlogo.png"><img src="Updated Imagery/Greenlogo.png" alt="Green Logo"></div>
-            <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
-            <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
-            <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__label">Size</div>
+            <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="7.5" step="0.1" value="1">
           </div>
-          <div class="eu-draw__label">color</div>
-          <div class="eu-draw__bg-row">
-            <div class="eu-draw__bg-color is-active">
-              <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
-              <input type="color" id="euBgColorPicker" value="#ffffff">
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__label">Sticker</div>
+            <div class="eu-draw__bg-row">
+              <div class="eu-draw__bg-opt is-active" data-bg="Updated Imagery/Greenlogo.png" data-sticker="0"><img src="Updated Imagery/Greenlogo.png" alt="Green Logo"></div>
+              <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png" data-sticker="1"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
+              <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png" data-sticker="2"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
+              <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png" data-sticker="3"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
+            </div>
+          </div>
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__label">Color</div>
+            <div class="eu-draw__bg-row">
+              <div class="eu-draw__bg-color is-active">
+                <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
+                <input type="color" id="euBgColorPicker" value="#ffffff">
+              </div>
+            </div>
+          </div>
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__label">Add a message</div>
+            <input type="text" class="eu-draw__message eu-draw__message--panel" id="euDrawMessagePanel" placeholder="your name, city, or note" maxlength="40">
+          </div>
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__label">Animation</div>
+            <div class="eu-draw__anim-row">
+              <div class="eu-draw__anim is-active" data-anim="none">none</div>
+              <div class="eu-draw__anim" data-anim="bounce">bounce</div>
+              <div class="eu-draw__anim" data-anim="beat">beat</div>
+              <div class="eu-draw__anim" data-anim="rotate">rotate</div>
+            </div>
+          </div>
+          <div class="eu-draw__toolbar-group">
+            <div class="eu-draw__undo-row">
+              <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; undo</span>
+              <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; clear</span>
             </div>
           </div>
         </div>
-        <div class="eu-draw__toolbar-group">
-          <div class="eu-draw__undo-row">
-            <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; undo</span>
-            <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; clear</span>
+        <div class="eu-draw__area">
+          <div class="eu-draw__framed">
+            <img class="eu-draw__frame" src="Updated Imagery/FRAME2_UPDATED.png" alt="">
+            <div class="eu-draw__canvas-wrap">
+              <canvas class="eu-draw__canvas" id="euDrawCanvas"></canvas>
+            </div>
           </div>
-        </div>
-        <div class="eu-draw__toolbar-group eu-draw__dl-group">
-          <div class="eu-draw__dl-row">
-            <span class="eu-draw__dl-btn" id="euDrawDl">DOWNLOAD .GIF</span>
-            <span class="eu-draw__dl-btn" id="euDrawDlMp4">DOWNLOAD .MP4</span>
+          <div class="eu-draw__below">
+            <div class="eu-draw__actions">
+              <span class="eu-draw__dl-btn eu-draw__dl-btn--primary" id="euDrawDl">Download GIF</span>
+              <span class="eu-draw__dl-btn" id="euDrawDlPng">Download PNG</span>
+              <span class="eu-draw__dl-btn eu-draw__dl-btn--guestbook" id="euDrawGuestbook">Add to guestbook</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1589,6 +1657,13 @@
       bgImageSrc=o.getAttribute('data-bg');
       bgImg=new Image();bgImg.src=bgImageSrc;
       bgImg.onload=function(){renderAll();};
+      // Also set as active stamp for placing on canvas
+      var si=o.getAttribute('data-sticker');
+      if(si!==null){
+        activeStamp=stickerStartIdx+parseInt(si);
+        // Deselect pastry stamps
+        stamps.forEach(function(x){x.classList.remove('is-active')});
+      }
     };
   });
 
@@ -1600,9 +1675,13 @@
     });
   }
 
-  var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava.png'];
+  var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava.png','Updated Imagery/kürtőskalács.png','Updated Imagery/pngimg.com - croissant_PNG46722.png','Updated Imagery/danish.png','Updated Imagery/pastelnata.webp','Updated Imagery/sernik.png'];
+  // Sticker sources (placeable on canvas via tap)
+  var stickerSrcs=['Updated Imagery/Greenlogo.png','Updated Imagery/Blue logo.png','STICKERS/Sticker1.png','STICKERS/Sticker2.png'];
+  var stickerStartIdx=stampSrcs.length;
+  var allSrcs=stampSrcs.concat(stickerSrcs);
   var stampImgs=[];
-  stampSrcs.forEach(function(src){
+  allSrcs.forEach(function(src){
     var img=new Image();img.src=src;
     stampImgs.push(img);
   });
@@ -1621,6 +1700,8 @@
       stamps.forEach(function(x){x.classList.remove('is-active')});
       s.classList.add('is-active');
       activeStamp=parseInt(s.getAttribute('data-stamp'));
+      // Deselect sticker options (they stay as bg but aren't the active brush)
+      bgOpts.forEach(function(x){x.classList.remove('is-active')});
     };
   });
 
@@ -1669,7 +1750,11 @@
       drawCtx.translate(cx,cy);
       if(rot) drawCtx.rotate(rot);
       if(sc!==1) drawCtx.scale(sc,sc);
-      drawCtx.drawImage(img,-s/2,-s/2,s,s);
+      var iw=img.naturalWidth||1,ih=img.naturalHeight||1;
+      var ar=iw/ih;
+      var dw=ar>=1?s:s*ar;
+      var dh=ar>=1?s/ar:s;
+      drawCtx.drawImage(img,-dw/2,-dh/2,dw,dh);
       drawCtx.restore();
     }
   }
@@ -1792,20 +1877,85 @@
     return idx;
   }
 
-  // Download GIF (or PNG if no animation)
+  // Scale factor for 1080x1080 export
+  function getExportScale(){
+    return 1080/drawCanvas.width;
+  }
+
+  var drawMessageInput=document.getElementById('euDrawMessagePanel');
+
+  // Render placements to an export canvas at 1080x1080
+  function renderExportFrame(tmpCtx,mode,t){
+    var sc=getExportScale();
+    var ew=1080,eh=1080;
+    tmpCtx.clearRect(0,0,ew,eh);
+    // Draw bg scaled
+    tmpCtx.save();
+    tmpCtx.fillStyle=bgColor;
+    tmpCtx.fillRect(0,0,ew,eh);
+    if(bgImg.complete&&bgImg.naturalWidth>0){
+      var bw=bgImg.naturalWidth,bh=bgImg.naturalHeight;
+      var bs=Math.min(ew*0.4/bw,eh*0.4/bh);
+      tmpCtx.globalAlpha=0.12;
+      tmpCtx.drawImage(bgImg,(ew-bw*bs)/2,(eh-bh*bs)/2,bw*bs,bh*bs);
+      tmpCtx.globalAlpha=1;
+    }
+    tmpCtx.restore();
+    // Draw placements scaled
+    for(var i=0;i<placements.length;i++){
+      var p=placements[i];
+      var img=stampImgs[p.si];
+      if(!img.complete)continue;
+      var cx=p.x*sc,cy=p.y*sc,s=p.sz*sc,rot=0,psc=1;
+      var phase=i*0.4;
+      if(mode==='bounce'){cy+=Math.sin(t*4+phase)*s*0.3;}
+      else if(mode==='beat'){psc=1+Math.sin(t*5+phase)*0.25;}
+      else if(mode==='rotate'){rot=Math.sin(t*3+phase)*0.5;}
+      tmpCtx.save();
+      tmpCtx.translate(cx,cy);
+      if(rot)tmpCtx.rotate(rot);
+      if(psc!==1)tmpCtx.scale(psc,psc);
+      var eiw=img.naturalWidth||1,eih=img.naturalHeight||1;
+      var ear=eiw/eih;
+      var edw=ear>=1?s:s*ear;
+      var edh=ear>=1?s/ear:s;
+      tmpCtx.drawImage(img,-edw/2,-edh/2,edw,edh);
+      tmpCtx.restore();
+    }
+    // Render message text
+    var msg=drawMessageInput?drawMessageInput.value.trim():'';
+    if(msg){
+      tmpCtx.save();
+      tmpCtx.font='32px "Times Eighteen", Georgia, serif';
+      tmpCtx.fillStyle='#ffffff';
+      tmpCtx.shadowColor='rgba(0,0,0,0.6)';
+      tmpCtx.shadowBlur=6;
+      tmpCtx.shadowOffsetY=2;
+      tmpCtx.textAlign='center';
+      tmpCtx.fillText(msg,ew/2,eh-60);
+      tmpCtx.restore();
+    }
+  }
+
+  // Download GIF (animated) or PNG (if no animation)
   document.getElementById('euDrawDl').onclick=function(){
     if(placements.length===0) return;
+    var ew=1080,eh=1080;
     if(animMode==='none'){
+      // Export as PNG at 1080x1080
+      var tmpCanvas=document.createElement('canvas');
+      tmpCanvas.width=ew;tmpCanvas.height=eh;
+      var tmpCtx=tmpCanvas.getContext('2d');
+      renderExportFrame(tmpCtx,'none',0);
       var link=document.createElement('a');
       link.download='electro-union-drawing.png';
-      link.href=drawCanvas.toDataURL('image/png');
+      link.href=tmpCanvas.toDataURL('image/png');
       link.click();
       return;
     }
-    // Render animation frames to GIF
-    var cw=drawCanvas.width,ch=drawCanvas.height;
+    // Render animation frames to GIF at 1080x1080
     var tmpCanvas=document.createElement('canvas');
-    tmpCanvas.width=cw;tmpCanvas.height=ch;
+    tmpCanvas.width=ew;tmpCanvas.height=eh;
     var tmpCtx=tmpCanvas.getContext('2d');
     var numFrames=20;
     var cycleDur=1.5;
@@ -1813,33 +1963,30 @@
     var savedMode=animMode;
     for(var f=0;f<numFrames;f++){
       var t=f*(cycleDur/numFrames);
-      tmpCtx.clearRect(0,0,cw,ch);
-      drawBg(tmpCtx,cw,ch);
-      for(var i=0;i<placements.length;i++){
-        var p=placements[i];
-        var img=stampImgs[p.si];
-        if(!img.complete)continue;
-        var cx=p.x,cy=p.y,s=p.sz,rot=0,sc=1;
-        var phase=i*0.4;
-        if(savedMode==='bounce'){cy+=Math.sin(t*4+phase)*p.sz*0.3;}
-        else if(savedMode==='beat'){sc=1+Math.sin(t*5+phase)*0.25;}
-        else if(savedMode==='rotate'){rot=Math.sin(t*3+phase)*0.5;}
-        tmpCtx.save();
-        tmpCtx.translate(cx,cy);
-        if(rot)tmpCtx.rotate(rot);
-        if(sc!==1)tmpCtx.scale(sc,sc);
-        tmpCtx.drawImage(img,-s/2,-s/2,s,s);
-        tmpCtx.restore();
-      }
-      gifFrames.push(quantizeFrame(tmpCtx,cw,ch));
+      renderExportFrame(tmpCtx,savedMode,t);
+      gifFrames.push(quantizeFrame(tmpCtx,ew,eh));
     }
     var delay=Math.round(cycleDur/numFrames*100);
-    var blob=buildGIF(gifFrames,cw,ch,delay);
+    var blob=buildGIF(gifFrames,ew,eh,delay);
     var link=document.createElement('a');
     link.download='electro-union-drawing.gif';
     link.href=URL.createObjectURL(blob);
     link.click();
     setTimeout(function(){URL.revokeObjectURL(link.href);},5000);
+  };
+
+  // Download PNG (always still, 1080x1080)
+  document.getElementById('euDrawDlPng').onclick=function(){
+    if(placements.length===0) return;
+    var ew=1080,eh=1080;
+    var tmpCanvas=document.createElement('canvas');
+    tmpCanvas.width=ew;tmpCanvas.height=eh;
+    var tmpCtx=tmpCanvas.getContext('2d');
+    renderExportFrame(tmpCtx,'none',0);
+    var link=document.createElement('a');
+    link.download='electro-union-drawing.png';
+    link.href=tmpCanvas.toDataURL('image/png');
+    link.click();
   };
 
   // Init canvas size on first open
