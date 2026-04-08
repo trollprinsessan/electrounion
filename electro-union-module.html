@@ -286,65 +286,87 @@
 .eu-gen__badge--plugin{
   width:clamp(100px,18vw,240px);
   left:clamp(20px,8vw,100px);
-  bottom:clamp(-130px,-8vw,-160px);
+  bottom:clamp(-30px,-8vw,-60px);
 }
-.eu-gen__byline-wrap{
+/* generator caption + shuffle */
+.eu-gen__caption{
+  text-align:center;
+  margin-top:clamp(8px,1.2vw,14px);
+}
+.eu-gen__shuffle-link{
+  font-family:var(--mono);
+  font-size:clamp(10px,1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+  cursor:pointer;
+  text-decoration:none;
+  transition:color .15s;
+}
+.eu-gen__shuffle-link:hover{
+  color:var(--ink);
+  text-decoration:underline;
+}
+/* sign it section */
+.eu-gen__sign{
   display:flex;
+  align-items:center;
   justify-content:center;
-  margin-top:clamp(10px,1.5vw,16px);
+  gap:clamp(8px,1.2vw,14px);
+  margin-top:clamp(16px,2.5vw,28px);
+}
+.eu-gen__sign-label{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(12px,1.4vw,16px);
+  font-style:italic;
+  color:var(--dim);
+  white-space:nowrap;
 }
 .eu-gen__byline{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(12px,1.4vw,15px);
+  font-family:var(--mono);
+  font-size:clamp(11px,1.2vw,13px);
   font-weight:normal;
-  text-align:center;
   border:none;
-  border-bottom:1px solid #ccc;
-  background:none;
+  border-bottom:1.5px solid #ccc;
+  background:transparent;
   color:var(--ink);
   padding:4px 2px;
-  width:clamp(180px,22vw,260px);
+  width:clamp(200px,28vw,340px);
   outline:none;
-  letter-spacing:0.01em;
+  letter-spacing:0.02em;
 }
 .eu-gen__byline::placeholder{
-  color:#aaa;
+  color:#bbb;
   font-style:italic;
 }
 .eu-gen__byline:focus{
-  border-bottom-color:var(--blue);
+  border-color:var(--ink);
 }
-.eu-gen__btns{
-  display:flex;
-  gap:clamp(8px,1.2vw,14px);
-  margin-top:clamp(10px,1.5vw,16px);
-  justify-content:center;
+/* download CTA */
+.eu-gen__dl-wrap{
+  text-align:center;
+  margin-top:clamp(14px,2vw,24px);
 }
-.eu-gen-cta,.eu-gen-dl{
-  font-family:'Times Eighteen',Georgia,serif;
+.eu-gen-dl{
+  display:inline-block;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
   font-size:clamp(13px,1.6vw,18px);
   font-weight:normal;
-  text-transform:lowercase;
-  letter-spacing:0.02em;
+  text-transform:uppercase;
+  letter-spacing:.03em;
   text-align:center;
   cursor:pointer;
   line-height:1;
-  padding:clamp(10px,1.4vw,16px) clamp(20px,2.5vw,32px);
-  transition:all .15s;
+  padding:clamp(10px,1.4vw,16px) clamp(28px,5vw,60px);
+  transition:background .15s;
   text-decoration:none;
-}
-.eu-gen-cta{
-  background:none;
-  color:#000;
-  border:1.5px solid #000;
-}
-.eu-gen-cta:hover{background:#000;color:#fff}
-.eu-gen-dl{
+  border:none;
   background:var(--blue);
   color:#fff;
-  border:1.5px solid var(--blue);
 }
-.eu-gen-dl:hover{background:#001f7a;border-color:#001f7a}
+.eu-gen-dl:hover{
+  background:#001a66;
+}
 
 /* ═══ SHARABLES FOLDOUT ═══ */
 .eu-sharables{
@@ -353,22 +375,24 @@
 }
 .eu-sharables__toggle{
   font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
-  font-size:clamp(18px,3vw,32px);
+  font-size:clamp(14px,2vw,22px);
   text-transform:uppercase;
-  letter-spacing:.02em;
-  color:#000;
+  letter-spacing:.03em;
+  color:#009246;
   cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  padding:clamp(16px,2.5vw,28px) clamp(20px,4vw,56px);
+  gap:8px;
+  padding:clamp(14px,2vw,20px) clamp(20px,4vw,56px);
   border:none;
-  background:var(--gold);
-  transition:background .15s;
+  background:linear-gradient(180deg,#009246 0%,#009246 33%,#fff 33%,#fff 66%,#CE2B37 66%,#CE2B37 100%);
+  transition:none;
   width:100%;
 }
-.eu-sharables__toggle:hover{background:#ffdf33}
+.eu-sharables__toggle:hover{
+  opacity:1;
+}
 .eu-sharables__arrow{
   display:inline-block;
   transition:transform .3s;
@@ -388,29 +412,29 @@
 /* ═══ PRET-A-PORTER CARDS ═══ */
 .eu-pap__nav{
   display:flex;
-  gap:clamp(4px,.6vw,6px);
+  justify-content:center;
+  gap:clamp(16px,3vw,32px);
   margin-bottom:clamp(16px,2.5vw,28px);
 }
 .eu-pap__nav-item{
   font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
-  font-size:clamp(10px,1.2vw,14px);
+  font-size:clamp(12px,1.4vw,16px);
   font-weight:normal;
-  text-transform:lowercase;
-  letter-spacing:0.01em;
+  text-transform:uppercase;
+  letter-spacing:0.03em;
   color:#000;
   cursor:pointer;
-  padding:clamp(6px,.7vw,9px) clamp(12px,1.5vw,18px);
+  padding:4px 0;
   border:none;
+  border-bottom:2px solid transparent;
+  background:transparent;
   line-height:1;
-  transition:opacity .15s;
+  transition:border-color .15s;
   border-radius:0;
   -webkit-appearance:none;
 }
-.eu-pap__nav-item:hover{opacity:0.7}
-.eu-pap__nav-item.is-active{opacity:1}
-.eu-pap__nav-item[data-cat="social"]{background:#CBCFB7}
-.eu-pap__nav-item[data-cat="stickers"]{background:#04C7FB}
-.eu-pap__nav-item[data-cat="messaging"]{background:#D0011C;color:#fff}
+.eu-pap__nav-item:hover{border-bottom-color:#999}
+.eu-pap__nav-item.is-active{border-bottom-color:#000}
 .eu-pap__cat{
   font-size:clamp(9px,1vw,12px);
   font-family:Arial,Helvetica,sans-serif;
@@ -558,6 +582,96 @@
   width:clamp(80px,14vw,180px);
   z-index:2;
 }
+/* ═══ MUSIC PLAYER ═══ */
+.eu-player{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  background:rgba(255,255,255,0.94);
+  padding:clamp(14px,2vw,24px) clamp(18px,2.5vw,32px);
+  width:clamp(200px,30vw,340px);
+  text-align:center;
+}
+.eu-player__now{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(20px,3.5vw,36px);
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:clamp(8px,1.2vw,14px);
+}
+.eu-player__controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(14px,2.5vw,24px);
+  margin-bottom:clamp(8px,1.2vw,14px);
+}
+.eu-player__btn{
+  font-size:clamp(12px,1.6vw,18px);
+  color:var(--ink);
+  cursor:pointer;
+  user-select:none;
+  transition:opacity .1s;
+  line-height:1;
+}
+.eu-player__btn:hover{opacity:.5}
+.eu-player__btn--play{
+  font-size:clamp(18px,2.8vw,28px);
+  width:clamp(32px,4.5vw,44px);
+  height:clamp(32px,4.5vw,44px);
+  border:1.5px solid var(--ink);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-left:2px;
+}
+.eu-player__bar{
+  width:100%;
+  height:3px;
+  background:#ddd;
+  margin-bottom:clamp(10px,1.5vw,16px);
+  cursor:pointer;
+  position:relative;
+}
+.eu-player__progress{
+  height:100%;
+  background:var(--ink);
+  width:0%;
+  transition:width .3s linear;
+}
+.eu-player__tracklist{
+  text-align:left;
+}
+.eu-player__track{
+  font-family:var(--mono);
+  font-size:clamp(9px,1.1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#999;
+  padding:clamp(3px,.4vw,5px) 0;
+  cursor:pointer;
+  transition:color .1s;
+  border-bottom:1px solid #eee;
+}
+.eu-player__track:last-child{border-bottom:none}
+.eu-player__track:hover{color:var(--ink)}
+.eu-player__track.is-active{
+  color:var(--ink);
+  font-weight:bold;
+}
+.eu-player__track-num{
+  color:#ccc;
+  margin-right:clamp(6px,1vw,10px);
+}
+.eu-player__track.is-active .eu-player__track-num{
+  color:var(--blue);
+}
 .eu-statement__stars{
   width:clamp(120px,22vw,240px);
   display:block;
@@ -568,47 +682,59 @@
 }
 
 /* ═══ RED BAR ═══ */
-.eu-redbar{
-  width:100%;
-  display:block;
-  background:#8B0000;
-  overflow:hidden;
-  padding:clamp(12px,2.2vw,24px) 0;
-  position:relative;
-  box-shadow:0 4px 10px rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.25);
-  border-top:1px solid #ab1a1a;
-  border-bottom:1px solid #5a0000;
-  perspective:600px;
-  text-align:center;
-  margin:clamp(50px,8vw,90px) 0;
-}
-.eu-redbar__text{
-  display:inline-block;
-  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
-  font-size:clamp(28px,5vw,56px);
-  font-weight:bold;
-  text-transform:uppercase;
-  color:#fff;
-  letter-spacing:0.04em;
-  line-height:1;
-  text-shadow:1px 1px 0 rgba(0,0,0,0.5), 0 0 8px rgba(0,0,0,0.15);
-  animation:eu-redbar-spin 4s ease-in-out infinite;
-  transform-style:preserve-3d;
-}
-@keyframes eu-redbar-spin{
-  0%{transform:rotateX(0deg)}
-  15%{transform:rotateX(360deg)}
-  100%{transform:rotateX(360deg)}
-}
 
 /* ═══ MERCHANDISE ═══ */
 .eu-merch{
   padding:clamp(30px,5vw,60px) clamp(40px,6vw,80px);
 }
-.eu-ticker--merch{
-  margin-left:calc(-1 * clamp(40px,6vw,80px));
-  margin-right:calc(-1 * clamp(40px,6vw,80px));
-  margin-bottom:clamp(50px,6vw,80px);
+/* ═══ 2000s WEB BADGE ═══ */
+.eu-widget{
+  margin:0 auto clamp(40px,5vw,60px);
+  text-align:center;
+}
+.eu-widget__badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:408px;
+  height:74px;
+  background:linear-gradient(180deg,#d4d4d4 0%,#b0b0b0 50%,#c8c8c8 100%);
+  border:2px outset #e0e0e0;
+  cursor:default;
+  image-rendering:pixelated;
+  text-align:center;
+  gap:0;
+  overflow:hidden;
+}
+.eu-widget__badge-gif{
+  height:100%;
+  width:auto;
+  display:block;
+  flex-shrink:0;
+}
+.eu-widget__badge-text{
+  font-family:'Verdana',Geneva,Tahoma,sans-serif;
+  font-size:10.5px;
+  color:#333;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  flex:1;
+  padding:0 8px;
+  line-height:1.2;
+}
+.eu-widget__badge-text--left{
+  animation:eu-badge-blink-a 1.6s step-end infinite;
+}
+.eu-widget__badge-text--right{
+  animation:eu-badge-blink-b 1.6s step-end infinite;
+}
+@keyframes eu-badge-blink-a{
+  0%,100%{visibility:visible}
+  50%{visibility:hidden}
+}
+@keyframes eu-badge-blink-b{
+  0%,100%{visibility:hidden}
+  50%{visibility:visible}
 }
 .eu-merch__title{
   font-family:var(--mono);
@@ -694,58 +820,85 @@
 
 /* ═══ DRAWING SECTION ═══ */
 .eu-draw{
-  padding:clamp(40px,6vw,80px) clamp(40px,6vw,80px);
-  max-width:1400px;
+  padding:clamp(40px,6vw,80px) clamp(24px,4vw,80px);
+  max-width:1200px;
   margin:0 auto;
 }
 .eu-draw__intro{
   text-align:center;
-  margin-bottom:clamp(28px,4vw,48px);
-  max-width:520px;
+  margin-bottom:clamp(40px,6vw,80px);
+  max-width:480px;
   margin-left:auto;
   margin-right:auto;
 }
 .eu-draw__intro-title{
   font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(28px,4.5vw,56px);
+  font-size:clamp(32px,5.5vw,70px);
   font-weight:bold;
-  font-style:italic;
+  font-style:normal;
   color:var(--blue);
-  line-height:1.1;
-  margin-bottom:clamp(10px,1.5vw,16px);
+  line-height:1.2;
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  margin-bottom:clamp(8px,1vw,12px);
 }
 .eu-draw__intro-text{
   font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(13px,1.5vw,17px);
+  font-size:clamp(13px,1.4vw,16px);
   color:#333;
-  line-height:1.5;
+  line-height:1.45;
 }
+/* workspace: canvas left, controls right */
 .eu-draw__workspace{
   display:flex;
-  gap:clamp(30px,4vw,56px);
+  gap:clamp(24px,3.5vw,48px);
   align-items:flex-start;
-  justify-content:space-between;
+  margin:0 calc(-1 * clamp(24px,4vw,80px));
+  padding:0 clamp(24px,4vw,80px);
 }
-.eu-draw__panel{
-  flex:0 0 auto;
+/* panel: right side column */
+.eu-draw__panel-col{
+  flex:0 0 clamp(220px,26vw,320px);
   display:flex;
   flex-direction:column;
-  gap:clamp(16px,2vw,24px);
-  width:clamp(140px,18vw,220px);
-  align-self:stretch;
+  align-self:flex-start;
+}
+.eu-draw__panel{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(10px,1.4vw,14px);
+  border:1px solid #000;
+  padding:clamp(14px,2vw,22px);
+  border-radius:2px;
+}
+.eu-draw__section-title{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(11px,1.3vw,14px);
+  font-weight:normal;
+  color:var(--ink);
+  margin-top:clamp(8px,1.2vw,14px);
+}
+.eu-draw__section-title:first-child{
+  margin-top:0;
+}
+.eu-draw__options-row{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(8px,1vw,12px);
 }
 .eu-draw__tools-left,
 .eu-draw__tools-right{display:none}
 .eu-draw__dl-group{display:none}
+/* message input */
 .eu-draw__message{
   font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(12px,1.4vw,15px);
+  font-size:clamp(13px,1.4vw,16px);
   font-weight:normal;
   border:none;
   border-bottom:1px solid #ccc;
   background:none;
   color:var(--ink);
-  padding:4px 0;
+  padding:6px 0;
   width:100%;
   outline:none;
   letter-spacing:0.01em;
@@ -759,15 +912,7 @@
 }
 .eu-draw__toolbar{display:none}
 .eu-draw__toolbar-group{
-  display:flex;
-  flex-direction:column;
-  gap:clamp(6px,.7vw,8px);
-  padding-bottom:0;
-  border-bottom:none;
-}
-.eu-draw__toolbar-group:last-child{
-  border-bottom:none;
-  padding-bottom:0;
+  display:none;
 }
 .eu-draw__tools{display:none}
 .eu-draw__label{
@@ -776,7 +921,7 @@
   text-transform:uppercase;
   letter-spacing:.12em;
   color:var(--dim);
-  margin-bottom:clamp(2px,.3vw,4px);
+  margin-bottom:0;
   white-space:nowrap;
 }
 .eu-draw__divider{
@@ -784,14 +929,16 @@
   background:#ddd;
   margin:clamp(4px,.5vw,8px) 0;
 }
+/* stamp row */
 .eu-draw__stamp-row{
   display:flex;
-  gap:6px;
+  gap:4px;
   flex-wrap:wrap;
 }
 .eu-draw__stamp{
-  width:clamp(38px,5vw,52px);
-  height:clamp(38px,5vw,52px);
+  width:clamp(36px,4.5vw,46px);
+  height:clamp(36px,4.5vw,46px);
+  flex-shrink:0;
   cursor:pointer;
   border:2px solid transparent;
   padding:4px;
@@ -803,6 +950,23 @@
   width:100%;height:100%;
   object-fit:contain;
 }
+.eu-draw__stamp--upload{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px dashed #ccc;
+  cursor:pointer;
+  transition:border-color .15s;
+}
+.eu-draw__stamp--upload:hover{border-color:var(--blue)}
+.eu-draw__stamp--upload.is-active{border-color:var(--blue);border-style:solid}
+.eu-draw__upload-icon{
+  font-family:var(--mono);
+  font-size:clamp(16px,2vw,22px);
+  color:#aaa;
+  line-height:1;
+}
+/* size slider — inline with label */
 .eu-draw__size-slider{
   -webkit-appearance:none;
   appearance:none;
@@ -827,39 +991,73 @@
   cursor:pointer;
   border:none;
 }
+/* inline row for size: label + slider side by side */
+.eu-draw__toolbar-group--inline{
+  flex-direction:row;
+  align-items:center;
+  gap:clamp(8px,1vw,14px);
+}
+.eu-draw__toolbar-group--inline .eu-draw__label{
+  flex-shrink:0;
+}
+.eu-draw__toolbar-group--inline .eu-draw__size-slider{
+  flex:1;
+  max-width:220px;
+}
+/* stickers + color row: compact horizontal */
+.eu-draw__toolbar-group--row{
+  flex-direction:row;
+  align-items:center;
+  gap:clamp(10px,1.5vw,18px);
+  flex-wrap:wrap;
+}
+.eu-draw__toolbar-group--row .eu-draw__label{
+  flex-shrink:0;
+}
+/* animation: inline text toggles */
 .eu-draw__anim-row{
   display:flex;
-  flex-direction:column;
-  gap:3px;
+  flex-direction:row;
+  gap:clamp(4px,.5vw,6px);
+  align-items:center;
+  flex-wrap:wrap;
 }
 .eu-draw__anim{
   display:inline-block;
-  align-self:flex-start;
-  padding:4px 10px;
+  padding:0;
   font-family:var(--mono);
   font-size:clamp(9px,1vw,11px);
   font-weight:normal;
   text-transform:uppercase;
-  letter-spacing:.08em;
+  letter-spacing:.06em;
   line-height:1;
-  text-align:center;
   cursor:pointer;
-  color:#000;
+  color:var(--dim);
   border:none;
-  transition:all .12s;
+  background:none;
+  transition:color .12s;
 }
-.eu-draw__anim:hover{opacity:.7}
-.eu-draw__anim:nth-child(1){background:#FDFCB9}
-.eu-draw__anim:nth-child(2){background:#A67BC5}
-.eu-draw__anim:nth-child(3){background:#44EEBB}
-.eu-draw__anim:nth-child(4){background:#F0C87C}
-.eu-draw__anim.is-active{outline:2px solid var(--blue);outline-offset:1px;}
+.eu-draw__anim:hover{color:var(--ink)}
+.eu-draw__anim.is-active{
+  color:var(--blue);
+  outline:none;
+}
+/* separators between animation options */
+.eu-draw__anim + .eu-draw__anim::before{
+  content:'/';
+  margin-right:clamp(4px,.6vw,8px);
+  color:#ccc;
+  pointer-events:none;
+}
+/* canvas area: full width, centered */
 .eu-draw__area{
   flex:1;
+  min-width:0;
   display:flex;
   flex-direction:column;
   align-items:center;
-  max-width:660px;
+  position:relative;
+  max-width:620px;
 }
 .eu-draw__framed{
   position:relative;
@@ -895,10 +1093,31 @@
   height:100%;
   cursor:crosshair;
 }
+/* undo/clear: bottom of control panel */
+.eu-draw__undo-row{
+  display:flex;
+  gap:clamp(10px,1.2vw,16px);
+  margin-top:auto;
+  padding-top:clamp(12px,1.5vw,18px);
+}
+.eu-draw__arrow{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  cursor:pointer;
+  color:var(--dim);
+  line-height:1;
+  transition:color .12s;
+  user-select:none;
+}
+.eu-draw__arrow:hover{color:var(--ink)}
+/* sticker / bg options */
 .eu-draw__bg-row{
   display:flex;
   gap:4px;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
+  align-items:center;
 }
 .eu-draw__bg-opt{
   width:30px;height:30px;
@@ -912,8 +1131,25 @@
   width:100%;height:100%;
   object-fit:contain;
 }
+.eu-draw__bg-picker-row{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.eu-draw__bg-pick{
+  width:26px;height:26px;
+  cursor:pointer;
+  border:2px solid transparent;
+  padding:0;
+}
+.eu-draw__bg-pick.is-active{border-color:var(--blue)}
+.eu-draw__bg-pick__swatch{
+  width:100%;height:100%;
+  border:1px solid #ddd;
+}
 .eu-draw__bg-color{
-  width:30px;height:30px;
+  width:26px;height:26px;
   border:2px solid transparent;
   padding:0;
   cursor:pointer;
@@ -934,20 +1170,48 @@
   border:1px solid #ccc;
 }
 .eu-draw__below-canvas{display:none}
-.eu-draw__below{
-  margin-top:clamp(16px,2vw,24px);
-  width:100%;
-}
-.eu-draw__message-wrap{
-  margin-bottom:clamp(12px,1.5vw,18px);
-}
+.eu-draw__below{display:none}
+.eu-draw__message-wrap{display:none}
 .eu-draw__actions{
   display:flex;
-  gap:clamp(8px,1vw,12px);
-  flex-wrap:wrap;
+  flex-direction:column;
+  gap:clamp(6px,.8vw,10px);
+  margin-top:clamp(10px,1.4vw,16px);
 }
+.eu-draw__dl-row{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+/* download buttons: Times Eighteen, editorial style */
+.eu-draw__dl-btn{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(13px,1.4vw,16px);
+  font-weight:normal;
+  line-height:1;
+  text-align:center;
+  cursor:pointer;
+  color:var(--ink);
+  border:1px solid #000;
+  transition:all .15s;
+  background:none;
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  padding:clamp(10px,1.2vw,14px) clamp(14px,2vw,20px);
+  text-decoration:none;
+}
+.eu-draw__dl-btn:hover{background:#000;color:#fff;border-color:#000}
+.eu-draw__dl-btn--primary{
+  background:var(--blue);
+  color:#fff;
+  border-color:var(--blue);
+}
+.eu-draw__dl-btn--primary:hover{background:#001a66;color:#fff;border-color:#001a66}
 .eu-draw__dl-btn--guestbook{
-  background:#fff;
+  background:none;
   color:var(--blue);
   border:1px solid var(--blue);
 }
@@ -955,51 +1219,6 @@
   background:var(--blue);
   color:#fff;
 }
-.eu-draw__dl-row{
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-.eu-draw__dl-btn{
-  display:block;
-  flex:1;
-  padding:clamp(8px,1vw,12px) clamp(12px,1.5vw,18px);
-  font-family:var(--mono);
-  font-size:clamp(9px,1vw,11px);
-  font-weight:normal;
-  line-height:1;
-  text-align:center;
-  cursor:pointer;
-  color:var(--ink);
-  border:1px solid #ccc;
-  transition:all .15s;
-  background:#fff;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-}
-.eu-draw__dl-btn:hover{border-color:var(--blue);color:var(--blue)}
-.eu-draw__dl-btn--primary{
-  background:var(--blue);
-  color:#fff;
-  border-color:var(--blue);
-}
-.eu-draw__dl-btn--primary:hover{background:#002d8a;color:#fff}
-.eu-draw__undo-row{
-  display:flex;
-  gap:clamp(10px,1.2vw,16px);
-}
-.eu-draw__arrow{
-  font-family:var(--mono);
-  font-size:clamp(9px,1vw,11px);
-  text-transform:uppercase;
-  letter-spacing:.06em;
-  cursor:pointer;
-  color:var(--dim);
-  line-height:1;
-  transition:color .12s;
-  user-select:none;
-}
-.eu-draw__arrow:hover{color:var(--ink)}
 
 /* ═══ WELCOME ═══ */
 /* ═══ ROMAN GATE (scroll-driven) ═══ */
@@ -1042,7 +1261,7 @@
   line-height:1.2;
   text-align:center;
   will-change:transform,opacity;
-  max-width:520px;
+  max-width:620px;
 }
 /* scroll hint */
 .eu-gate-scene__scroll-hint{
@@ -1134,8 +1353,8 @@
   .eu-pap__grid{grid-template-columns:repeat(2,1fr)}
   .eu-gen__framed{max-width:90%}
   .eu-merch__grid{grid-template-columns:repeat(2,1fr)}
-  .eu-draw__toolbar{gap:12px}
-  .eu-draw__toolbar-group{border-bottom:none;padding-bottom:0}
+  .eu-draw__toolbar-group--row{flex-direction:column;align-items:flex-start;gap:8px}
+  .eu-draw__toolbar-group--inline{flex-wrap:wrap}
 }
 </style>
 
@@ -1190,12 +1409,15 @@
           <div class="eu-photo__byline" id="euBylinePreview"></div>
         </div>
       </div>
-      <div class="eu-gen__byline-wrap">
-        <input type="text" class="eu-gen__byline" id="euBylineInput" placeholder="sign it — your name, city, or message" maxlength="40">
+      <div class="eu-gen__caption">
+        <span class="eu-gen__shuffle-link" id="euShuffle">&#8635; shuffle</span>
       </div>
-      <div class="eu-gen__btns">
-        <div class="eu-gen-cta" id="euShuffle">shuffle</div>
-        <div class="eu-gen-dl" id="euDl">download</div>
+      <div class="eu-gen__sign">
+        <label class="eu-gen__sign-label" for="euBylineInput">Sign it</label>
+        <input type="text" class="eu-gen__byline" id="euBylineInput" placeholder="your name, city, or message" maxlength="40">
+      </div>
+      <div class="eu-gen__dl-wrap">
+        <div class="eu-gen-dl" id="euDl">Download your postcard</div>
       </div>
       <img class="eu-gen__badge eu-gen__badge--heart" src="Updated Imagery/Screenshot 2026-04-07 at 15.03.03.png" alt="I love Electro Union">
       <img class="eu-gen__badge eu-gen__badge--green" src="Updated Imagery/Greenlogo.png" alt="Electro Union green badge">
@@ -1204,7 +1426,7 @@
 
     <!-- View all sharables (foldout) -->
     <div class="eu-sharables" id="euSharables">
-      <div class="eu-sharables__toggle" id="euSharablesBtn">Everything you need to spread the word <span class="eu-sharables__arrow">&#9660;</span></div>
+      <div class="eu-sharables__toggle" id="euSharablesBtn">OPEN THE TOOLKIT — HERE'S EVERYTHING YOU NEED TO SPREAD THE WORD <span class="eu-sharables__arrow">&#9660;</span></div>
       <div class="eu-sharables__content">
         <div class="eu-sharables__inner">
           <div class="eu-pap__nav">
@@ -1305,27 +1527,33 @@
     <div class="eu-statement">
       <div class="eu-statement__wrap">
         <img class="eu-statement__img" src="Updated Imagery/LARGE QUOTE.png" alt="The good life deserves resilience. Make Europe the Electro-Union.">
-        <img class="eu-statement__turbine" src="Updated Imagery/TR2MJN7PZZQVH2PF2EFXNGVELSYFFD6B.gif" alt="Wind turbine diagram">
+        <div class="eu-player" id="euPlayer">
+          <div class="eu-player__now" id="euPlayerNow">BASELOAD</div>
+          <div class="eu-player__controls">
+            <span class="eu-player__btn" id="euPlayerPrev">&#9664;&#9664;</span>
+            <span class="eu-player__btn eu-player__btn--play" id="euPlayerPlay">&#9654;</span>
+            <span class="eu-player__btn" id="euPlayerNext">&#9654;&#9654;</span>
+          </div>
+          <div class="eu-player__bar">
+            <div class="eu-player__progress" id="euPlayerProgress"></div>
+          </div>
+          <div class="eu-player__tracklist">
+            <div class="eu-player__track is-active" data-idx="0"><span class="eu-player__track-num">01</span> Baseload</div>
+            <div class="eu-player__track" data-idx="1"><span class="eu-player__track-num">02</span> Merit Order</div>
+            <div class="eu-player__track" data-idx="2"><span class="eu-player__track-num">03</span> 50 Hertz</div>
+            <div class="eu-player__track" data-idx="3"><span class="eu-player__track-num">04</span> Peak Demand</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Merchandise -->
     <div class="eu-merch">
-      <div class="eu-ticker eu-ticker--merch">
-        <div class="eu-ticker__inner">
-          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
-          <span>Merchandise coming soon. Stay tuned!</span>
-          <img class="eu-ticker__arrow" src="Updated Imagery/C5QAQPCYS2W4K6MHUUIOJPQOM7EHTAXM.gif" alt="">
-          <span>Merchandise coming soon. Stay tuned!</span>
-          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
-          <span>Merchandise coming soon. Stay tuned!</span>
-          <img class="eu-ticker__arrow" src="Updated Imagery/C5QAQPCYS2W4K6MHUUIOJPQOM7EHTAXM.gif" alt="">
-          <span>Merchandise coming soon. Stay tuned!</span>
-          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
-          <span>Merchandise coming soon. Stay tuned!</span>
-          <img class="eu-ticker__arrow" src="Updated Imagery/C5QAQPCYS2W4K6MHUUIOJPQOM7EHTAXM.gif" alt="">
-          <span>Merchandise coming soon. Stay tuned!</span>
-          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
+      <div class="eu-widget">
+        <div class="eu-widget__badge">
+          <span class="eu-widget__badge-text eu-widget__badge-text--left">MERCHANDISE</span>
+          <img class="eu-widget__badge-gif" src="Updated Imagery/merch gif 1.gif" alt="">
+          <span class="eu-widget__badge-text eu-widget__badge-text--right">COMING SOON</span>
         </div>
       </div>
       <div class="eu-merch__grid">
@@ -1348,74 +1576,14 @@
     </div>
 
     <!-- Red bar -->
-    <div class="eu-redbar">
-      <span class="eu-redbar__text">Where history comes alive!</span>
-    </div>
 
     <!-- Drawing section -->
     <div class="eu-draw">
       <div class="eu-draw__intro">
-        <div class="eu-draw__intro-title">Make your own.</div>
-        <div class="eu-draw__intro-text">Pick a pastry, tap to draw, add a sticker. Download it as a GIF or a still. If you're feeling generous, add it to the guestbook below.</div>
+        <div class="eu-draw__intro-title">The best bakes of the continent</div>
+        <div class="eu-draw__intro-text">From croissants &amp; stroopwafels to kürtőskalács and pastel de nata. The good life, in pastry form. Pick a pastry pencil, make it dance, share it. This is your grid.</div>
       </div>
       <div class="eu-draw__workspace">
-        <div class="eu-draw__panel">
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__label">Pencil</div>
-            <div class="eu-draw__stamp-row">
-              <div class="eu-draw__stamp is-active" data-stamp="0"><img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette"></div>
-              <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
-              <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
-              <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava.png" alt="Baklava"></div>
-              <div class="eu-draw__stamp" data-stamp="4"><img src="Updated Imagery/kürtőskalács.png" alt="K&uuml;rt&odblac;skalács"></div>
-              <div class="eu-draw__stamp" data-stamp="5"><img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant"></div>
-              <div class="eu-draw__stamp" data-stamp="6"><img src="Updated Imagery/danish.png" alt="Danish"></div>
-              <div class="eu-draw__stamp" data-stamp="7"><img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata"></div>
-              <div class="eu-draw__stamp" data-stamp="8"><img src="Updated Imagery/sernik.png" alt="Sernik"></div>
-            </div>
-          </div>
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__label">Size</div>
-            <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="7.5" step="0.1" value="1">
-          </div>
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__label">Sticker</div>
-            <div class="eu-draw__bg-row">
-              <div class="eu-draw__bg-opt is-active" data-bg="Updated Imagery/Greenlogo.png" data-sticker="0"><img src="Updated Imagery/Greenlogo.png" alt="Green Logo"></div>
-              <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png" data-sticker="1"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
-              <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png" data-sticker="2"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
-              <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png" data-sticker="3"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
-            </div>
-          </div>
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__label">Color</div>
-            <div class="eu-draw__bg-row">
-              <div class="eu-draw__bg-color is-active">
-                <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
-                <input type="color" id="euBgColorPicker" value="#ffffff">
-              </div>
-            </div>
-          </div>
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__label">Add a message</div>
-            <input type="text" class="eu-draw__message eu-draw__message--panel" id="euDrawMessagePanel" placeholder="your name, city, or note" maxlength="40">
-          </div>
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__label">Animation</div>
-            <div class="eu-draw__anim-row">
-              <div class="eu-draw__anim is-active" data-anim="none">none</div>
-              <div class="eu-draw__anim" data-anim="bounce">bounce</div>
-              <div class="eu-draw__anim" data-anim="beat">beat</div>
-              <div class="eu-draw__anim" data-anim="rotate">rotate</div>
-            </div>
-          </div>
-          <div class="eu-draw__toolbar-group">
-            <div class="eu-draw__undo-row">
-              <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; undo</span>
-              <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; clear</span>
-            </div>
-          </div>
-        </div>
         <div class="eu-draw__area">
           <div class="eu-draw__framed">
             <img class="eu-draw__frame" src="Updated Imagery/FRAME2_UPDATED.png" alt="">
@@ -1423,12 +1591,65 @@
               <canvas class="eu-draw__canvas" id="euDrawCanvas"></canvas>
             </div>
           </div>
-          <div class="eu-draw__below">
-            <div class="eu-draw__actions">
-              <span class="eu-draw__dl-btn eu-draw__dl-btn--primary" id="euDrawDl">Download GIF</span>
-              <span class="eu-draw__dl-btn" id="euDrawDlPng">Download PNG</span>
-              <span class="eu-draw__dl-btn eu-draw__dl-btn--guestbook" id="euDrawGuestbook">Add to guestbook</span>
+        </div>
+        <div class="eu-draw__panel-col">
+          <div class="eu-draw__panel">
+            <div class="eu-draw__section-title">Pick your pastry</div>
+            <div class="eu-draw__stamp-row">
+              <div class="eu-draw__stamp is-active" data-stamp="0"><img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette"></div>
+              <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
+              <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
+              <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava.png" alt="Baklava"></div>
+              <div class="eu-draw__stamp" data-stamp="4"><img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács"></div>
+              <div class="eu-draw__stamp" data-stamp="5"><img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant"></div>
+              <div class="eu-draw__stamp" data-stamp="6"><img src="Updated Imagery/danish.png" alt="Danish"></div>
+              <div class="eu-draw__stamp" data-stamp="7"><img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata"></div>
+              <div class="eu-draw__stamp" data-stamp="8"><img src="Updated Imagery/sernik.png" alt="Sernik"></div>
+              <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadLabel" title="Upload your own image">
+                <span class="eu-draw__upload-icon">+</span>
+                <input type="file" accept="image/*" id="euDrawUpload" style="display:none">
+              </label>
             </div>
+            <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="7.5" step="0.1" value="1">
+            <div class="eu-draw__section-title">Stickers</div>
+            <div class="eu-draw__options-row">
+              <div class="eu-draw__bg-row">
+                <div class="eu-draw__bg-opt is-active" data-bg="Updated Imagery/Greenlogo.png" data-sticker="0"><img src="Updated Imagery/Greenlogo.png" alt="Green Logo"></div>
+                <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png" data-sticker="1"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
+                <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png" data-sticker="2"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
+                <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png" data-sticker="3"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
+              </div>
+            </div>
+            <div class="eu-draw__section-title">Change background</div>
+            <div class="eu-draw__bg-picker-row">
+              <div class="eu-draw__bg-pick is-active" data-bgc="#ffffff" title="White"><div class="eu-draw__bg-pick__swatch" style="background:#ffffff"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#003399" title="EU Blue"><div class="eu-draw__bg-pick__swatch" style="background:#003399"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#FFD700" title="Gold"><div class="eu-draw__bg-pick__swatch" style="background:#FFD700"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#1a1a1a" title="Black"><div class="eu-draw__bg-pick__swatch" style="background:#1a1a1a"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#E8F0E8" title="Sage"><div class="eu-draw__bg-pick__swatch" style="background:#E8F0E8"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#F5E6D0" title="Cream"><div class="eu-draw__bg-pick__swatch" style="background:#F5E6D0"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#CC0000" title="Red"><div class="eu-draw__bg-pick__swatch" style="background:#CC0000"></div></div>
+              <div class="eu-draw__bg-color">
+                <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
+                <input type="color" id="euBgColorPicker" value="#ffffff">
+              </div>
+            </div>
+            <div class="eu-draw__section-title">Animate</div>
+            <div class="eu-draw__anim-row">
+              <div class="eu-draw__anim is-active" data-anim="none">still</div>
+              <div class="eu-draw__anim" data-anim="bounce">bounce</div>
+              <div class="eu-draw__anim" data-anim="beat">beat</div>
+              <div class="eu-draw__anim" data-anim="rotate">spin</div>
+            </div>
+            <div class="eu-draw__undo-row">
+              <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; undo</span>
+              <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; clear</span>
+            </div>
+          </div>
+          <div class="eu-draw__actions">
+            <span class="eu-draw__dl-btn eu-draw__dl-btn--primary" id="euDrawDl">Download GIF</span>
+            <span class="eu-draw__dl-btn" id="euDrawDlPng">Download PNG</span>
+            <span class="eu-draw__dl-btn eu-draw__dl-btn--guestbook" id="euDrawGuestbook">Add to guestbook</span>
           </div>
         </div>
       </div>
@@ -1557,6 +1778,144 @@
     document.getElementById('euSharables').classList.toggle('is-open');
   };
 
+  // ═══ Music Player ═══
+  (function(){
+    var tracks=[
+      {name:'BASELOAD',src:'MUSIC/Okay Okay - Pino A\'angio.mp3'},
+      {name:'MERIT ORDER',src:'MUSIC/Dolce Vita - Ryan Murphy.mp3'},
+      {name:'50 HERTZ',src:'MUSIC/AutoBahn (single version) - Kraftwerk.m4a'},
+      {name:'PEAK DEMAND',src:'MUSIC/Smack My Bitch Up - Prodigy.mp3'}
+    ];
+    var audio=new Audio();
+    var ci=0;
+    var playing=false;
+    var nowEl=document.getElementById('euPlayerNow');
+    var playBtn=document.getElementById('euPlayerPlay');
+    var progressEl=document.getElementById('euPlayerProgress');
+    var trackEls=document.querySelectorAll('.eu-player__track');
+    var barEl=document.querySelector('.eu-player__bar');
+
+    function loadTrack(i){
+      ci=i;
+      audio.src=tracks[ci].src;
+      nowEl.textContent=tracks[ci].name;
+      trackEls.forEach(function(t,idx){
+        t.classList.toggle('is-active',idx===ci);
+      });
+      progressEl.style.width='0%';
+    }
+
+    function togglePlay(){
+      if(playing){
+        audio.pause();
+        playing=false;
+        playBtn.innerHTML='&#9654;';
+      }else{
+        audio.play();
+        playing=true;
+        playBtn.innerHTML='&#10074;&#10074;';
+      }
+    }
+
+    playBtn.addEventListener('click',togglePlay);
+
+    document.getElementById('euPlayerNext').addEventListener('click',function(){
+      loadTrack((ci+1)%tracks.length);
+      if(playing){audio.play();}
+    });
+
+    document.getElementById('euPlayerPrev').addEventListener('click',function(){
+      loadTrack((ci-1+tracks.length)%tracks.length);
+      if(playing){audio.play();}
+    });
+
+    trackEls.forEach(function(el){
+      el.addEventListener('click',function(){
+        loadTrack(parseInt(el.getAttribute('data-idx')));
+        audio.play();
+        playing=true;
+        playBtn.innerHTML='&#10074;&#10074;';
+      });
+    });
+
+    audio.addEventListener('timeupdate',function(){
+      if(audio.duration){
+        progressEl.style.width=(audio.currentTime/audio.duration*100)+'%';
+      }
+    });
+
+    audio.addEventListener('ended',function(){
+      loadTrack((ci+1)%tracks.length);
+      audio.play();
+    });
+
+    barEl.addEventListener('click',function(e){
+      if(audio.duration){
+        var rect=barEl.getBoundingClientRect();
+        var pct=(e.clientX-rect.left)/rect.width;
+        audio.currentTime=pct*audio.duration;
+      }
+    });
+
+    loadTrack(0);
+    // Autoplay on first user interaction
+    function autoplayOnce(){
+      audio.play().then(function(){
+        playing=true;
+        playBtn.innerHTML='&#10074;&#10074;';
+      }).catch(function(){});
+      document.removeEventListener('click',autoplayOnce);
+      document.removeEventListener('scroll',autoplayOnce);
+    }
+    document.addEventListener('click',autoplayOnce);
+    document.addEventListener('scroll',autoplayOnce);
+  })();
+
+  // EU flag color rotation
+  (function(){
+    var flags=[
+      {name:'Italy',colors:['#009246','#fff','#CE2B37']},
+      {name:'France',colors:['#002395','#fff','#ED2939']},
+      {name:'Germany',colors:['#000','#DD0000','#FFCC00']},
+      {name:'Ireland',colors:['#169B62','#fff','#FF883E']},
+      {name:'Belgium',colors:['#000','#FAE042','#ED2939']},
+      {name:'Netherlands',colors:['#AE1C28','#fff','#21468B']},
+      {name:'Austria',colors:['#ED2939','#fff','#ED2939']},
+      {name:'Romania',colors:['#002B7F','#FCD116','#CE1126']},
+      {name:'Hungary',colors:['#CE2939','#fff','#477050']},
+      {name:'Bulgaria',colors:['#fff','#00966E','#D62612']},
+      {name:'Sweden',colors:['#006AA7','#FECC00','#006AA7']},
+      {name:'Finland',colors:['#fff','#003580','#fff']},
+      {name:'Denmark',colors:['#C60C30','#fff','#C60C30']},
+      {name:'Greece',colors:['#0D5EAF','#fff','#0D5EAF']},
+      {name:'Poland',colors:['#fff','#fff','#DC143C']},
+      {name:'Portugal',colors:['#006600','#FF0000','#FF0000']},
+      {name:'Spain',colors:['#AA151B','#F1BF00','#AA151B']},
+      {name:'Czechia',colors:['#fff','#11457E','#D7141A']},
+      {name:'Croatia',colors:['#FF0000','#fff','#171796']},
+      {name:'Luxembourg',colors:['#ED2939','#fff','#00A1DE']},
+      {name:'Slovakia',colors:['#fff','#0B4EA2','#EE1C25']},
+      {name:'Slovenia',colors:['#fff','#003DA5','#ED1C24']},
+      {name:'Lithuania',colors:['#FDB913','#006A44','#C1272D']},
+      {name:'Latvia',colors:['#9E3039','#fff','#9E3039']},
+      {name:'Estonia',colors:['#0072CE','#000','#fff']},
+      {name:'Cyprus',colors:['#fff','#D47600','#fff']},
+      {name:'Malta',colors:['#fff','#fff','#CF3A3A']}
+    ];
+    var btn=document.getElementById('euSharablesBtn');
+    var fi=0;
+    function applyFlag(){
+      var f=flags[fi];
+      btn.style.background='linear-gradient(180deg,'+f.colors[0]+' 0%,'+f.colors[0]+' 33%,'+f.colors[1]+' 33%,'+f.colors[1]+' 66%,'+f.colors[2]+' 66%,'+f.colors[2]+' 100%)';
+      // pick text color that contrasts with middle stripe
+      var mid=f.colors[1];
+      btn.style.color=(mid==='#fff'||mid==='#FECC00'||mid==='#FCD116'||mid==='#FAE042'||mid==='#F1BF00'||mid==='#FDB913'||mid==='#D47600')?'#000':'#fff';
+      fi=(fi+1)%flags.length;
+    }
+    applyFlag();
+    setInterval(applyFlag,4000);
+  })();
+
   // Sharables tab navigation
   var navItems=document.querySelectorAll('.eu-pap__nav-item');
   var papSections=document.querySelectorAll('.eu-pap__section');
@@ -1667,10 +2026,26 @@
     };
   });
 
+  // Background preset picks
+  var bgPicks=document.querySelectorAll('.eu-draw__bg-pick');
+  var bgColorEl=document.querySelector('.eu-draw__bg-color');
+  bgPicks.forEach(function(p){
+    p.onclick=function(){
+      bgPicks.forEach(function(x){x.classList.remove('is-active')});
+      if(bgColorEl)bgColorEl.classList.remove('is-active');
+      p.classList.add('is-active');
+      bgColor=p.getAttribute('data-bgc');
+      if(bgSwatch)bgSwatch.style.background=bgColor;
+      if(bgColorPicker)bgColorPicker.value=bgColor;
+      renderAll();
+    };
+  });
   if(bgColorPicker){
     bgColorPicker.addEventListener('input',function(){
       bgColor=bgColorPicker.value;
       bgSwatch.style.background=bgColor;
+      bgPicks.forEach(function(x){x.classList.remove('is-active')});
+      if(bgColorEl)bgColorEl.classList.add('is-active');
       renderAll();
     });
   }
@@ -1700,10 +2075,49 @@
       stamps.forEach(function(x){x.classList.remove('is-active')});
       s.classList.add('is-active');
       activeStamp=parseInt(s.getAttribute('data-stamp'));
-      // Deselect sticker options (they stay as bg but aren't the active brush)
+      // Deselect sticker options and upload
       bgOpts.forEach(function(x){x.classList.remove('is-active')});
+      if(uploadLabel)uploadLabel.classList.remove('is-active');
     };
   });
+
+  // Upload custom image
+  var uploadInput=document.getElementById('euDrawUpload');
+  var uploadLabel=document.getElementById('euDrawUploadLabel');
+  var uploadStampIdx=-1;
+  uploadInput.onchange=function(e){
+    var file=e.target.files[0];
+    if(!file)return;
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var img=new Image();
+      img.onload=function(){
+        if(uploadStampIdx<0){
+          uploadStampIdx=stampImgs.length;
+          stampImgs.push(img);
+        }else{
+          stampImgs[uploadStampIdx]=img;
+        }
+        activeStamp=uploadStampIdx;
+        stamps.forEach(function(x){x.classList.remove('is-active')});
+        bgOpts.forEach(function(x){x.classList.remove('is-active')});
+        uploadLabel.classList.add('is-active');
+        // Show thumbnail in the upload button
+        uploadLabel.innerHTML='<img src="'+ev.target.result+'" alt="Custom">';
+        uploadLabel.appendChild(uploadInput);
+      };
+      img.src=ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+  uploadLabel.onclick=function(e){
+    if(uploadStampIdx>=0&&e.target!==uploadInput){
+      activeStamp=uploadStampIdx;
+      stamps.forEach(function(x){x.classList.remove('is-active')});
+      bgOpts.forEach(function(x){x.classList.remove('is-active')});
+      uploadLabel.classList.add('is-active');
+    }
+  };
 
   // Animation selectors
   var animBtns=document.querySelectorAll('.eu-draw__anim');
@@ -1837,15 +2251,14 @@
     return out;
   }
 
-  function buildGIF(frames,w,h,delay){
+  function buildGIF(frames,w,h,delay,palette){
     var buf=[];
     function ws(s){for(var i=0;i<s.length;i++)buf.push(s.charCodeAt(i));}
     function w16(v){buf.push(v&0xff,(v>>8)&0xff);}
     function wb(v){buf.push(v&0xff);}
-    // palette: 6x6x6 uniform = 216 + pad to 256
+    // Use adaptive palette
     var pal=[];
-    for(var r=0;r<6;r++)for(var g=0;g<6;g++)for(var b=0;b<6;b++){pal.push(r*51,g*51,b*51);}
-    while(pal.length<768)pal.push(0,0,0);
+    for(var i=0;i<256;i++){pal.push(palette[i][0],palette[i][1],palette[i][2]);}
     // header
     ws('GIF89a');w16(w);w16(h);wb(0xf7);wb(0);wb(0);
     for(var i=0;i<768;i++)wb(pal[i]);
@@ -1865,14 +2278,80 @@
     return new Blob([new Uint8Array(buf)],{type:'image/gif'});
   }
 
-  function quantizeFrame(ctx,w,h){
+  // ── Adaptive palette: median-cut quantisation for better GIF quality ──
+  function buildAdaptivePalette(imgData,maxColors){
+    maxColors=maxColors||256;
+    var data=imgData.data,n=data.length/4;
+    // Sample pixels (every 4th for speed)
+    var pixels=[];
+    for(var i=0;i<n;i+=4){
+      pixels.push([data[i*4],data[i*4+1],data[i*4+2]]);
+    }
+    // Median-cut
+    function vol(box){
+      var rn=box.rMax-box.rMin,gn=box.gMax-box.gMin,bn=box.bMax-box.bMin;
+      return rn*gn*bn;
+    }
+    function makeBox(px){
+      var rMin=255,rMax=0,gMin=255,gMax=0,bMin=255,bMax=0;
+      for(var i=0;i<px.length;i++){
+        var p=px[i];
+        if(p[0]<rMin)rMin=p[0];if(p[0]>rMax)rMax=p[0];
+        if(p[1]<gMin)gMin=p[1];if(p[1]>gMax)gMax=p[1];
+        if(p[2]<bMin)bMin=p[2];if(p[2]>bMax)bMax=p[2];
+      }
+      return {px:px,rMin:rMin,rMax:rMax,gMin:gMin,gMax:gMax,bMin:bMin,bMax:bMax};
+    }
+    function splitBox(box){
+      var rr=box.rMax-box.rMin,gr=box.gMax-box.gMin,br=box.bMax-box.bMin;
+      var ch=rr>=gr&&rr>=br?0:(gr>=br?1:2);
+      box.px.sort(function(a,b){return a[ch]-b[ch];});
+      var mid=Math.floor(box.px.length/2);
+      return [makeBox(box.px.slice(0,mid)),makeBox(box.px.slice(mid))];
+    }
+    var boxes=[makeBox(pixels)];
+    while(boxes.length<maxColors){
+      var best=-1,bestVol=-1;
+      for(var i=0;i<boxes.length;i++){
+        if(boxes[i].px.length>1){
+          var v=vol(boxes[i]);
+          if(v>bestVol){bestVol=v;best=i;}
+        }
+      }
+      if(best<0)break;
+      var pair=splitBox(boxes[best]);
+      boxes.splice(best,1,pair[0],pair[1]);
+    }
+    // Build palette from box averages
+    var palette=[];
+    for(var i=0;i<boxes.length;i++){
+      var bx=boxes[i],rs=0,gs=0,bs=0;
+      for(var j=0;j<bx.px.length;j++){rs+=bx.px[j][0];gs+=bx.px[j][1];bs+=bx.px[j][2];}
+      var c=bx.px.length;
+      palette.push([Math.round(rs/c),Math.round(gs/c),Math.round(bs/c)]);
+    }
+    while(palette.length<256)palette.push([0,0,0]);
+    return palette;
+  }
+
+  function quantizeFrameAdaptive(ctx,w,h,palette){
     var data=ctx.getImageData(0,0,w,h).data;
     var idx=new Uint8Array(w*h);
-    for(var i=0;i<idx.length;i++){
-      var ri=Math.round(data[i*4]/51);if(ri>5)ri=5;
-      var gi=Math.round(data[i*4+1]/51);if(gi>5)gi=5;
-      var bi=Math.round(data[i*4+2]/51);if(bi>5)bi=5;
-      idx[i]=ri*36+gi*6+bi;
+    // Build lookup cache for speed
+    var cache={};
+    for(var i=0;i<w*h;i++){
+      var r=data[i*4],g=data[i*4+1],b=data[i*4+2];
+      // Reduce to 5-bit per channel for cache key
+      var key=((r>>3)<<10)|((g>>3)<<5)|(b>>3);
+      if(cache[key]!==undefined){idx[i]=cache[key];continue;}
+      var bestD=Infinity,bestJ=0;
+      for(var j=0;j<256;j++){
+        var dr=r-palette[j][0],dg=g-palette[j][1],db=b-palette[j][2];
+        var d=dr*dr+dg*dg+db*db;
+        if(d<bestD){bestD=d;bestJ=j;}
+      }
+      cache[key]=bestJ;
+      idx[i]=bestJ;
     }
     return idx;
   }
@@ -1882,7 +2361,7 @@
     return 1080/drawCanvas.width;
   }
 
-  var drawMessageInput=document.getElementById('euDrawMessagePanel');
+  // Sign-it input removed — signing integrated into guestbook flow
 
   // Render placements to an export canvas at 1080x1080
   function renderExportFrame(tmpCtx,mode,t){
@@ -1922,19 +2401,7 @@
       tmpCtx.drawImage(img,-edw/2,-edh/2,edw,edh);
       tmpCtx.restore();
     }
-    // Render message text
-    var msg=drawMessageInput?drawMessageInput.value.trim():'';
-    if(msg){
-      tmpCtx.save();
-      tmpCtx.font='32px "Times Eighteen", Georgia, serif';
-      tmpCtx.fillStyle='#ffffff';
-      tmpCtx.shadowColor='rgba(0,0,0,0.6)';
-      tmpCtx.shadowBlur=6;
-      tmpCtx.shadowOffsetY=2;
-      tmpCtx.textAlign='center';
-      tmpCtx.fillText(msg,ew/2,eh-60);
-      tmpCtx.restore();
-    }
+    // Message text removed — signing happens via guestbook
   }
 
   // Download GIF (animated) or PNG (if no animation)
@@ -1953,21 +2420,25 @@
       link.click();
       return;
     }
-    // Render animation frames to GIF at 1080x1080
+    // Render animation frames to GIF at 1080x1080 with adaptive palette
     var tmpCanvas=document.createElement('canvas');
     tmpCanvas.width=ew;tmpCanvas.height=eh;
     var tmpCtx=tmpCanvas.getContext('2d');
-    var numFrames=20;
-    var cycleDur=1.5;
-    var gifFrames=[];
+    var numFrames=36;
+    var cycleDur=2;
     var savedMode=animMode;
+    // Build adaptive palette from first frame
+    renderExportFrame(tmpCtx,savedMode,0);
+    var palette=buildAdaptivePalette(tmpCtx.getImageData(0,0,ew,eh),256);
+    // Quantize all frames with this palette
+    var gifFrames=[];
     for(var f=0;f<numFrames;f++){
       var t=f*(cycleDur/numFrames);
       renderExportFrame(tmpCtx,savedMode,t);
-      gifFrames.push(quantizeFrame(tmpCtx,ew,eh));
+      gifFrames.push(quantizeFrameAdaptive(tmpCtx,ew,eh,palette));
     }
     var delay=Math.round(cycleDur/numFrames*100);
-    var blob=buildGIF(gifFrames,ew,eh,delay);
+    var blob=buildGIF(gifFrames,ew,eh,delay,palette);
     var link=document.createElement('a');
     link.download='electro-union-drawing.gif';
     link.href=URL.createObjectURL(blob);
