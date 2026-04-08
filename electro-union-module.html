@@ -149,11 +149,14 @@
   color:#333;
   text-align:center;
   line-height:1.5;
+  max-width:520px;
+  margin:0 auto;
 }
 .eu-gate-scene__preamble-btn{
   max-width:clamp(280px,40vw,420px);
   cursor:pointer;
   transition:opacity .2s;
+  margin-top:clamp(8px,1.5vw,16px);
 }
 .eu-gate-scene__preamble-btn:hover{opacity:0.8}
 
@@ -250,6 +253,21 @@
   width:100%;height:100%;
   object-fit:contain;z-index:2;
 }
+.eu-photo__byline{
+  position:absolute;
+  bottom:6%;
+  left:0;right:0;
+  text-align:center;
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(10px,1.2vw,14px);
+  color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  letter-spacing:0.03em;
+  z-index:3;
+  pointer-events:none;
+  padding:0 8%;
+  line-height:1.3;
+}
 .eu-gen__badge{
   position:absolute;
   pointer-events:none;
@@ -270,10 +288,36 @@
   left:clamp(20px,8vw,100px);
   bottom:clamp(-130px,-8vw,-160px);
 }
+.eu-gen__byline-wrap{
+  display:flex;
+  justify-content:center;
+  margin-top:clamp(10px,1.5vw,16px);
+}
+.eu-gen__byline{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(12px,1.4vw,15px);
+  font-weight:normal;
+  text-align:center;
+  border:none;
+  border-bottom:1px solid #ccc;
+  background:none;
+  color:var(--ink);
+  padding:4px 2px;
+  width:clamp(180px,22vw,260px);
+  outline:none;
+  letter-spacing:0.01em;
+}
+.eu-gen__byline::placeholder{
+  color:#aaa;
+  font-style:italic;
+}
+.eu-gen__byline:focus{
+  border-bottom-color:var(--blue);
+}
 .eu-gen__btns{
   display:flex;
   gap:clamp(8px,1.2vw,14px);
-  margin-top:clamp(14px,2vw,24px);
+  margin-top:clamp(10px,1.5vw,16px);
   justify-content:center;
 }
 .eu-gen-cta,.eu-gen-dl{
@@ -561,6 +605,11 @@
 .eu-merch{
   padding:clamp(30px,5vw,60px) clamp(40px,6vw,80px);
 }
+.eu-ticker--merch{
+  margin-left:calc(-1 * clamp(40px,6vw,80px));
+  margin-right:calc(-1 * clamp(40px,6vw,80px));
+  margin-bottom:clamp(50px,6vw,80px);
+}
 .eu-merch__title{
   font-family:var(--mono);
   font-size:clamp(12px,1.6vw,20px);
@@ -569,6 +618,27 @@
   color:var(--red);
   margin-bottom:clamp(20px,3vw,36px);
   text-align:center;
+}
+.eu-merch-marquee{
+  overflow:hidden;
+  white-space:nowrap;
+  margin-bottom:clamp(20px,3vw,36px);
+}
+.eu-merch-marquee__inner{
+  display:inline-block;
+  animation:eu-merch-scroll 14s linear infinite;
+  font-family:var(--mono);
+  font-size:clamp(11px,1.4vw,16px);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--red);
+}
+.eu-merch-marquee__inner span{
+  margin:0 clamp(10px,1.5vw,18px);
+}
+@keyframes eu-merch-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 .eu-merch__grid{
   display:grid;
@@ -905,17 +975,18 @@
   align-items:center;
   gap:clamp(10px,1.8vw,20px);
   z-index:0;
+  margin-top:-20px;
 }
 .eu-gate-scene__logo{
-  width:clamp(180px,30vw,360px);
+  width:110px;
   display:block;
   will-change:transform;
-  margin-top:clamp(-30px,-4vw,-50px);
+  margin-top:clamp(4px,1vw,12px);
   margin-bottom:clamp(8px,1.5vw,16px);
 }
 .eu-gate-scene__tagline{
   font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(16px,2.8vw,36px);
+  font-size:clamp(32px,5.5vw,70px);
   font-weight:bold;
   color:var(--blue);
   text-transform:uppercase;
@@ -923,6 +994,7 @@
   line-height:1.2;
   text-align:center;
   will-change:transform,opacity;
+  max-width:520px;
 }
 /* scroll hint */
 .eu-gate-scene__scroll-hint{
@@ -1028,7 +1100,7 @@
       <div class="eu-bar__cta" id="euBarCta">I approve this message</div>
     </div>
     <div class="eu-bar__approved" id="euBarApproved">
-      <span class="eu-bar__count" id="euBarCount">12,847</span> approve this message
+      <span class="eu-bar__count" id="euBarCount">12,848</span> and counting
     </div>
   </div>
 
@@ -1040,10 +1112,10 @@
       <div class="eu-gate-scene__sticky">
         <div class="eu-gate-scene__reveal" id="euGateReveal">
           <img class="eu-gate-scene__logo" src="Updated Imagery/ElectroUnion_Hero_logo.png" alt="Electro Union">
-          <div class="eu-gate-scene__tagline">Thank you for supporting.</div>
-          <div class="eu-gate-scene__counter" id="euCounter">You are <span id="euCounterNum">#12,848</span></div>
+          <div class="eu-gate-scene__tagline">The good life deserves to be resilient.</div>
+          <div class="eu-gate-scene__counter" id="euCounter">You and <span id="euCounterNum">12,848</span> others agree.</div>
           <div class="eu-gate-scene__preamble" id="euGatePreamble">
-            <div class="eu-gate-scene__preamble-text">Here you can find everything you need to spread the message.<br>Download ready-made assets or generate your own.</div>
+            <div class="eu-gate-scene__preamble-text">Saying so out loud is half the point. In here, you will find pr&ecirc;t-&agrave;-porter sharables for your feeds or tools to generate your own version. All free, all yours, and for however you wish to plug it in.</div>
             <img class="eu-gate-scene__preamble-btn" src="Updated Imagery/animated-text-zoom.gif" alt="Download the Electro-Union Sharing Package">
           </div>
         </div>
@@ -1067,7 +1139,11 @@
         <div class="eu-photo" id="euPv">
           <div class="eu-photo__bg" id="euBg"></div>
           <img class="eu-photo__st" id="euSt" src="STICKERS/Sticker1.png" alt="">
+          <div class="eu-photo__byline" id="euBylinePreview"></div>
         </div>
+      </div>
+      <div class="eu-gen__byline-wrap">
+        <input type="text" class="eu-gen__byline" id="euBylineInput" placeholder="sign it — your name, city, or message" maxlength="40">
       </div>
       <div class="eu-gen__btns">
         <div class="eu-gen-cta" id="euShuffle">shuffle</div>
@@ -1080,7 +1156,7 @@
 
     <!-- View all sharables (foldout) -->
     <div class="eu-sharables" id="euSharables">
-      <div class="eu-sharables__toggle" id="euSharablesBtn">View all sharables <span class="eu-sharables__arrow">&#9660;</span></div>
+      <div class="eu-sharables__toggle" id="euSharablesBtn">Everything you need to spread the word <span class="eu-sharables__arrow">&#9660;</span></div>
       <div class="eu-sharables__content">
         <div class="eu-sharables__inner">
           <div class="eu-pap__nav">
@@ -1094,37 +1170,37 @@
               <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" alt="">
                 <div class="eu-pap-card__name">Loop I</div>
-                <div class="eu-pap-card__desc">GIF · 1080×1350 · Stories, Reels, Slides</div>
+                <div class="eu-pap-card__desc">GIF · 1080×1350 · for Stories, Reels, and Slides</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" alt="">
                 <div class="eu-pap-card__name">Loop II</div>
-                <div class="eu-pap-card__desc">GIF · 1080×1350 · Stories, Reels, Slides</div>
+                <div class="eu-pap-card__desc">GIF · 1080×1350 · for Stories, Reels, and Slides</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" alt="">
                 <div class="eu-pap-card__name">Prosciutto</div>
-                <div class="eu-pap-card__desc">JPG · 1080×1350 · Instagram, WhatsApp, Email</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" alt="">
                 <div class="eu-pap-card__name">Seaside</div>
-                <div class="eu-pap-card__desc">JPG · 1080×1350 · Instagram, WhatsApp, Email</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" alt="">
                 <div class="eu-pap-card__name">Caf&eacute;</div>
-                <div class="eu-pap-card__desc">JPG · 1080×1350 · Instagram, WhatsApp, Email</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" alt="">
                 <div class="eu-pap-card__name">Beach</div>
-                <div class="eu-pap-card__desc">JPG · 1080×1350 · Instagram, WhatsApp, Email</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
             </div>
@@ -1135,19 +1211,19 @@
               <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo.png" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/STICKERS/testlogo.png" alt="">
                 <div class="eu-pap-card__name">Logo</div>
-                <div class="eu-pap-card__desc">PNG · Transparent · Laptop, Phone, Slides</div>
+                <div class="eu-pap-card__desc">PNG · Transparent · for Laptop, Phone, and Slides</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo2.png" download>
                 <img class="eu-pap-card__img" src="DOWNLOADS/STICKERS/testlogo2.png" alt="">
                 <div class="eu-pap-card__name">Sticker</div>
-                <div class="eu-pap-card__desc">PNG · Transparent · Laptop, Phone, Slides</div>
+                <div class="eu-pap-card__desc">PNG · Transparent · for Laptop, Phone, and Slides</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
               <a class="eu-pap-card" href="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" download>
                 <img class="eu-pap-card__img" src="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" alt="">
                 <div class="eu-pap-card__name">Green Badge</div>
-                <div class="eu-pap-card__desc">PNG · 1080×1080 · Instagram, Print, Slides</div>
+                <div class="eu-pap-card__desc">PNG · 1080×1080 · for Instagram, Print, and Slides</div>
                 <span class="eu-pap-card__btn">download</span>
               </a>
             </div>
@@ -1187,22 +1263,38 @@
 
     <!-- Merchandise -->
     <div class="eu-merch">
-      <div class="eu-merch__title">Merchandise</div>
+      <div class="eu-ticker eu-ticker--merch">
+        <div class="eu-ticker__inner">
+          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
+          <span>Merchandise coming soon. Stay tuned!</span>
+          <img class="eu-ticker__arrow" src="Updated Imagery/C5QAQPCYS2W4K6MHUUIOJPQOM7EHTAXM.gif" alt="">
+          <span>Merchandise coming soon. Stay tuned!</span>
+          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
+          <span>Merchandise coming soon. Stay tuned!</span>
+          <img class="eu-ticker__arrow" src="Updated Imagery/C5QAQPCYS2W4K6MHUUIOJPQOM7EHTAXM.gif" alt="">
+          <span>Merchandise coming soon. Stay tuned!</span>
+          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
+          <span>Merchandise coming soon. Stay tuned!</span>
+          <img class="eu-ticker__arrow" src="Updated Imagery/C5QAQPCYS2W4K6MHUUIOJPQOM7EHTAXM.gif" alt="">
+          <span>Merchandise coming soon. Stay tuned!</span>
+          <img class="eu-ticker__arrow" src="Updated Imagery/67VNHCP5WYYBCARAO2YC32XRMYQ3S2UK.gif" alt="">
+        </div>
+      </div>
       <div class="eu-merch__grid">
         <div class="eu-merch-item eu-merch-item--scarf">
           <div class="eu-merch-item__img">
             <div class="eu-merch-item__fireworks"><img src="Updated Imagery/WS2k.gif" alt=""></div>
             <img src="Updated Imagery/Scarf.png" alt="">
           </div>
-          <div class="eu-merch-item__name">Supporter Scarf<br>(Coming Soon)</div>
+          <div class="eu-merch-item__name">Supporter Scarf &mdash; soon</div>
         </div>
         <div class="eu-merch-item">
           <div class="eu-merch-item__img"><img src="Updated Imagery/Espressocup.png" alt="" style="max-width:65%;max-height:65%"></div>
-          <div class="eu-merch-item__name">Espresso Cup<br>(Coming Soon)</div>
+          <div class="eu-merch-item__name">Espresso Cup &mdash; soon</div>
         </div>
         <div class="eu-merch-item">
           <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt="" style="max-width:90%;max-height:90%"></div>
-          <div class="eu-merch-item__name">Napkins<br>(Coming Soon)</div>
+          <div class="eu-merch-item__name">Napkins &mdash; soon</div>
         </div>
       </div>
     </div>
@@ -1383,7 +1475,7 @@
     // animate counter ticking up to your number
     animateCounter(approvalBase+1);
     // update the "You are European #" text
-    document.getElementById('euCounterNum').textContent='#'+(approvalBase+1).toLocaleString();
+    document.getElementById('euCounterNum').textContent=(approvalBase+1).toLocaleString();
     // auto-scroll through the gate reveal
     autoScrollGates();
     if(firstOpen){
@@ -1430,6 +1522,13 @@
       if(++c>=total){clearInterval(iv);shuffling=false}
     },70);
   }
+  // Byline live preview
+  var bylineInput=document.getElementById('euBylineInput');
+  var bylinePreview=document.getElementById('euBylinePreview');
+  bylineInput.addEventListener('input',function(){
+    bylinePreview.textContent=bylineInput.value;
+  });
+
   pv.onclick=sh;
   document.getElementById('euShuffle').onclick=sh;
 
@@ -1443,6 +1542,19 @@
       var s=new Image();s.crossOrigin='anonymous';
       s.onload=function(){
         cx.drawImage(s,0,0,W,H);
+        // Render byline
+        var byline=bylineInput.value.trim();
+        if(byline){
+          cx.save();
+          cx.font='32px "Times Eighteen", Georgia, serif';
+          cx.fillStyle='#ffffff';
+          cx.shadowColor='rgba(0,0,0,0.6)';
+          cx.shadowBlur=6;
+          cx.shadowOffsetY=2;
+          cx.textAlign='center';
+          cx.fillText(byline,W/2,H-80);
+          cx.restore();
+        }
         var a=document.createElement('a');
         a.download='electro-union-postcard.png';
         a.href=cv.toDataURL('image/png');a.click();
