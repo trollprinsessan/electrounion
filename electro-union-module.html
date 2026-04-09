@@ -3510,7 +3510,7 @@
     if(animMode!=='none'){
       // Build animated GIF for guestbook (fewer frames + smaller res = much smaller file)
       gbPendingIsGif=true;
-      var numFrames=16;
+      var numFrames=20;
       var cycleDur=1.5;
       renderExportFrame(tmpCtx,animMode,0,gbSize);
       var palette=buildAdaptivePalette(tmpCtx.getImageData(0,0,ew,eh),256);
