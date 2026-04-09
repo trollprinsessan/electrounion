@@ -2498,8 +2498,23 @@
 <script>
 (function(){
   // ═══ EMBED DETECTION ═══
-  if(window.location.search.indexOf('embed=1')>-1||window!==window.top){
+  var isEmbed=window.location.search.indexOf('embed=1')>-1||window!==window.top;
+  if(isEmbed){
     document.documentElement.classList.add('is-embed');
+    // Auto-resize: tell parent our height so iframe can grow
+    var lastH=0;
+    function postHeight(){
+      var h=document.documentElement.scrollHeight;
+      if(h!==lastH){
+        lastH=h;
+        window.parent.postMessage({type:'eu-resize',height:h},'*');
+      }
+    }
+    // Poll for height changes (gate open, gallery load, etc.)
+    setInterval(postHeight,500);
+    // Also fire on key moments
+    window.addEventListener('load',postHeight);
+    new MutationObserver(postHeight).observe(document.body,{childList:true,subtree:true,attributes:true});
   }
 
   // ═══ SUPABASE CONFIG ═══
