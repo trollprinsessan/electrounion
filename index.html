@@ -2378,7 +2378,7 @@
                 <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png" data-sticker="3"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
                 <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadSticker" title="Upload your own sticker">
                   <span class="eu-draw__upload-icon">+</span>
-                  <input type="file" accept="image/*" id="euDrawUploadStickerInput" style="display:none">
+                  <input type="file" accept="image/png,image/jpeg,image/gif,image/webp" id="euDrawUploadStickerInput" style="display:none">
                 </label>
               </div>
             </div>
@@ -2397,7 +2397,7 @@
               </div>
               <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadBg" title="Upload background image">
                 <span class="eu-draw__upload-icon">+</span>
-                <input type="file" accept="image/*" id="euDrawUploadBgInput" style="display:none">
+                <input type="file" accept="image/png,image/jpeg,image/gif,image/webp" id="euDrawUploadBgInput" style="display:none">
               </label>
             </div>
             <div class="eu-draw__section-title">Animate</div>
@@ -2994,9 +2994,25 @@
   var uploadStickerInput=document.getElementById('euDrawUploadStickerInput');
   var uploadStickerLabel=document.getElementById('euDrawUploadSticker');
   var uploadStickerIdx=-1;
+  var ALLOWED_TYPES=['image/png','image/jpeg','image/gif','image/webp'];
+  var MAX_UPLOAD_KB=1024; // 1 MB
+
+  function validateUpload(file){
+    if(ALLOWED_TYPES.indexOf(file.type)<0){
+      alert('Only PNG, JPEG, GIF, and WebP images are allowed.');
+      return false;
+    }
+    if(file.size>MAX_UPLOAD_KB*1024){
+      alert('File is too large (max 1 MB).');
+      return false;
+    }
+    return true;
+  }
+
   uploadStickerInput.onchange=function(e){
     var file=e.target.files[0];
     if(!file)return;
+    if(!validateUpload(file)){e.target.value='';return;}
     var reader=new FileReader();
     reader.onload=function(ev){
       var img=new Image();
@@ -3033,6 +3049,7 @@
   uploadBgInput.onchange=function(e){
     var file=e.target.files[0];
     if(!file)return;
+    if(!validateUpload(file)){e.target.value='';return;}
     var reader=new FileReader();
     reader.onload=function(ev){
       var img=new Image();
@@ -3114,8 +3131,11 @@
   }
 
   // Draw on click/drag — stores placements
+  // Undo works per stroke: one mousedown→mouseup = one undo step
   var drawing=false;
   var lastPlaceTime=0;
+  var strokeStartIdx=0; // index into placements[] where current stroke began
+
   function addPlacement(x,y){
     var now=Date.now();
     if(drawing&&now-lastPlaceTime<30) return;
@@ -3126,8 +3146,22 @@
     if(animMode==='none') renderAll();
   }
 
+  function startStroke(){
+    strokeStartIdx=placements.length;
+    drawing=true;
+  }
+  function endStroke(){
+    if(!drawing) return;
+    drawing=false;
+    // Record how many placements this stroke added
+    var count=placements.length-strokeStartIdx;
+    if(count>0) undoStack.push(count);
+  }
+
+  var undoStack=[]; // each entry = number of placements in that stroke
+
   drawCanvas.addEventListener('mousedown',function(e){
-    resizeDrawCanvas();drawing=true;
+    resizeDrawCanvas();startStroke();
     var r=drawCanvas.getBoundingClientRect();
     addPlacement(e.clientX-r.left,e.clientY-r.top);
   });
@@ -3136,10 +3170,10 @@
     var r=drawCanvas.getBoundingClientRect();
     addPlacement(e.clientX-r.left,e.clientY-r.top);
   });
-  drawCanvas.addEventListener('mouseup',function(){drawing=false});
-  drawCanvas.addEventListener('mouseleave',function(){drawing=false});
+  drawCanvas.addEventListener('mouseup',function(){endStroke()});
+  drawCanvas.addEventListener('mouseleave',function(){endStroke()});
   drawCanvas.addEventListener('touchstart',function(e){
-    e.preventDefault();resizeDrawCanvas();drawing=true;
+    e.preventDefault();resizeDrawCanvas();startStroke();
     var r=drawCanvas.getBoundingClientRect();
     var t=e.touches[0];
     addPlacement(t.clientX-r.left,t.clientY-r.top);
@@ -3150,12 +3184,13 @@
     var t=e.touches[0];
     addPlacement(t.clientX-r.left,t.clientY-r.top);
   });
-  drawCanvas.addEventListener('touchend',function(){drawing=false});
+  drawCanvas.addEventListener('touchend',function(){endStroke()});
 
-  // Undo last stamp
+  // Undo last stroke (all placements from one click/drag)
   document.getElementById('euDrawUndo').onclick=function(){
-    if(placements.length>0){
-      placements.pop();
+    if(undoStack.length>0){
+      var count=undoStack.pop();
+      placements.splice(placements.length-count,count);
       renderAll();
     }
   };
@@ -3163,6 +3198,7 @@
   // Clear all
   document.getElementById('euDrawClear').onclick=function(){
     placements=[];
+    undoStack=[];
     bgStickerLocked=false;
     renderAll();
   };
@@ -3526,6 +3562,14 @@
     var u8=new Uint8Array(n);
     for(var j=0;j<n;j++)u8[j]=bstr.charCodeAt(j);
     var blob=new Blob([u8],{type:mime});
+
+    // Reject uploads over 2 MB (generated images should be well under this)
+    if(blob.size>2*1024*1024){
+      alert('Image is too large to upload.');
+      gbSubmit.disabled=false;
+      gbSubmit.textContent='Add to gallery';
+      return;
+    }
 
     var ext=gbPendingIsGif?'gif':'png';
     var fileName=Date.now()+'_'+Math.random().toString(36).substr(2,6)+'.'+ext;

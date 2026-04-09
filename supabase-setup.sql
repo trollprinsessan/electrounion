@@ -122,16 +122,24 @@ CREATE POLICY "gallery_delete_auth"
 -- 6. STORAGE BUCKET — gallery-images (public)
 -- ------------------------------------------------------------
 
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('gallery-images', 'gallery-images', true)
-ON CONFLICT (id) DO NOTHING;
+INSERT INTO storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+VALUES (
+  'gallery-images',
+  'gallery-images',
+  true,
+  2097152,  -- 2 MB max file size
+  ARRAY['image/png','image/jpeg','image/gif','image/webp']
+)
+ON CONFLICT (id) DO UPDATE SET
+  file_size_limit = 2097152,
+  allowed_mime_types = ARRAY['image/png','image/jpeg','image/gif','image/webp'];
 
 
 -- ------------------------------------------------------------
 -- 7. STORAGE POLICIES — gallery-images
 -- ------------------------------------------------------------
 
--- Anyone can upload images
+-- Anyone can upload images (restricted to gallery-images bucket, max 2MB enforced by bucket config)
 CREATE POLICY "gallery_images_insert"
   ON storage.objects FOR INSERT
   TO anon, authenticated
@@ -150,6 +158,33 @@ CREATE POLICY "gallery_images_delete"
   ON storage.objects FOR DELETE
   TO authenticated
   USING (bucket_id = 'gallery-images' AND auth.role() = 'service_role');
+
+
+-- ------------------------------------------------------------
+-- 8. RATE LIMITING — prevent gallery spam
+--    Max 5 gallery submissions per IP per hour (via RPC)
+-- ------------------------------------------------------------
+
+-- Add ip column to gallery for rate limiting (nullable, not exposed in select)
+ALTER TABLE gallery ADD COLUMN IF NOT EXISTS ip inet;
+
+CREATE OR REPLACE FUNCTION check_gallery_rate_limit(client_ip text)
+RETURNS boolean
+LANGUAGE plpgsql
+SECURITY DEFINER
+AS $$
+DECLARE
+  recent_count integer;
+BEGIN
+  SELECT count(*) INTO recent_count
+  FROM gallery
+  WHERE ip = client_ip::inet
+    AND created_at > now() - interval '1 hour';
+  RETURN recent_count < 5;
+END;
+$$;
+
+COMMENT ON FUNCTION check_gallery_rate_limit IS 'Returns true if the IP has fewer than 5 gallery submissions in the last hour';
 
 
 -- ============================================================
