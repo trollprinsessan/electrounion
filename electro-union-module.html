@@ -1351,6 +1351,10 @@
   border-color:#333;
 }
 
+/* ═══ EMBED MODE — hide sticky elements when inside iframe ═══ */
+.is-embed .eu-toolkit-sticky,
+.is-embed .eu-sound-controls{display:none!important}
+
 /* ═══ STICKY TOOLKIT LINK ═══ */
 .eu-toolkit-sticky{
   position:fixed;
@@ -2493,6 +2497,11 @@
 
 <script>
 (function(){
+  // ═══ EMBED DETECTION ═══
+  if(window.location.search.indexOf('embed=1')>-1||window!==window.top){
+    document.documentElement.classList.add('is-embed');
+  }
+
   // ═══ SUPABASE CONFIG ═══
   var SB_URL='https://qqaiqevsygqwlfnvnhiu.supabase.co';
   var SB_KEY='sb_publishable_LQBAlgmAKbdfQBCh5xHuNw_6gYMvHcz';
