@@ -3342,17 +3342,12 @@
     return idx;
   }
 
-  // Scale factor for 1080x1080 export
-  function getExportScale(){
-    return 1080/drawCanvas.width;
-  }
-
   // Sign-it input removed — signing integrated into guestbook flow
 
-  // Render placements to an export canvas at 1080x1080
-  function renderExportFrame(tmpCtx,mode,t){
-    var sc=getExportScale();
-    var ew=1080,eh=1080;
+  // Render placements to an export canvas (default 1080x1080, pass exportSize for smaller)
+  function renderExportFrame(tmpCtx,mode,t,exportSize){
+    var ew=exportSize||1080,eh=ew;
+    var sc=ew/drawCanvas.width;
     tmpCtx.clearRect(0,0,ew,eh);
     // Draw bg scaled — match live canvas exactly (drawBg uses 0.5 scale, full opacity)
     drawBg(tmpCtx,ew,eh);
@@ -3503,25 +3498,26 @@
   }
   loadGallery();
 
-  // "Add to guestbook" — generate GIF or PNG preview at 1080x1080
+  // "Add to guestbook" — generate GIF (540x540, 16 frames) or PNG for gallery
   document.getElementById('euDrawGuestbook').onclick=function(){
     if(placements.length===0)return;
-    var ew=1080,eh=1080;
+    var gbSize=540; // smaller than download (1080) — faster upload, smaller files
+    var ew=gbSize,eh=gbSize;
     var tmpCanvas=document.createElement('canvas');
     tmpCanvas.width=ew;tmpCanvas.height=eh;
     var tmpCtx=tmpCanvas.getContext('2d');
 
     if(animMode!=='none'){
-      // Build animated GIF for guestbook
+      // Build animated GIF for guestbook (fewer frames + smaller res = much smaller file)
       gbPendingIsGif=true;
-      var numFrames=24;
+      var numFrames=16;
       var cycleDur=1.5;
-      renderExportFrame(tmpCtx,animMode,0);
+      renderExportFrame(tmpCtx,animMode,0,gbSize);
       var palette=buildAdaptivePalette(tmpCtx.getImageData(0,0,ew,eh),256);
       var gifFrames=[];
       for(var f=0;f<numFrames;f++){
         var t=f*(cycleDur/numFrames);
-        renderExportFrame(tmpCtx,animMode,t);
+        renderExportFrame(tmpCtx,animMode,t,gbSize);
         gifFrames.push(quantizeFrameAdaptive(tmpCtx,ew,eh,palette));
       }
       var delay=Math.round(cycleDur/numFrames*100);
@@ -3534,7 +3530,7 @@
       reader.readAsDataURL(blob);
     }else{
       gbPendingIsGif=false;
-      renderExportFrame(tmpCtx,'none',0);
+      renderExportFrame(tmpCtx,'none',0,gbSize);
       gbPendingDataUrl=tmpCanvas.toDataURL('image/png');
       gbPreview.innerHTML='<img src="'+gbPendingDataUrl+'" alt="Preview">';
     }
