@@ -942,18 +942,7 @@
   padding:0;
 }
 .eu-draw__section-title{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(11px,1.3vw,14px);
-  font-style:normal;
-  font-weight:normal;
-  color:var(--ink);
-  text-transform:uppercase;
-  letter-spacing:.05em;
-  margin:0;
-  padding:clamp(14px,1.8vw,20px) 0 clamp(8px,1vw,12px);
-}
-.eu-draw__section-title:first-child{
-  padding-top:0;
+  display:none; /* labels removed — the objects speak for themselves */
 }
 .eu-draw__options-row{
   display:flex;
@@ -1011,7 +1000,7 @@
   display:flex;
   gap:clamp(4px,.5vw,6px);
   flex-wrap:wrap;
-  padding-bottom:clamp(6px,.8vw,10px);
+  padding:0 0 clamp(4px,.5vw,6px);
 }
 .eu-draw__stamp{
   width:clamp(40px,5vw,52px);
@@ -1019,13 +1008,13 @@
   flex-shrink:0;
   cursor:var(--eu-cursor);
   border:1.5px solid transparent;
-  border-radius:6px;
+  border-radius:0;
   padding:5px;
-  transition:border-color .15s, transform .15s, box-shadow .15s;
+  transition:border-color .15s, transform .15s;
   background:#fff;
 }
 .eu-draw__stamp:hover{transform:scale(1.08)}
-.eu-draw__stamp.is-active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.eu-draw__stamp.is-active{border-color:#000;box-shadow:none}
 .eu-draw__stamp img{
   width:100%;height:100%;
   object-fit:contain;
@@ -1101,18 +1090,18 @@
 .eu-draw__toolbar-group--row .eu-draw__label{
   flex-shrink:0;
 }
-/* animation: inline text toggles */
+/* animation + undo: single line */
 .eu-draw__anim-row{
   display:flex;
   flex-direction:row;
-  gap:clamp(6px,.8vw,10px);
+  gap:clamp(8px,1vw,12px);
   align-items:center;
-  flex-wrap:wrap;
-  padding-bottom:clamp(8px,1vw,12px);
+  flex-wrap:nowrap;
+  padding:clamp(10px,1.3vw,16px) 0 0;
 }
 .eu-draw__anim{
   display:inline-block;
-  padding:clamp(5px,.6vw,7px) clamp(10px,1.2vw,14px);
+  padding:clamp(3px,.4vw,5px) 0;
   font-family:'Times Eighteen',Georgia,serif;
   font-size:clamp(12px,1.3vw,15px);
   font-style:italic;
@@ -1122,17 +1111,15 @@
   line-height:1;
   cursor:var(--eu-cursor);
   color:var(--dim);
-  border:1px solid transparent;
-  border-radius:20px;
+  border:none;
+  border-bottom:1px solid transparent;
   background:none;
-  transition:color .15s, border-color .15s, background .15s;
+  transition:color .15s, border-color .15s;
 }
-.eu-draw__anim:hover{color:var(--ink);border-color:#ddd}
+.eu-draw__anim:hover{color:var(--ink)}
 .eu-draw__anim.is-active{
   color:#000;
-  border-color:#000;
-  background:rgba(0,0,0,.03);
-  outline:none;
+  border-bottom-color:#000;
 }
 /* canvas area: full width, centered */
 .eu-draw__area{
@@ -1178,12 +1165,12 @@
   height:100%;
   cursor:crosshair;
 }
-/* undo/clear: bottom of control panel */
+/* undo/clear: inline with animate row */
 .eu-draw__undo-row{
   display:flex;
-  gap:clamp(14px,1.6vw,20px);
-  margin-top:auto;
-  padding-top:clamp(16px,2vw,24px);
+  gap:clamp(10px,1.2vw,16px);
+  margin-left:auto;
+  padding:0;
 }
 .eu-draw__arrow{
   font-family:'Times Eighteen',Georgia,serif;
@@ -1210,13 +1197,13 @@
   width:clamp(34px,4vw,42px);height:clamp(34px,4vw,42px);
   cursor:var(--eu-cursor);
   border:1.5px solid transparent;
-  border-radius:6px;
+  border-radius:0;
   padding:3px;
   background:#fff;
   transition:border-color .15s, transform .15s;
 }
 .eu-draw__bg-opt:hover{transform:scale(1.08)}
-.eu-draw__bg-opt.is-active{border-color:var(--blue);box-shadow:0 0 0 1px var(--blue)}
+.eu-draw__bg-opt.is-active{border-color:#000;box-shadow:none}
 .eu-draw__bg-opt img{
   width:100%;height:100%;
   object-fit:contain;
@@ -1237,7 +1224,7 @@
   transition:border-color .15s, transform .15s;
 }
 .eu-draw__bg-pick:hover{transform:scale(1.1)}
-.eu-draw__bg-pick.is-active{border-color:var(--blue)}
+.eu-draw__bg-pick.is-active{border-color:#000}
 .eu-draw__bg-pick__swatch{
   width:100%;height:100%;
   border:1px solid #ddd;
@@ -1254,7 +1241,7 @@
   transition:border-color .15s, transform .15s;
 }
 .eu-draw__bg-color:hover{transform:scale(1.1)}
-.eu-draw__bg-color.is-active{border-color:var(--blue)}
+.eu-draw__bg-color.is-active{border-color:#000}
 .eu-draw__bg-color input{
   position:absolute;
   inset:0;
@@ -1761,9 +1748,7 @@
     gap:clamp(10px,1.4vw,16px);
   }
   .eu-draw__section-title{
-    grid-column:1/-1;
-    padding-top:clamp(12px,1.6vw,18px);
-    padding-bottom:clamp(6px,.8vw,10px);
+    display:none;
   }
   .eu-draw__stamp-row{
     grid-column:1/-1;
@@ -1774,7 +1759,7 @@
   .eu-draw__options-row{grid-column:1/-1}
   .eu-draw__bg-picker-row{grid-column:1/-1}
   .eu-draw__anim-row{grid-column:1/-1}
-  .eu-draw__undo-row{grid-column:1/-1}
+  .eu-draw__undo-row{grid-column:auto}
   .eu-draw__actions{
     flex-direction:column;
     width:100%;
@@ -2021,7 +2006,7 @@
   .eu-draw__bg-pick{width:24px;height:24px}
   .eu-draw__bg-color{width:24px;height:24px}
   .eu-draw__bg-opt{width:24px;height:24px}
-  .eu-draw__section-title{font-size:11px}
+  .eu-draw__section-title{display:none}
   .eu-widget__badge{
     width:240px;
     height:46px;
@@ -2411,10 +2396,10 @@
               <div class="eu-draw__anim" data-anim="bounce">bounce</div>
               <div class="eu-draw__anim" data-anim="beat">beat</div>
               <div class="eu-draw__anim" data-anim="rotate">spin</div>
-            </div>
-            <div class="eu-draw__undo-row">
-              <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; UNDO</span>
-              <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; CLEAR</span>
+              <div class="eu-draw__undo-row">
+                <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; UNDO</span>
+                <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; CLEAR</span>
+              </div>
             </div>
           </div>
           <div class="eu-draw__actions">
