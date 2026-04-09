@@ -1,60 +1,3681 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electro Union — Module Preview</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 4rem 1.5rem;
-      background: #E8E5DE;
-      font-family: Georgia, serif;
-      color: #1a1a1a;
-    }
-    .article-stub {
-      max-width: 680px;
-      margin: 0 auto 3rem;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #333;
-    }
-    .article-stub p { margin-bottom: 1em; }
-    .article-stub hr {
-      border: none;
-      border-top: 1px solid #aaa;
-      margin: 2rem 0;
-    }
-  </style>
-</head>
-<body>
-  <div class="article-stub">
-    <p><em>This is a preview wrapper. The module below is what gets embedded in Webflow after the open letter article.</em></p>
-    <hr>
-    <p>...and that is why we believe Europe can lead the transition to clean energy independence. Not because it's easy, but because it's already happening in kitchens and workshops and server rooms across the continent.</p>
-    <p>The question isn't whether we can. The question is whether we choose to.</p>
-    <hr>
+<!--
+ ★ ELECTRO UNION ★ The Open Letter
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@font-face{
+  font-family:'Times Eighteen';
+  src:url('FONT/Times Eighteen W01 Roman/Web Fonts/0f388f1d616c4f3853f344eb44ec4e9e.woff2') format('woff2'),
+      url('FONT/Times Eighteen W01 Roman/Web Fonts/0f388f1d616c4f3853f344eb44ec4e9e.woff') format('woff');
+  font-weight:normal;font-style:normal;
+}
+@font-face{
+  font-family:'Times Eighteen';
+  src:url('FONT/Times Eighteen W04 Bold/Web Fonts/5e27c81a88aee13d12a6df37a940d50e.woff2') format('woff2'),
+      url('FONT/Times Eighteen W04 Bold/Web Fonts/5e27c81a88aee13d12a6df37a940d50e.woff') format('woff');
+  font-weight:bold;font-style:normal;
+}
+@font-face{
+  font-family:'ABC Schengen Mono';
+  src:url('FONT/ABC Schengen A-Mono Variable/ABCSchengenAMonoVariable-Trial.woff2') format('woff2'),
+      url('FONT/ABC Schengen A-Mono Variable/ABCSchengenAMonoVariable-Trial.woff') format('woff');
+  font-weight:normal;font-style:normal;
+}
+.eu *{margin:0;padding:0;box-sizing:border-box}
+.eu{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  width:100%;
+  max-width:1380px;
+  margin:0 auto;
+  overflow:visible;
+  --cream:#fff;
+  --blue:#003399;
+  --red:#CC0000;
+  --gold:#FFD700;
+  --ink:#1a1a1a;
+  --dim:#777;
+  --mono:'ABC Schengen Mono','Courier New',monospace;
+  --eu-cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='24' viewBox='0 0 32 24'%3E%3Crect width='32' height='24' fill='%23003399'/%3E%3Cg fill='%23FFD700'%3E%3Cpolygon points='16,3.5 16.7,5.6 18.9,5.6 17.1,6.9 17.8,9 16,7.7 14.2,9 14.9,6.9 13.1,5.6 15.3,5.6'/%3E%3Cpolygon points='10.2,4.5 10.9,6.6 13.1,6.6 11.3,7.9 12,10 10.2,8.7 8.4,10 9.1,7.9 7.3,6.6 9.5,6.6'/%3E%3Cpolygon points='21.8,4.5 22.5,6.6 24.7,6.6 22.9,7.9 23.6,10 21.8,8.7 20,10 20.7,7.9 18.9,6.6 21.1,6.6'/%3E%3Cpolygon points='7.5,9 8.2,11.1 10.4,11.1 8.6,12.4 9.3,14.5 7.5,13.2 5.7,14.5 6.4,12.4 4.6,11.1 6.8,11.1'/%3E%3Cpolygon points='24.5,9 25.2,11.1 27.4,11.1 25.6,12.4 26.3,14.5 24.5,13.2 22.7,14.5 23.4,12.4 21.6,11.1 23.8,11.1'/%3E%3Cpolygon points='10.2,15 10.9,17.1 13.1,17.1 11.3,18.4 12,20.5 10.2,19.2 8.4,20.5 9.1,18.4 7.3,17.1 9.5,17.1'/%3E%3Cpolygon points='21.8,15 22.5,17.1 24.7,17.1 22.9,18.4 23.6,20.5 21.8,19.2 20,20.5 20.7,18.4 18.9,17.1 21.1,17.1'/%3E%3Cpolygon points='16,16 16.7,18.1 18.9,18.1 17.1,19.4 17.8,21.5 16,20.2 14.2,21.5 14.9,19.4 13.1,18.1 15.3,18.1'/%3E%3C/g%3E%3C/svg%3E") 4 4, pointer;
+  color:var(--ink);
+  background:var(--cream);
+  position:relative;
+}
+
+/* ═══ TOP BAR (the button — before click) ═══ */
+.eu-bar{
+  background:#fff;
+  padding:clamp(28px,5vw,56px) 20px;
+  cursor:var(--eu-cursor);user-select:none;
+  position:relative;
+  border-bottom:none;
+  transition:background .15s;
+}
+.eu-bar:hover{background:#fafafa}
+.eu-bar__initial{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(12px,2vw,20px);
+  transition:opacity .4s ease;
+}
+.eu-checkbox{
+  width:clamp(28px,4vw,44px);
+  height:clamp(28px,4vw,44px);
+  border:2px solid #111;
+  flex-shrink:0;
+  position:relative;
+  transition:border-color .15s;
+}
+.eu-checkbox__check{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  background:#fff;
+  opacity:0;
+  transition:opacity .15s;
+  overflow:hidden;
+  gap:0;
+}
+.eu-checkbox__gif{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.eu.is-open .eu-checkbox{border-color:#000}
+.eu.is-open .eu-checkbox__check{opacity:1}
+.eu-bar__cta{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(24px,5vw,48px);
+  font-weight:normal;
+  color:#000;
+  letter-spacing:-0.01em;
+  line-height:1;
+  text-transform:uppercase;
+}
+/* approved counter state */
+.eu-bar__approved{
+  display:none;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(24px,5vw,48px);
+  font-weight:normal;
+  color:#000;
+  text-align:center;
+  letter-spacing:-0.01em;
+  line-height:1;
+  text-transform:uppercase;
+  opacity:0;
+  transform:scale(0.92);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.eu-bar__approved.is-visible{
+  opacity:1;
+  transform:scale(1);
+}
+.eu-bar__count{
+  color:var(--blue);
+  font-weight:bold;
+}
+.eu.is-open .eu-bar__initial{display:none}
+.eu.is-open .eu-bar__approved{display:block}
+.eu.is-open .eu-bar{
+  padding:clamp(28px,5vw,56px) 20px;
+  cursor:default;
+  border-bottom:none;
+}
+.eu.is-open .eu-bar:hover{background:#fff}
+
+/* gate counter below tagline */
+.eu-gate-scene__counter{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(11px,1.4vw,17px);
+  color:var(--blue);
+  letter-spacing:0.03em;
+  opacity:0;
+  transform:translateY(8px);
+  animation:none;
+}
+/* preamble inside gate reveal */
+.eu-gate-scene__preamble{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(12px,2vw,20px);
+  opacity:0;
+  transform:translateY(12px);
+  animation:none;
+  margin-top:clamp(8px,1.5vw,16px);
+}
+.eu-gate-scene__preamble-text{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.6vw,18px);
+  color:#333;
+  text-align:center;
+  line-height:1.5;
+  max-width:520px;
+  margin:0 auto;
+}
+.eu-gate-scene__preamble-btn{
+  max-width:clamp(280px,40vw,420px);
+  cursor:var(--eu-cursor);
+  transition:opacity .2s;
+  margin-top:clamp(8px,1.5vw,16px);
+}
+.eu-gate-scene__preamble-btn:hover{opacity:0.8}
+
+/* ═══ EARLY 2000s STAGGERED REVEAL ═══ */
+@keyframes eu-y2k-in{
+  0%{opacity:0;transform:translateY(20px) scale(0.9)}
+  60%{opacity:1;transform:translateY(-3px) scale(1.02)}
+  80%{transform:translateY(1px) scale(0.99)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes eu-y2k-glow{
+  0%{text-shadow:0 0 0 transparent}
+  50%{text-shadow:0 0 12px rgba(1,47,165,0.3)}
+  100%{text-shadow:0 0 0 transparent}
+}
+.eu.is-open .eu-gate-scene__counter{
+  animation:eu-y2k-in 0.6s ease-out 1.2s both, eu-y2k-glow 2s ease-in-out 1.8s 1;
+}
+.eu.is-open .eu-gate-scene__preamble{
+  animation:eu-y2k-in 0.6s ease-out 1.6s both;
+}
+
+/* ═══ FOLDOUT ═══ */
+.eu-fold{max-height:0;overflow:hidden;transition:max-height .6s ease}
+.eu.is-open .eu-fold{max-height:none;overflow:visible}
+
+/* ═══ INTRO ═══ */
+.eu-intro{
+  text-align:center;
+  padding:clamp(40px,6vw,80px) clamp(20px,4vw,56px) clamp(20px,3vw,40px);
+}
+.eu-intro__text{
+  font-size:clamp(14px,1.6vw,20px);
+  color:var(--ink);
+  line-height:1.5;
+  max-width:520px;
+  margin:0 auto clamp(24px,3.5vw,44px);
+}
+.eu-intro__banner{
+  display:block;
+  max-width:clamp(280px,42vw,460px);
+  margin:0 auto;
+  image-rendering:auto;
+}
+
+/* ═══ GENERATOR SECTION ═══ */
+.eu-gen{
+  padding:clamp(10px,2vw,20px) clamp(60px,10vw,100px) clamp(40px,6vw,80px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+  overflow:visible;
+}
+.eu-gen__framed{
+  position:relative;
+  width:100%;
+  max-width:450px;
+  margin:0 auto;
+  overflow:visible;
+  aspect-ratio:1063/1270;
+}
+.eu-gen__frame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  display:block;
+  opacity:1;
+  pointer-events:none;
+  z-index:0;
+}
+.eu-photo{
+  position:absolute;
+  top:49.4%;
+  left:48.7%;
+  transform:translate(-50%,-50%);
+  width:82%;
+  aspect-ratio:1080/1350;
+  overflow:hidden;
+  background:#ddd;
+  box-shadow:2px 4px 16px rgba(0,0,0,.15);
+  cursor:var(--eu-cursor);
+  z-index:1;
+}
+.eu-photo__bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+}
+.eu-photo__st{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:contain;z-index:2;
+}
+.eu-photo__byline{
+  position:absolute;
+  bottom:6%;
+  left:0;right:0;
+  text-align:center;
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(10px,1.2vw,14px);
+  color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,0.6);
+  letter-spacing:0.03em;
+  z-index:3;
+  pointer-events:none;
+  padding:0 8%;
+  line-height:1.3;
+}
+.eu-gen__badge{
+  position:absolute;
+  pointer-events:none;
+}
+.eu-gen__badge--heart{
+  width:clamp(100px,16vw,220px);
+  right:clamp(0px,2vw,20px);
+  top:40%;
+  transform:translateY(-30%);
+}
+.eu-gen__badge--green{
+  width:clamp(100px,18vw,240px);
+  left:clamp(0px,2vw,20px);
+  top:-80px;
+}
+.eu-gen__badge--plugin{
+  width:clamp(100px,18vw,240px);
+  left:clamp(20px,8vw,100px);
+  bottom:clamp(-30px,-8vw,-60px);
+}
+/* generator caption + shuffle */
+.eu-gen__caption{
+  text-align:center;
+  margin-top:clamp(8px,1.2vw,14px);
+}
+.eu-gen__shuffle-link{
+  font-family:var(--mono);
+  font-size:clamp(13px,1.5vw,17px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+  cursor:var(--eu-cursor);
+  text-decoration:underline;
+  transition:opacity .15s;
+}
+.eu-gen__shuffle-link:hover{
+  opacity:.6;
+}
+/* sign it section */
+.eu-gen__sign{
+  display:flex;
+  align-items:center;
+  gap:clamp(8px,1.2vw,14px);
+  margin-top:clamp(16px,2.5vw,28px);
+  width:100%;
+  max-width:350px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.eu-gen__sign-label{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  font-style:normal;
+  color:var(--ink);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  white-space:nowrap;
+}
+.eu-gen__byline{
+  font-family:'Times New Roman',Times,serif;
+  font-size:clamp(12px,1.3vw,14px);
+  font-weight:normal;
+  border:2px inset #ccc;
+  background:#fff;
+  color:#000;
+  padding:3px 4px;
+  flex:1;
+  outline:none;
+  letter-spacing:0;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.15);
+}
+.eu-gen__byline::placeholder{
+  color:#888;
+  font-style:normal;
+}
+.eu-gen__byline:focus{
+  border-color:#000;
+}
+/* download CTA */
+.eu-gen__dl-wrap{
+  text-align:center;
+  margin-top:clamp(14px,2vw,24px);
+}
+.eu-gen-dl{
+  display:block;
+  width:100%;
+  max-width:350px;
+  margin-left:auto;
+  margin-right:auto;
+  box-sizing:border-box;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(11px,1.35vw,15px);
+  font-weight:normal;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  text-align:center;
+  cursor:var(--eu-cursor);
+  line-height:1;
+  padding:clamp(10px,1.4vw,16px) clamp(16px,2.5vw,28px);
+  transition:opacity .15s;
+  text-decoration:none;
+  border:none;
+  background:#000;
+  color:#fff;
+}
+.eu-gen-dl:hover{
+  opacity:.7;
+}
+
+/* ═══ SHARABLES FOLDOUT ═══ */
+.eu-sharables{
+  text-align:center;
+  margin-top:clamp(74px,8vw,98px);
+}
+.eu-sharables__toggle{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(14px,2vw,22px);
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:#009246;
+  cursor:var(--eu-cursor);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:clamp(14px,2vw,20px) clamp(20px,4vw,56px);
+  border:none;
+  background:linear-gradient(180deg,#009246 0%,#009246 33%,#fff 33%,#fff 66%,#CE2B37 66%,#CE2B37 100%);
+  transition:none;
+  width:100%;
+}
+.eu-sharables__toggle:hover{
+  opacity:1;
+}
+.eu-sharables__arrow{
+  display:inline-block;
+  transition:transform .3s;
+  font-size:.5em;
+}
+.eu-sharables.is-open .eu-sharables__arrow{transform:rotate(180deg)}
+.eu-sharables__content{
+  display:none;
+}
+.eu-sharables.is-open .eu-sharables__content{
+  display:block;
+}
+.eu-sharables__inner{
+  padding:clamp(16px,2.5vw,28px) clamp(20px,4vw,56px);
+}
+
+/* ═══ PRET-A-PORTER CARDS ═══ */
+.eu-pap__nav{
+  display:flex;
+  justify-content:center;
+  gap:clamp(16px,3vw,32px);
+  margin-bottom:clamp(16px,2.5vw,28px);
+}
+.eu-pap__nav-item{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(12px,1.4vw,16px);
+  font-weight:normal;
+  text-transform:uppercase;
+  letter-spacing:0.03em;
+  color:#000;
+  cursor:var(--eu-cursor);
+  padding:4px 0;
+  border:none;
+  border-bottom:2px solid transparent;
+  background:transparent;
+  line-height:1;
+  transition:border-color .15s;
+  border-radius:0;
+  -webkit-appearance:none;
+}
+.eu-pap__nav-item:hover{border-bottom-color:#999}
+.eu-pap__nav-item.is-active{border-bottom-color:#000}
+.eu-pap__cat{
+  font-size:clamp(9px,1vw,12px);
+  font-family:Arial,Helvetica,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--dim);
+  margin-bottom:clamp(10px,1.5vw,16px);
+  margin-top:clamp(24px,3vw,36px);
+  text-align:left;
+}
+.eu-pap__cat:first-child{margin-top:0}
+.eu-pap__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:clamp(12px,2vw,20px);
+}
+.eu-pap-card{
+  text-decoration:none;color:var(--ink);
+  display:flex;flex-direction:column;
+  transition:transform .2s;
+  text-align:left;
+}
+.eu-pap-card:hover{transform:translateY(-2px)}
+.eu-pap-card__img{
+  width:100%;
+  display:block;
+  background:transparent;
+}
+.eu-pap-card__name{
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(11px,1.3vw,14px);
+  font-weight:bold;
+  margin-top:clamp(5px,.7vw,8px);
+}
+.eu-pap-card__desc{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(8px,.9vw,10px);
+  color:var(--dim);
+  font-style:normal;
+  line-height:1.4;
+  margin-top:2px;
+  letter-spacing:0.02em;
+}
+.eu-pap-card__btn{
+  display:inline-block;
+  margin-top:clamp(5px,.7vw,8px);
+  padding:clamp(4px,.5vw,6px) clamp(8px,1.1vw,14px);
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(9px,1.1vw,12px);
+  font-weight:normal;
+  text-transform:lowercase;
+  letter-spacing:0.01em;
+  border:none;
+  color:#fff;
+  background:var(--blue);
+  cursor:var(--eu-cursor);
+  transition:opacity .15s;
+  text-decoration:none;
+  text-align:center;
+  align-self:flex-start;
+  line-height:1;
+}
+.eu-pap-card__btn:hover{opacity:0.8}
+.eu-pap__free{
+  text-align:center;
+  margin-top:clamp(18px,2.5vw,28px);
+  padding-top:clamp(12px,1.5vw,18px);
+  border-top:1px solid rgba(0,0,0,.06);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(9px,1.1vw,12px);
+  color:var(--dim);
+  font-style:italic;
+}
+.eu-pap__msg{
+  text-align:left;
+  margin-top:clamp(6px,1vw,12px);
+  padding:clamp(10px,1.5vw,16px);
+  background:#f9f9f9;
+  border:1px solid #eee;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(12px,1.4vw,16px);
+  line-height:1.5;
+  color:var(--ink);
+  position:relative;
+  cursor:var(--eu-cursor);
+}
+.eu-pap__msg:hover{background:#f4f4f4}
+.eu-pap__msg-copy{
+  position:absolute;
+  top:clamp(6px,1vw,10px);
+  right:clamp(6px,1vw,10px);
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(8px,.85vw,10px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--blue);
+  background:#fff;
+  border:1px solid var(--blue);
+  padding:3px 8px;
+  cursor:var(--eu-cursor);
+}
+.eu-pap__msg-copy:hover{background:var(--blue);color:#fff}
+
+/* ═══ BIG STATEMENT ═══ */
+.eu-statement{
+  background:#fff;
+  padding:clamp(60px,10vw,140px) clamp(40px,8vw,80px);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.eu-statement::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  backdrop-filter:blur(2px);
+  z-index:0;
+}
+.eu-statement::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size:150px 150px;
+  opacity:.4;
+  z-index:0;
+  pointer-events:none;
+}
+.eu-statement__wrap{
+  position:relative;
+  display:inline-block;
+  max-width:clamp(400px,80vw,1000px);
+}
+.eu-statement__img{
+  display:block;
+  width:100%;
+  position:relative;
+  z-index:1;
+}
+.eu-statement__turbine{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:clamp(80px,14vw,180px);
+  z-index:2;
+}
+/* ═══ MUSIC PLAYER ═══ */
+.eu-player{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  background:rgba(255,255,255,0.94);
+  padding:clamp(14px,2vw,24px) clamp(18px,2.5vw,32px);
+  width:clamp(200px,30vw,340px);
+  text-align:center;
+}
+.eu-player__now{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(20px,3.5vw,36px);
+  font-weight:bold;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:clamp(8px,1.2vw,14px);
+}
+.eu-player__controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(14px,2.5vw,24px);
+  margin-bottom:clamp(8px,1.2vw,14px);
+}
+.eu-player__btn{
+  font-size:clamp(12px,1.6vw,18px);
+  color:var(--ink);
+  cursor:var(--eu-cursor);
+  user-select:none;
+  transition:opacity .1s;
+  line-height:1;
+}
+.eu-player__btn:hover{opacity:.5}
+.eu-player__btn--play{
+  font-size:clamp(18px,2.8vw,28px);
+  width:clamp(32px,4.5vw,44px);
+  height:clamp(32px,4.5vw,44px);
+  border:1.5px solid var(--ink);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-left:2px;
+}
+.eu-player__bar{
+  width:100%;
+  height:3px;
+  background:#ddd;
+  margin-bottom:clamp(10px,1.5vw,16px);
+  cursor:var(--eu-cursor);
+  position:relative;
+}
+.eu-player__progress{
+  height:100%;
+  background:var(--ink);
+  width:0%;
+  transition:width .3s linear;
+}
+.eu-player__tracklist{
+  text-align:left;
+}
+.eu-player__track{
+  font-family:var(--mono);
+  font-size:clamp(9px,1.1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#999;
+  padding:clamp(3px,.4vw,5px) 0;
+  cursor:var(--eu-cursor);
+  transition:color .1s;
+  border-bottom:1px solid #eee;
+}
+.eu-player__track:last-child{border-bottom:none}
+.eu-player__track:hover{color:var(--ink)}
+.eu-player__track.is-active{
+  color:var(--ink);
+  font-weight:bold;
+}
+.eu-player__track-num{
+  color:#ccc;
+  margin-right:clamp(6px,1vw,10px);
+}
+.eu-player__track.is-active .eu-player__track-num{
+  color:var(--blue);
+}
+.eu-statement__stars{
+  width:clamp(120px,22vw,240px);
+  display:block;
+  margin:clamp(16px,2.5vw,28px) auto 0;
+  image-rendering:pixelated;
+  position:relative;
+  z-index:1;
+}
+
+/* ═══ RED BAR ═══ */
+
+/* ═══ MERCHANDISE ═══ */
+.eu-merch{
+  padding:clamp(40px,6vw,80px) clamp(24px,4vw,80px);
+  max-width:1200px;
+  margin:0 auto;
+}
+/* ═══ SHOP HEADER ═══ */
+.eu-shop-header{
+  display:flex;
+  justify-content:flex-end;
+  align-items:baseline;
+  margin-bottom:clamp(30px,4vw,50px);
+}
+.eu-shop-header__title{
+  display:none;
+}
+.eu-shop-header__meta{
+  display:flex;
+  align-items:baseline;
+  gap:clamp(16px,2.5vw,32px);
+}
+.eu-shop-header__launch{
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--dim);
+}
+.eu-shop-header__currency{
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+  border:1px solid #ddd;
+  padding:4px 10px;
+  background:none;
+  cursor:var(--eu-cursor);
+}
+.eu-shop-header__currency:hover{border-color:#000;color:#000}
+/* ═══ PRODUCT GRID ═══ */
+.eu-merch__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(30px,5vw,60px);
+}
+.eu-merch-item{
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+}
+.eu-merch-item__img{
+  width:100%;
+  aspect-ratio:1/1;
+  background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  overflow:visible;
+  position:relative;
+}
+.eu-merch-item__img img{
+  max-width:70%;max-height:70%;
+  object-fit:contain;
+  position:relative;
+  z-index:1;
+  transition:transform .3s ease;
+}
+.eu-merch-item:hover .eu-merch-item__img img{
+  transform:scale(1.04);
+}
+.eu-merch-item--scarf .eu-merch-item__img img{
+  max-width:95%;max-height:95%;
+}
+.eu-merch-item--scarf .eu-merch-item__fireworks{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.eu-merch-item--scarf .eu-merch-item__fireworks img{
+  width:80%;height:80%;
+  object-fit:contain;
+}
+.eu-merch-item__info{
+  padding:clamp(6px,1vw,12px) 0 0;
+}
+.eu-merch-item__name{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(11px,1.1vw,14px);
+  font-weight:normal;
+  color:#000;
+  line-height:1.3;
+  text-transform:none;
+  margin-bottom:clamp(2px,.3vw,4px);
+  white-space:nowrap;
+}
+.eu-merch-item__price{
+  font-family:var(--mono);
+  font-size:clamp(10px,1.1vw,13px);
+  color:var(--dim);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:clamp(8px,1vw,12px);
+}
+.eu-merch-item__cart{
+  display:block;
+  width:100%;
+  font-family:var(--mono);
+  font-size:clamp(8px,.85vw,10px);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  padding:clamp(8px,1vw,12px) 0;
+  border:none;
+  background:none;
+  color:#bbb;
+  text-align:left;
+  cursor:not-allowed;
+  transition:all .15s;
+}
+.eu-merch-item__tag{
+  position:absolute;
+  top:clamp(8px,1vw,14px);
+  right:clamp(8px,1vw,14px);
+  font-family:var(--mono);
+  font-size:clamp(7px,.7vw,9px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#fff;
+  background:#000;
+  padding:3px 8px;
+  z-index:2;
+}
+/* ═══ 2000s WEB BADGE ═══ */
+.eu-widget{
+  margin:0 auto clamp(50px,7vw,80px);
+  text-align:center;
+}
+.eu-widget__badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:408px;
+  height:74px;
+  background:linear-gradient(180deg,#d4d4d4 0%,#b0b0b0 50%,#c8c8c8 100%);
+  border:2px outset #e0e0e0;
+  cursor:default;
+  image-rendering:pixelated;
+  text-align:center;
+  gap:0;
+  overflow:hidden;
+}
+.eu-widget__badge-gif{
+  height:100%;
+  width:auto;
+  display:block;
+  flex-shrink:0;
+}
+.eu-widget__badge-text{
+  font-family:'Verdana',Geneva,Tahoma,sans-serif;
+  font-size:10.5px;
+  color:#333;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  flex:1;
+  padding:0 8px;
+  line-height:1.2;
+}
+.eu-widget__badge-text--left{
+  animation:eu-badge-blink-a 1.6s step-end infinite;
+}
+.eu-widget__badge-text--right{
+  animation:eu-badge-blink-b 1.6s step-end infinite;
+}
+@keyframes eu-badge-blink-a{
+  0%,100%{visibility:visible}
+  50%{visibility:hidden}
+}
+@keyframes eu-badge-blink-b{
+  0%,100%{visibility:hidden}
+  50%{visibility:visible}
+}
+/* legacy marquee/title hidden */
+.eu-merch-marquee{display:none}
+.eu-merch__title{display:none}
+
+/* ═══ DRAWING SECTION ═══ */
+.eu-draw{
+  padding:clamp(40px,6vw,80px) clamp(24px,4vw,80px);
+  max-width:1200px;
+  margin:0 auto;
+}
+.eu-draw__intro{
+  text-align:center;
+  margin-bottom:clamp(40px,6vw,80px);
+  max-width:480px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.eu-draw__intro-title{display:none}
+.eu-draw__intro-text{display:none}
+.eu-draw__marquee{
+  border:none;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:clamp(10px,1.5vw,18px) 0;
+  margin-bottom:clamp(30px,4vw,50px);
+}
+.eu-draw__marquee-inner{
+  display:inline-flex;
+  align-items:center;
+  animation:eu-pastry-scroll 28s linear infinite;
+}
+.eu-draw__marquee-inner span{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.6vw,18px);
+  font-style:italic;
+  color:var(--ink);
+  margin:0 clamp(10px,1.5vw,20px);
+  white-space:nowrap;
+}
+.eu-draw__marquee-inner img{
+  height:clamp(32px,4.5vw,56px);
+  width:auto;
+  object-fit:contain;
+  flex-shrink:0;
+  margin:0 clamp(6px,1vw,12px);
+}
+@keyframes eu-pastry-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+/* workspace: canvas left, controls right */
+.eu-draw__workspace{
+  display:flex;
+  gap:clamp(24px,3.5vw,48px);
+  align-items:flex-start;
+  margin:0 calc(-1 * clamp(24px,4vw,80px));
+  padding:0 clamp(24px,4vw,80px);
+}
+/* panel: right side column */
+.eu-draw__panel-col{
+  flex:0 0 clamp(220px,26vw,320px);
+  display:flex;
+  flex-direction:column;
+  align-self:flex-start;
+}
+.eu-draw__panel{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(10px,1.4vw,14px);
+  padding:0;
+}
+.eu-draw__section-title{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  font-weight:normal;
+  color:var(--ink);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-top:clamp(8px,1.2vw,14px);
+}
+.eu-draw__section-title:first-child{
+  margin-top:0;
+}
+.eu-draw__options-row{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(8px,1vw,12px);
+}
+.eu-draw__tools-left,
+.eu-draw__tools-right{display:none}
+.eu-draw__dl-group{display:none}
+/* message input */
+.eu-draw__message{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.4vw,16px);
+  font-weight:normal;
+  border:none;
+  border-bottom:1px solid #ccc;
+  background:none;
+  color:var(--ink);
+  padding:6px 0;
+  width:100%;
+  outline:none;
+  letter-spacing:0.01em;
+}
+.eu-draw__message::placeholder{
+  color:#aaa;
+  font-style:italic;
+}
+.eu-draw__message:focus{
+  border-bottom-color:var(--blue);
+}
+.eu-draw__toolbar{display:none}
+.eu-draw__toolbar-group{
+  display:none;
+}
+.eu-draw__tools{display:none}
+.eu-draw__label{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  color:var(--dim);
+  margin-bottom:0;
+  white-space:nowrap;
+}
+.eu-draw__divider{
+  width:100%;height:1px;
+  background:#ddd;
+  margin:clamp(4px,.5vw,8px) 0;
+}
+/* stamp row */
+.eu-draw__stamp-row{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+}
+.eu-draw__stamp{
+  width:clamp(36px,4.5vw,46px);
+  height:clamp(36px,4.5vw,46px);
+  flex-shrink:0;
+  cursor:var(--eu-cursor);
+  border:2px solid transparent;
+  padding:4px;
+  transition:border-color .15s;
+  background:#fff;
+}
+.eu-draw__stamp.is-active{border-color:var(--blue)}
+.eu-draw__stamp img{
+  width:100%;height:100%;
+  object-fit:contain;
+}
+.eu-draw__stamp--upload{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:clamp(28px,3.5vw,36px);
+  height:clamp(28px,3.5vw,36px);
+  border:1px dashed #000;
+  cursor:var(--eu-cursor);
+  transition:border-color .15s, background .15s;
+}
+.eu-draw__stamp--upload:hover{border-color:#000;background:rgba(0,0,0,.05)}
+.eu-draw__stamp--upload.is-active{border-color:#000;border-style:solid}
+.eu-draw__upload-icon{
+  font-family:var(--mono);
+  font-size:clamp(12px,1.4vw,16px);
+  color:#000;
+  line-height:1;
+}
+/* size slider — inline with label */
+.eu-draw__size-slider{
+  -webkit-appearance:none;
+  appearance:none;
+  width:100%;
+  height:2px;
+  background:#ccc;
+  outline:none;
+  border-radius:2px;
+}
+.eu-draw__size-slider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width:12px;height:12px;
+  background:var(--blue);
+  border-radius:50%;
+  cursor:var(--eu-cursor);
+}
+.eu-draw__size-slider::-moz-range-thumb{
+  width:12px;height:12px;
+  background:var(--blue);
+  border-radius:50%;
+  cursor:var(--eu-cursor);
+  border:none;
+}
+/* inline row for size: label + slider side by side */
+.eu-draw__toolbar-group--inline{
+  flex-direction:row;
+  align-items:center;
+  gap:clamp(8px,1vw,14px);
+}
+.eu-draw__toolbar-group--inline .eu-draw__label{
+  flex-shrink:0;
+}
+.eu-draw__toolbar-group--inline .eu-draw__size-slider{
+  flex:1;
+  max-width:220px;
+}
+/* stickers + color row: compact horizontal */
+.eu-draw__toolbar-group--row{
+  flex-direction:row;
+  align-items:center;
+  gap:clamp(10px,1.5vw,18px);
+  flex-wrap:wrap;
+}
+.eu-draw__toolbar-group--row .eu-draw__label{
+  flex-shrink:0;
+}
+/* animation: inline text toggles */
+.eu-draw__anim-row{
+  display:flex;
+  flex-direction:row;
+  gap:clamp(4px,.5vw,6px);
+  align-items:center;
+  flex-wrap:wrap;
+}
+.eu-draw__anim{
+  display:inline-block;
+  padding:0;
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  font-weight:normal;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  line-height:1;
+  cursor:var(--eu-cursor);
+  color:var(--dim);
+  border:none;
+  background:none;
+  transition:color .12s;
+}
+.eu-draw__anim:hover{color:var(--ink)}
+.eu-draw__anim.is-active{
+  color:var(--blue);
+  outline:none;
+}
+/* separators between animation options */
+.eu-draw__anim + .eu-draw__anim::before{
+  content:'/';
+  margin-right:clamp(4px,.6vw,8px);
+  color:#ccc;
+  pointer-events:none;
+}
+/* canvas area: full width, centered */
+.eu-draw__area{
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+  max-width:620px;
+}
+.eu-draw__framed{
+  position:relative;
+  width:100%;
+  aspect-ratio:1063/1052;
+}
+.eu-draw__frame{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  display:block;
+  opacity:1;
+  pointer-events:none;
+  z-index:0;
+}
+.eu-draw__canvas-wrap{
+  position:absolute;
+  top:49.1%;left:48.9%;
+  transform:translate(-50%,-50%);
+  width:80%;
+  height:80%;
+  aspect-ratio:1/1;
+  border:none;
+  background:#fff;
+  z-index:1;
+  overflow:hidden;
+}
+.eu-draw__canvas{
+  display:block;
+  width:100%;
+  height:100%;
+  cursor:crosshair;
+}
+/* undo/clear: bottom of control panel */
+.eu-draw__undo-row{
+  display:flex;
+  gap:clamp(10px,1.2vw,16px);
+  margin-top:auto;
+  padding-top:clamp(12px,1.5vw,18px);
+}
+.eu-draw__arrow{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  cursor:var(--eu-cursor);
+  color:var(--dim);
+  line-height:1;
+  transition:color .12s;
+  user-select:none;
+}
+.eu-draw__arrow:hover{color:var(--ink)}
+/* sticker / bg options */
+.eu-draw__bg-row{
+  display:flex;
+  gap:4px;
+  flex-wrap:nowrap;
+  align-items:center;
+}
+.eu-draw__bg-opt{
+  width:30px;height:30px;
+  cursor:var(--eu-cursor);
+  border:2px solid transparent;
+  padding:2px;
+  background:#fff;
+}
+.eu-draw__bg-opt.is-active{border-color:var(--blue)}
+.eu-draw__bg-opt img{
+  width:100%;height:100%;
+  object-fit:contain;
+}
+.eu-draw__bg-picker-row{
+  display:flex;
+  gap:4px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.eu-draw__bg-pick{
+  width:26px;height:26px;
+  cursor:var(--eu-cursor);
+  border:2px solid transparent;
+  padding:0;
+}
+.eu-draw__bg-pick.is-active{border-color:var(--blue)}
+.eu-draw__bg-pick__swatch{
+  width:100%;height:100%;
+  border:1px solid #ddd;
+}
+.eu-draw__bg-color{
+  width:26px;height:26px;
+  border:2px solid transparent;
+  padding:0;
+  cursor:var(--eu-cursor);
+  background:#fff;
+  position:relative;
+}
+.eu-draw__bg-color.is-active{border-color:var(--blue)}
+.eu-draw__bg-color input{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  opacity:0;
+  cursor:var(--eu-cursor);
+}
+.eu-draw__bg-color__swatch{
+  width:100%;height:100%;
+  background:#fff;
+  border:1px solid #ccc;
+}
+.eu-draw__below-canvas{display:none}
+.eu-draw__below{display:none}
+.eu-draw__message-wrap{display:none}
+.eu-draw__actions{
+  display:flex;
+  flex-direction:column;
+  gap:clamp(6px,.8vw,10px);
+  margin-top:clamp(10px,1.4vw,16px);
+}
+.eu-draw__dl-row{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+/* download buttons: Times Eighteen, editorial style */
+.eu-draw__dl-btn{
+  display:block;
+  width:100%;
+  box-sizing:border-box;
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  font-weight:normal;
+  line-height:1;
+  text-align:left;
+  cursor:var(--eu-cursor);
+  color:#000;
+  border:none;
+  border-bottom:1px solid #ccc;
+  transition:all .15s;
+  background:none;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  padding:clamp(8px,1vw,12px) 0;
+  text-decoration:none;
+}
+.eu-draw__dl-btn::after{
+  content:'↓';
+  float:right;
+  opacity:.4;
+  transition:opacity .15s;
+}
+.eu-draw__dl-btn:hover{border-bottom-color:#000}
+.eu-draw__dl-btn:hover::after{opacity:1}
+.eu-draw__dl-btn--primary{
+  background:none;
+  color:#000;
+  border-bottom:1px solid #ccc;
+}
+.eu-draw__dl-btn--primary:hover{background:none;color:#000;border-bottom-color:#000}
+.eu-draw__dl-btn--guestbook{
+  background:#000;
+  color:#fff;
+  border-bottom:none;
+  text-align:center;
+  margin-top:clamp(4px,.6vw,8px);
+}
+.eu-draw__dl-btn--guestbook::after{
+  content:'→';
+  opacity:.6;
+}
+.eu-draw__dl-btn--guestbook:hover{
+  background:#333;
+  color:#fff;
+  border-bottom:none;
+}
+
+/* ═══ STICKY TOOLKIT LINK ═══ */
+.eu-toolkit-sticky{
+  position:fixed;
+  bottom:16px;
+  right:16px;
+  z-index:99998;
+  display:none;
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,10px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#000;
+  background:#fff;
+  border:none;
+  padding:8px 14px;
+  cursor:pointer;
+  transition:opacity .15s;
+  line-height:1;
+}
+.eu-toolkit-sticky:hover{
+  opacity:.6;
+}
+.eu-toolkit-sticky.is-visible{display:block}
+
+/* ═══ SOUND TOGGLE ═══ */
+.eu-sound-controls{
+  position:fixed;
+  bottom:16px;
+  left:16px;
+  z-index:99999;
+  display:none;
+  align-items:center;
+  gap:6px;
+}
+.eu-sound-controls.is-visible{display:flex}
+.eu-sound-toggle,.eu-sound-next{
+  width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:14px;
+  line-height:1;
+  color:#000;
+  opacity:.5;
+  transition:opacity .15s;
+  padding:0;
+}
+.eu-sound-toggle:hover,.eu-sound-next:hover{opacity:1}
+.eu-sound-toggle svg,.eu-sound-next svg{width:14px;height:14px}
+
+/* ═══ SCROLL REVEAL — progressive top-to-bottom load ═══ */
+.eu-reveal{
+  visibility:hidden;
+}
+.eu-reveal.eu-loading,.eu-reveal.eu-load-done{
+  visibility:visible;
+}
+.eu-reveal.eu-load-done{
+  clip-path:none !important;
+}
+
+/* ═══ WELCOME ═══ */
+/* ═══ ROMAN GATE (scroll-driven) ═══ */
+.eu-gate-scene{
+  position:relative;
+  height:200vh;
+  overflow:clip;
+}
+.eu-gate-scene__sticky{
+  position:sticky;
+  top:0;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.eu-gate-scene__reveal{
+  position:absolute;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(10px,1.8vw,20px);
+  z-index:0;
+  margin-top:-20px;
+}
+.eu-gate-scene__logo{
+  width:110px;
+  display:block;
+  will-change:transform;
+  margin-top:clamp(4px,1vw,12px);
+  margin-bottom:clamp(8px,1.5vw,16px);
+}
+.eu-gate-scene__tagline{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(32px,5.5vw,70px);
+  font-weight:bold;
+  color:var(--blue);
+  text-transform:uppercase;
+  letter-spacing:-0.02em;
+  line-height:1.2;
+  text-align:center;
+  will-change:transform,opacity;
+  max-width:620px;
+}
+/* scroll hint */
+.eu-gate-scene__scroll-hint{
+  position:absolute;
+  bottom:clamp(24px,4vh,48px);
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  color:var(--blue);
+  opacity:0.4;
+  z-index:2;
+  animation:eu-hint-pulse 2s ease-in-out infinite;
+  transition:opacity .4s ease;
+}
+.eu-gate-scene__scroll-hint span{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+}
+.eu-gate-scene__scroll-hint.is-hidden{
+  opacity:0;
+  pointer-events:none;
+}
+@keyframes eu-hint-pulse{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(6px)}
+}
+.eu-gate-scene__left,
+.eu-gate-scene__right{
+  position:absolute;
+  top:0;
+  height:100vh;
+  width:auto;
+  z-index:1;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  will-change:transform;
+}
+.eu-gate-scene__left{
+  right:50%;
+  justify-content:flex-end;
+}
+.eu-gate-scene__right{
+  left:50%;
+  justify-content:flex-start;
+}
+.eu-gate-scene__left img,
+.eu-gate-scene__right img{
+  height:90%;
+  width:auto;
+  display:block;
+}
+.eu-gate-scene__right img{
+  transform:scaleX(-1);
+}
+
+/* ═══ TICKER ═══ */
+/* ═══ GUESTBOOK ═══ */
+.eu-guestbook{
+  padding:clamp(40px,6vw,80px) clamp(24px,4vw,80px);
+  max-width:1200px;
+  margin:0 auto;
+}
+.eu-guestbook__header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:clamp(30px,4vw,50px);
+  gap:clamp(10px,1.4vw,16px);
+}
+.eu-guestbook__header-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  width:100%;
+}
+.eu-guestbook__welcome{
+  width:clamp(280px,36vw,420px);
+  height:auto;
+  display:block;
+}
+.eu-guestbook__intro{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.eu-guestbook__header-text{
+  text-align:right;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(4px,.6vw,8px);
+}
+.eu-guestbook__title{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(18px,2.4vw,30px);
+  color:var(--ink);
+  font-weight:normal;
+}
+.eu-guestbook__subtitle{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+}
+.eu-guestbook__count{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+}
+.eu-guestbook__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:clamp(16px,2.5vw,28px);
+}
+.eu-guestbook__card{
+  display:flex;
+  flex-direction:column;
+}
+.eu-guestbook__card-img{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#f5f5f5;
+  overflow:hidden;
+  margin-bottom:clamp(6px,.8vw,10px);
+}
+.eu-guestbook__card-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.eu-guestbook__card-msg{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(12px,1.2vw,15px);
+  font-style:normal;
+  color:var(--ink);
+  line-height:1.35;
+  margin-bottom:clamp(2px,.3vw,4px);
+}
+.eu-guestbook__card-name{
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.eu-guestbook__card-meta{
+  font-family:var(--mono);
+  font-size:clamp(7px,.75vw,9px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.eu-guestbook__empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:clamp(40px,6vw,80px) 0;
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(16px,2vw,22px);
+  font-style:italic;
+  color:#bbb;
+}
+/* guestbook modal overlay */
+.eu-gb-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.5);
+  align-items:center;
+  justify-content:center;
+}
+.eu-gb-modal.is-open{
+  display:flex;
+}
+.eu-gb-modal__box{
+  background:#fff;
+  width:clamp(320px,40vw,480px);
+  padding:clamp(24px,3vw,40px);
+  position:relative;
+}
+.eu-gb-modal__close{
+  position:absolute;
+  top:12px;right:16px;
+  font-family:var(--mono);
+  font-size:14px;
+  cursor:var(--eu-cursor);
+  color:var(--dim);
+  background:none;border:none;
+}
+.eu-gb-modal__close:hover{color:#000}
+.eu-gb-modal__preview{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#f5f5f5;
+  margin-bottom:clamp(14px,2vw,22px);
+  overflow:hidden;
+}
+.eu-gb-modal__preview img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.eu-gb-modal__label{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.4vw,16px);
+  color:#000;
+  margin-bottom:clamp(6px,.8vw,10px);
+  display:block;
+}
+.eu-gb-modal__input{
+  width:100%;
+  box-sizing:border-box;
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.4vw,16px);
+  font-style:italic;
+  border:none;
+  border-bottom:1px solid #ccc;
+  padding:8px 0;
+  outline:none;
+  color:var(--ink);
+  background:none;
+  margin-bottom:clamp(16px,2vw,24px);
+}
+.eu-gb-modal__input:focus{border-bottom-color:#000}
+.eu-gb-modal__input::placeholder{color:#bbb}
+.eu-gb-modal__submit{
+  display:block;
+  width:100%;
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  padding:clamp(10px,1.2vw,14px) 0;
+  border:1px solid #000;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  cursor:var(--eu-cursor);
+  transition:all .15s;
+}
+.eu-gb-modal__submit:hover{background:var(--blue);border-color:var(--blue)}
+
+.eu-ticker{
+  display:none;
+  background:var(--blue);
+  color:var(--cream);
+  overflow:hidden;
+  white-space:nowrap;
+  padding:clamp(6px,.9vw,10px) 0;
+  position:relative;
+  border-top:2px solid var(--gold);
+}
+.eu-ticker__inner{
+  display:inline-flex;align-items:center;
+  gap:clamp(16px,2.5vw,30px);
+  animation:ticker 30s linear infinite;
+  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
+  font-size:clamp(11px,1.3vw,14px);
+  text-transform:none;letter-spacing:.02em;
+  font-style:italic;
+}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.eu-ticker__arrow{
+  height:clamp(12px,1.8vw,20px);
+  image-rendering:pixelated;
+}
+
+/* ═══ TABLET ═══ */
+@media(max-width:1024px){
+  .eu-draw__workspace{
+    flex-direction:column;
+    margin:0;
+    padding:0;
+  }
+  .eu-draw__area{
+    max-width:100%;
+  }
+  .eu-draw__panel-col{
+    flex:none;
+    width:100%;
+    margin-top:clamp(20px,3vw,30px);
+  }
+  .eu-draw__panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(14px,2vw,20px);
+  }
+  .eu-draw__section-title{
+    grid-column:1/-1;
+    margin-top:clamp(4px,.6vw,8px);
+  }
+  .eu-draw__stamp-row{
+    grid-column:1/-1;
+  }
+  .eu-draw__size-slider{
+    grid-column:1/-1;
+  }
+  .eu-draw__options-row{grid-column:1/-1}
+  .eu-draw__bg-picker-row{grid-column:1/-1}
+  .eu-draw__anim-row{grid-column:1/-1}
+  .eu-draw__undo-row{grid-column:1/-1}
+  .eu-draw__actions{
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:100%;
+    gap:clamp(8px,1.2vw,12px);
+  }
+  .eu-draw__dl-btn{
+    flex:1;
+    min-width:140px;
+  }
+  .eu-merch__grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ═══ MOBILE ═══ */
+@media(max-width:700px){
+  /* General spacing */
+  .eu-draw{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
+  .eu-merch{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
+  .eu-guestbook{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
+
+  /* Generator */
+  .eu-gen{padding:clamp(10px,2vw,20px) clamp(16px,4vw,28px) clamp(40px,6vw,80px)}
+  .eu-gen__framed{max-width:100%;z-index:1}
+  .eu-gen__caption{margin-top:clamp(12px,3vw,18px)}
+  .eu-gen__shuffle-link{font-size:clamp(11px,3vw,14px)}
+  .eu-gen__sign{
+    flex-direction:column;
+    align-items:stretch;
+    max-width:100%;
+    margin-top:clamp(14px,3.5vw,20px);
+    gap:6px;
+  }
+  .eu-gen__sign-label{
+    text-align:center;
+    font-size:clamp(9px,2.4vw,11px);
+  }
+  .eu-gen__byline{
+    text-align:center;
+    font-size:clamp(14px,3.8vw,16px);
+    padding:8px 10px;
+  }
+  .eu-gen__dl-wrap{margin-top:clamp(12px,3vw,18px)}
+  .eu-gen-dl{
+    max-width:100%;
+    font-size:clamp(12px,3.2vw,15px);
+    padding:clamp(12px,3.5vw,18px) 20px;
+  }
+
+
+  /* Cards grid */
+  .eu-pap__grid{grid-template-columns:repeat(2,1fr)}
+
+  /* Statement */
+  .eu-statement{padding:clamp(40px,8vw,60px) clamp(16px,4vw,24px)}
+
+  /* Drawing section */
+  .eu-draw__workspace{
+    flex-direction:column;
+    margin:0;
+    padding:0;
+  }
+  .eu-draw__area{max-width:100%}
+  .eu-draw__framed{min-height:280px}
+  .eu-draw__panel-col{
+    flex:none;
+    width:100%;
+    margin-top:20px;
+  }
+  .eu-draw__panel{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .eu-draw__stamp{
+    width:clamp(40px,11vw,54px);
+    height:clamp(40px,11vw,54px);
+  }
+  .eu-draw__bg-pick{width:30px;height:30px}
+  .eu-draw__bg-color{width:30px;height:30px}
+  .eu-draw__actions{
+    flex-direction:column;
+    width:100%;
+    padding:0;
+  }
+  .eu-draw__dl-btn{
+    flex:none;
+    min-width:0;
+    width:100%;
+    padding:clamp(12px,2.5vw,16px) 0;
+  }
+  .eu-draw__toolbar-group--row{flex-direction:column;align-items:flex-start;gap:8px}
+  .eu-draw__toolbar-group--inline{flex-wrap:wrap}
+
+  /* Shop / Merch */
+  .eu-merch__grid{grid-template-columns:repeat(2,1fr);gap:clamp(16px,4vw,24px)}
+  .eu-shop-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .eu-shop-header__meta{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .eu-merch-item__img{aspect-ratio:1/1}
+  .eu-merch-item__name{font-size:clamp(10px,2.8vw,13px)}
+  .eu-merch-item__price{font-size:clamp(9px,2.4vw,11px)}
+  .eu-merch-item__cart{font-size:clamp(7px,2vw,9px)}
+  .eu-merch-item__tag{font-size:clamp(6px,1.6vw,8px);padding:2px 6px}
+
+  /* Widget badge */
+  .eu-widget__badge{
+    width:280px;
+    height:54px;
+  }
+  .eu-widget__badge-text{font-size:8px;padding:0 4px}
+
+  /* Nav tabs */
+  .eu-pap__nav{
+    gap:clamp(10px,3vw,16px);
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  /* Guestbook */
+  .eu-guestbook__grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:clamp(12px,3vw,18px);
+  }
+  .eu-guestbook__gif{width:clamp(140px,40vw,200px)}
+  .eu-guestbook__header{flex-direction:column;align-items:center}
+  .eu-guestbook__header-text{text-align:left}
+  .eu-guestbook__header{
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+
+  /* Modal */
+  .eu-gb-modal__box{
+    width:calc(100vw - 32px);
+    max-height:90vh;
+    overflow-y:auto;
+    padding:clamp(16px,4vw,24px);
+  }
+
+  /* Music player */
+  .eu-player{
+    padding:clamp(10px,2.5vw,14px);
+    width:clamp(160px,50vw,240px);
+  }
+  .eu-player__now{font-size:clamp(14px,4vw,22px)}
+  .eu-player__btn{font-size:clamp(10px,2.5vw,14px)}
+  .eu-player__btn--play{
+    width:clamp(24px,7vw,32px);
+    height:clamp(24px,7vw,32px);
+    font-size:clamp(12px,3vw,18px);
+  }
+  .eu-player__track{font-size:clamp(7px,2vw,10px)}
+
+  /* Gate scene */
+  .eu-gate-scene{height:160vh}
+  .eu-gate-scene__tagline{
+    font-size:clamp(30px,9.5vw,50px);
+    max-width:90%;
+  }
+  .eu-gate-scene__logo{width:70px}
+  .eu-gate-scene__preamble-text{
+    max-width:90%;
+    font-size:clamp(12px,3.5vw,15px);
+  }
+  .eu-gate-scene__preamble-btn{
+    max-width:clamp(240px,65vw,340px);
+    margin-top:clamp(18px,5vw,32px);
+  }
+  .eu-gate-scene__left img,
+  .eu-gate-scene__right img{
+    height:70%;
+  }
+
+  /* Sharables toggle */
+  .eu-sharables__toggle{
+    font-size:clamp(11px,3vw,16px);
+    padding:clamp(10px,3vw,16px) clamp(12px,4vw,24px);
+  }
+  .eu-sharables{margin-bottom:clamp(20px,5vw,40px)}
+
+  /* Statement spacing */
+  .eu-statement{margin-bottom:clamp(20px,5vw,40px)}
+
+  /* Generator badges — repositioned for mobile, still background-slapped */
+  .eu-gen__badge--heart{
+    width:clamp(90px,26vw,130px);
+    right:-20px;
+    top:55%;
+    z-index:0;
+  }
+  .eu-gen__badge--green{
+    display:none;
+  }
+  .eu-gen__badge--plugin{
+    display:none;
+  }
+
+  /* Drawing canvas centered */
+  .eu-draw__area{margin:0 auto}
+  .eu-draw__framed{margin:0 auto}
+
+  /* I approve button — single row */
+  .eu-bar__cta{font-size:clamp(18px,5.5vw,32px);white-space:nowrap}
+  .eu-checkbox{
+    width:clamp(22px,5.5vw,32px);
+    height:clamp(22px,5.5vw,32px);
+  }
+  .eu-bar__initial{gap:clamp(8px,2vw,14px)}
+
+  /* Intro title */
+  .eu-draw__intro-title{
+    font-size:clamp(22px,7vw,40px);
+  }
+  .eu-draw__intro{
+    max-width:100%;
+    padding:0 clamp(8px,2vw,16px);
+  }
+}
+
+/* ═══ SMALL MOBILE ═══ */
+@media(max-width:420px){
+  .eu-merch__grid{grid-template-columns:1fr 1fr;gap:12px}
+  .eu-merch-item__name{font-size:10px}
+  .eu-pap__grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .eu-guestbook__grid{grid-template-columns:1fr 1fr;gap:10px}
+  .eu-draw__stamp{
+    width:36px;
+    height:36px;
+    padding:2px;
+  }
+  .eu-draw__bg-pick{width:24px;height:24px}
+  .eu-draw__bg-color{width:24px;height:24px}
+  .eu-draw__bg-opt{width:24px;height:24px}
+  .eu-draw__section-title{font-size:11px}
+  .eu-widget__badge{
+    width:240px;
+    height:46px;
+  }
+  .eu-widget__badge-text{font-size:7px}
+  .eu-bar__cta{font-size:clamp(18px,6vw,28px)}
+}
+</style>
+
+<!-- ═══ STICKY TOOLKIT LINK ═══ -->
+<div class="eu-toolkit-sticky" id="euToolkitSticky">↑ Take me to the toolkit</div>
+
+<!-- ═══ SOUND CONTROLS ═══ -->
+<div class="eu-sound-controls" id="euSoundControls">
+  <button class="eu-sound-toggle" id="euSoundToggle" title="Toggle sound">
+    <svg id="euSoundOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg id="euSoundOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+  <button class="eu-sound-next" id="euSoundNext" title="Next track">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+  </button>
+</div>
+
+<div class="eu" id="eu">
+
+  <!-- ═══ TOP BAR ═══ -->
+  <div class="eu-bar" id="euBtn">
+    <div class="eu-bar__initial" id="euBarInitial">
+      <div class="eu-checkbox"><div class="eu-checkbox__check"><img src="GIFS/4YCZ5UYFPSM2TS36QSYGFSWQDIVKJIWN.gif" alt="EU Flag" class="eu-checkbox__gif"></div></div>
+      <div class="eu-bar__cta" id="euBarCta">I approve this message</div>
+    </div>
+    <div class="eu-bar__approved" id="euBarApproved">
+      <span class="eu-bar__count" id="euBarCount">12,848</span> and counting
+    </div>
   </div>
 
-  <!-- ▼ THE MODULE ▼ -->
-  <div style="max-width:780px; margin:0 auto;">
-    <!-- #include the module HTML here in Webflow -->
+  <!-- ═══ FOLDOUT ═══ -->
+  <div class="eu-fold" id="euFold" style="position:relative">
+
+    <!-- Gate scene — first thing after approval -->
+    <div class="eu-gate-scene" id="euGateScene">
+      <div class="eu-gate-scene__sticky">
+        <div class="eu-gate-scene__reveal" id="euGateReveal">
+          <img class="eu-gate-scene__logo" src="Updated Imagery/ElectroUnion_Hero_logo.png" alt="Electro Union">
+          <div class="eu-gate-scene__tagline">The good life deserves to be resilient.</div>
+          <div class="eu-gate-scene__counter" id="euCounter">You and <span id="euCounterNum">12,848</span> others agree.</div>
+          <div class="eu-gate-scene__preamble" id="euGatePreamble">
+            <div class="eu-gate-scene__preamble-text">Welcome to the Electro Union: a home for everyone who knows Europe's future runs on its own energy. In here you'll find sharables for your feeds and tools to make your own. All free, all yours, and for however you wish to plug it in.</div>
+            <img class="eu-gate-scene__preamble-btn" src="Updated Imagery/animated-text-zoom.gif" alt="Download the Electro-Union Sharing Package">
+          </div>
+        </div>
+        <div class="eu-gate-scene__scroll-hint" id="euScrollHint">
+          <span>scroll</span>
+          <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 2 L10 12 M4 9 L10 16 L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="eu-gate-scene__left" id="euGateLeft">
+          <img src="Updated Imagery/magnificent-roman-columns-isolated-white-background_787273-60762-removebg-preview.png" alt="">
+        </div>
+        <div class="eu-gate-scene__right" id="euGateRight">
+          <img src="Updated Imagery/magnificent-roman-columns-isolated-white-background_787273-60762-removebg-preview.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- Generator -->
+    <div class="eu-gen">
+      <div class="eu-gen__headline" style="font-family:var(--mono);font-size:clamp(9px,1vw,11px);text-transform:uppercase;letter-spacing:.06em;color:var(--ink);text-align:center;margin-bottom:clamp(14px,2vw,24px);">Make your own postcard</div>
+      <div class="eu-gen__framed">
+        <img class="eu-gen__frame" src="Updated Imagery/FRAME1 UPDATED.png" alt="">
+        <div class="eu-photo" id="euPv">
+          <div class="eu-photo__bg" id="euBg"></div>
+          <img class="eu-photo__st" id="euSt" src="STICKERS/Sticker1.png" alt="">
+          <div class="eu-photo__byline" id="euBylinePreview"></div>
+        </div>
+      </div>
+      <div class="eu-gen__caption">
+        <span class="eu-gen__shuffle-link" id="euShuffle">&#8635; shuffle</span>
+      </div>
+      <div class="eu-gen__sign">
+        <label class="eu-gen__sign-label" for="euBylineInput">Sign it</label>
+        <input type="text" class="eu-gen__byline" id="euBylineInput" placeholder="your name, city, or message" maxlength="40">
+      </div>
+      <div class="eu-gen__dl-wrap">
+        <div class="eu-gen-dl" id="euDl">Download</div>
+      </div>
+      <img class="eu-gen__badge eu-gen__badge--heart" src="Updated Imagery/Screenshot 2026-04-07 at 15.03.03.png" alt="I love Electro Union">
+      <img class="eu-gen__badge eu-gen__badge--green" src="Updated Imagery/Greenlogo.png" alt="Electro Union green badge">
+      <img class="eu-gen__badge eu-gen__badge--plugin" src="Updated Imagery/Blue logo.png" alt="Plug it in">
+    </div>
+
+    <!-- View all sharables (foldout) -->
+    <div class="eu-sharables" id="euSharables">
+      <div class="eu-sharables__toggle" id="euSharablesBtn">CLICK HERE TO OPEN THE TOOLKIT <span class="eu-sharables__arrow">&#9660;</span></div>
+      <div class="eu-sharables__content">
+        <div class="eu-sharables__inner">
+          <div class="eu-pap__nav">
+            <span class="eu-pap__nav-item is-active" data-cat="social">social media</span>
+            <span class="eu-pap__nav-item" data-cat="stickers">stickers</span>
+            <span class="eu-pap__nav-item" data-cat="messaging">messaging</span>
+          </div>
+
+          <div class="eu-pap__section" data-section="social">
+            <div class="eu-pap__grid">
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/ezgif-75c0468df07aea78.gif" alt="">
+                <div class="eu-pap-card__name">Loop I</div>
+                <div class="eu-pap-card__desc">GIF · 1080×1350 · for Stories, Reels, and Slides</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/ezgif-7a60c29000a43f4a.gif" alt="">
+                <div class="eu-pap-card__name">Loop II</div>
+                <div class="eu-pap-card__desc">GIF · 1080×1350 · for Stories, Reels, and Slides</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still005.jpg" alt="">
+                <div class="eu-pap-card__name">Prosciutto</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still006.jpg" alt="">
+                <div class="eu-pap-card__name">Seaside</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_01_25.Still007.jpg" alt="">
+                <div class="eu-pap-card__name">Caf&eacute;</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/SOCIAL ASSETS/Sequence 18.00_00_02_23.Still001.jpg" alt="">
+                <div class="eu-pap-card__name">Beach</div>
+                <div class="eu-pap-card__desc">JPG · 1080×1350 · for Instagram, WhatsApp, and Email</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="eu-pap__section" data-section="stickers" style="display:none">
+            <div class="eu-pap__grid">
+              <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo.png" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/STICKERS/testlogo.png" alt="">
+                <div class="eu-pap-card__name">Logo</div>
+                <div class="eu-pap-card__desc">PNG · Transparent · for Laptop, Phone, and Slides</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="DOWNLOADS/STICKERS/testlogo2.png" download>
+                <img class="eu-pap-card__img" src="DOWNLOADS/STICKERS/testlogo2.png" alt="">
+                <div class="eu-pap-card__name">Sticker</div>
+                <div class="eu-pap-card__desc">PNG · Transparent · for Laptop, Phone, and Slides</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+              <a class="eu-pap-card" href="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" download>
+                <img class="eu-pap-card__img" src="Updated Imagery/Screenshot 2026-04-07 at 15.00.30.png" alt="">
+                <div class="eu-pap-card__name">Green Badge</div>
+                <div class="eu-pap-card__desc">PNG · 1080×1080 · for Instagram, Print, and Slides</div>
+                <span class="eu-pap-card__btn">download</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="eu-pap__section" data-section="messaging" style="display:none">
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">Europe has always been electro. Let's make it electric.</span>
+            </div>
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">The good life deserves resilience. Make Europe the Electro-Union.</span>
+            </div>
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">EU is for Electro Union. For the continent that invented electricity.</span>
+            </div>
+            <div class="eu-pap__msg" onclick="navigator.clipboard.writeText(this.querySelector('.eu-pap__msg-text').textContent).then(function(){})">
+              <span class="eu-pap__msg-copy">Copy</span>
+              <span class="eu-pap__msg-text">Make Europe the first Electro Continent.</span>
+            </div>
+          </div>
+
+          <div class="eu-pap__free">All assets are free to use, share, remix, and redistribute. No permission needed. Spread the message.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Big statement -->
+    <div class="eu-statement">
+      <div class="eu-statement__wrap">
+        <img class="eu-statement__img" src="Updated Imagery/LARGE QUOTE.png" alt="The good life deserves resilience. Make Europe the Electro-Union.">
+        <div class="eu-player" id="euPlayer">
+          <div class="eu-player__now" id="euPlayerNow">BASELOAD</div>
+          <div class="eu-player__controls">
+            <span class="eu-player__btn" id="euPlayerPrev">&#9664;&#9664;</span>
+            <span class="eu-player__btn eu-player__btn--play" id="euPlayerPlay">&#9654;</span>
+            <span class="eu-player__btn" id="euPlayerNext">&#9654;&#9654;</span>
+          </div>
+          <div class="eu-player__bar">
+            <div class="eu-player__progress" id="euPlayerProgress"></div>
+          </div>
+          <div class="eu-player__tracklist">
+            <div class="eu-player__track is-active" data-idx="0"><span class="eu-player__track-num">01</span> Baseload</div>
+            <div class="eu-player__track" data-idx="1"><span class="eu-player__track-num">02</span> Merit Order</div>
+            <div class="eu-player__track" data-idx="2"><span class="eu-player__track-num">03</span> 50 Hertz</div>
+            <div class="eu-player__track" data-idx="3"><span class="eu-player__track-num">04</span> Peak Demand</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Merchandise -->
+    <div class="eu-merch">
+      <div class="eu-widget">
+        <div class="eu-widget__badge">
+          <span class="eu-widget__badge-text eu-widget__badge-text--left">MERCHANDISE</span>
+          <img class="eu-widget__badge-gif" src="Updated Imagery/merch gif 1.gif" alt="">
+          <span class="eu-widget__badge-text eu-widget__badge-text--right">COMING SOON</span>
+        </div>
+      </div>
+      <div class="eu-shop-header">
+        <div class="eu-shop-header__title">Shop</div>
+        <div class="eu-shop-header__meta">
+          <span class="eu-shop-header__launch">Coming in 2026: Pre-order opens soon</span>
+          <select class="eu-shop-header__currency">
+            <option>EUR &euro;</option>
+            <option>SEK kr</option>
+            <option>GBP &pound;</option>
+            <option>USD $</option>
+            <option>CHF Fr.</option>
+          </select>
+        </div>
+      </div>
+      <div class="eu-merch__grid">
+        <div class="eu-merch-item eu-merch-item--scarf">
+          <div class="eu-merch-item__img">
+            <div class="eu-merch-item__fireworks"><img src="Updated Imagery/WS2k.gif" alt=""></div>
+            <img src="Updated Imagery/Scarf.png" alt="">
+            <div class="eu-merch-item__tag">Pre-order</div>
+          </div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Supporter Scarf</div>
+            <div class="eu-merch-item__price">&euro; 45.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/Espressocup.png" alt=""></div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Espresso Cup &amp; Saucer</div>
+            <div class="eu-merch-item__price">&euro; 28.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt=""></div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Cocktail Napkins (set of 50)</div>
+            <div class="eu-merch-item__price">&euro; 18.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/FRISBEE.png" alt="">
+            <div class="eu-merch-item__tag">New</div>
+          </div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Campaign Frisbee</div>
+            <div class="eu-merch-item__price">&euro; 22.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/bottle carrier.png" alt=""></div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Six-Pack Carrier</div>
+            <div class="eu-merch-item__price">&euro; 35.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/bubble2.png" alt="">
+            <div class="eu-merch-item__tag">Ltd. Edition</div>
+          </div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Bubblegum Sticks (13 pcs)</div>
+            <div class="eu-merch-item__price">&euro; 6.50</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Red bar -->
+
+    <!-- Drawing section -->
+    <div class="eu-draw">
+      <div class="eu-draw__marquee">
+        <div class="eu-draw__marquee-inner">
+          <span>Only one continent puts croissants, stroopwafels, kürtőskalács and pastel de nata in the same single market.</span>
+          <img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant">
+          <span>The good life, in pastry form.</span>
+          <img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel">
+          <span>Pick a pencil. Make it dance. Put your name on it.</span>
+          <img src="Updated Imagery/045.png" alt="Kanelbulle">
+          <span>This is your grid.</span>
+          <img src="Updated Imagery/baklava_udate.png" alt="Baklava">
+          <img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette">
+          <img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács">
+          <img src="Updated Imagery/danish.png" alt="Danish">
+          <img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata">
+          <img src="Updated Imagery/sernik.png" alt="Sernik">
+          <span>Only one continent puts croissants, stroopwafels, kürtőskalács and pastel de nata in the same single market.</span>
+          <img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant">
+          <span>The good life, in pastry form.</span>
+          <img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel">
+          <span>Pick a pencil. Make it dance. Put your name on it.</span>
+          <img src="Updated Imagery/045.png" alt="Kanelbulle">
+          <span>This is your grid.</span>
+          <img src="Updated Imagery/baklava_udate.png" alt="Baklava">
+          <img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette">
+          <img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács">
+          <img src="Updated Imagery/danish.png" alt="Danish">
+          <img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata">
+          <img src="Updated Imagery/sernik.png" alt="Sernik">
+        </div>
+      </div>
+      <div class="eu-draw__workspace">
+        <div class="eu-draw__area">
+          <div class="eu-draw__framed">
+            <img class="eu-draw__frame" src="Updated Imagery/FRAME2_UPDATED.png" alt="">
+            <div class="eu-draw__canvas-wrap">
+              <canvas class="eu-draw__canvas" id="euDrawCanvas"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="eu-draw__panel-col">
+          <div class="eu-draw__panel">
+            <div class="eu-draw__section-title">Pick your pastry</div>
+            <div class="eu-draw__stamp-row">
+              <div class="eu-draw__stamp is-active" data-stamp="0"><img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette"></div>
+              <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
+              <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
+              <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava_udate.png" alt="Baklava"></div>
+              <div class="eu-draw__stamp" data-stamp="4"><img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács"></div>
+              <div class="eu-draw__stamp" data-stamp="5"><img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant"></div>
+              <div class="eu-draw__stamp" data-stamp="6"><img src="Updated Imagery/danish.png" alt="Danish"></div>
+              <div class="eu-draw__stamp" data-stamp="7"><img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata"></div>
+              <div class="eu-draw__stamp" data-stamp="8"><img src="Updated Imagery/sernik.png" alt="Sernik"></div>
+            </div>
+            <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="7.5" step="0.1" value="1">
+            <div class="eu-draw__section-title">Stickers</div>
+            <div class="eu-draw__options-row">
+              <div class="eu-draw__bg-row">
+                <div class="eu-draw__bg-opt is-active" data-bg="Updated Imagery/Greenlogo.png" data-sticker="0"><img src="Updated Imagery/Greenlogo.png" alt="Green Logo"></div>
+                <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png" data-sticker="1"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
+                <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png" data-sticker="2"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
+                <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png" data-sticker="3"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
+                <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadSticker" title="Upload your own sticker">
+                  <span class="eu-draw__upload-icon">+</span>
+                  <input type="file" accept="image/*" id="euDrawUploadStickerInput" style="display:none">
+                </label>
+              </div>
+            </div>
+            <div class="eu-draw__section-title">Change background</div>
+            <div class="eu-draw__bg-picker-row">
+              <div class="eu-draw__bg-pick is-active" data-bgc="#ffffff" title="White"><div class="eu-draw__bg-pick__swatch" style="background:#ffffff"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#003399" title="EU Blue"><div class="eu-draw__bg-pick__swatch" style="background:#003399"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#FFD700" title="Gold"><div class="eu-draw__bg-pick__swatch" style="background:#FFD700"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#1a1a1a" title="Black"><div class="eu-draw__bg-pick__swatch" style="background:#1a1a1a"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#E8F0E8" title="Sage"><div class="eu-draw__bg-pick__swatch" style="background:#E8F0E8"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#F5E6D0" title="Cream"><div class="eu-draw__bg-pick__swatch" style="background:#F5E6D0"></div></div>
+              <div class="eu-draw__bg-pick" data-bgc="#CC0000" title="Red"><div class="eu-draw__bg-pick__swatch" style="background:#CC0000"></div></div>
+              <div class="eu-draw__bg-color">
+                <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
+                <input type="color" id="euBgColorPicker" value="#ffffff">
+              </div>
+              <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadBg" title="Upload background image">
+                <span class="eu-draw__upload-icon">+</span>
+                <input type="file" accept="image/*" id="euDrawUploadBgInput" style="display:none">
+              </label>
+            </div>
+            <div class="eu-draw__section-title">Animate</div>
+            <div class="eu-draw__anim-row">
+              <div class="eu-draw__anim is-active" data-anim="none">still</div>
+              <div class="eu-draw__anim" data-anim="bounce">bounce</div>
+              <div class="eu-draw__anim" data-anim="beat">beat</div>
+              <div class="eu-draw__anim" data-anim="rotate">spin</div>
+            </div>
+            <div class="eu-draw__undo-row">
+              <span class="eu-draw__arrow" id="euDrawUndo" title="Undo">&#8592; undo</span>
+              <span class="eu-draw__arrow" id="euDrawClear" title="Clear">&#215; clear</span>
+            </div>
+          </div>
+          <div class="eu-draw__actions">
+            <span class="eu-draw__dl-btn eu-draw__dl-btn--primary" id="euDrawDl">Download GIF</span>
+            <span class="eu-draw__dl-btn" id="euDrawDlPng">Download PNG</span>
+            <span class="eu-draw__dl-btn eu-draw__dl-btn--guestbook" id="euDrawGuestbook">Add to gallery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guestbook -->
+    <div class="eu-guestbook" id="euGuestbook">
+      <div class="eu-guestbook__header">
+        <img class="eu-guestbook__welcome" src="Updated Imagery/welcome.gif" alt="Welcome">
+        <div class="eu-guestbook__header-bar">
+          <div class="eu-guestbook__intro">The Pastry Art Gallery</div>
+          <div class="eu-guestbook__count" id="euGbCount">0 entries</div>
+        </div>
+      </div>
+      <div class="eu-guestbook__grid" id="euGbGrid">
+        <div class="eu-guestbook__empty">The Pastry Art Gallery: make one above and add it.</div>
+      </div>
+    </div>
+
+    <!-- Guestbook modal -->
+    <div class="eu-gb-modal" id="euGbModal">
+      <div class="eu-gb-modal__box">
+        <button class="eu-gb-modal__close" id="euGbClose">&times;</button>
+        <div class="eu-gb-modal__preview" id="euGbPreview"></div>
+        <label class="eu-gb-modal__label">Message</label>
+        <input class="eu-gb-modal__input" id="euGbMsg" type="text" placeholder="The good life, in pastry form" maxlength="120">
+        <label class="eu-gb-modal__label">Name / Company</label>
+        <input class="eu-gb-modal__input" id="euGbName" type="text" placeholder="Your name or organisation" maxlength="60">
+        <label class="eu-gb-modal__label">Country</label>
+        <input class="eu-gb-modal__input" id="euGbCountry" type="text" placeholder="Sweden, France, Germany..." maxlength="40">
+        <div class="eu-gb-modal__submit" id="euGbSubmit">Add to gallery</div>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="eu-ticker">
+      <div class="eu-ticker__inner">
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+        <span>The good life deserves to be resilient.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowright.gif" alt="">
+        <span>Make Europe the first Electro Continent.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+        <span>An open letter created by Norrsken Foundation.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowright.gif" alt="">
+        <span>Europe has always been electro. Let&rsquo;s make it electric.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+        <span>EU is for Electro Union.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowright.gif" alt="">
+        <span>Plug it in, Europe.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+        <span>The good life deserves to be resilient.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowright.gif" alt="">
+        <span>Make Europe the first Electro Continent.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+        <span>An open letter created by Norrsken Foundation.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowright.gif" alt="">
+        <span>Europe has always been electro. Let&rsquo;s make it electric.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+        <span>EU is for Electro Union.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowright.gif" alt="">
+        <span>Plug it in, Europe.</span>
+        <img class="eu-ticker__arrow" src="GIFS/arrowleft.gif" alt="">
+      </div>
+    </div>
+
+
   </div>
 
-  <script>
-    // Load the module
-    fetch('electro-union-module.html')
-      .then(r => r.text())
-      .then(html => {
-        document.querySelector('[style*="max-width:780px"]').innerHTML = html;
-        // Re-execute script tags
-        var scripts = document.querySelector('[style*="max-width:780px"]').querySelectorAll('script');
-        scripts.forEach(function(s) {
-          var ns = document.createElement('script');
-          ns.textContent = s.textContent;
-          document.body.appendChild(ns);
-        });
+  <canvas id="euC" width="1080" height="1350" style="display:none"></canvas>
+</div>
+
+<script>
+(function(){
+  // ═══ SUPABASE CONFIG ═══
+  var SB_URL='https://qqaiqevsygqwlfnvnhiu.supabase.co';
+  var SB_KEY='sb_publishable_LQBAlgmAKbdfQBCh5xHuNw_6gYMvHcz';
+  var SB_HEADERS={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+
+  function sbFetch(path,opts){
+    opts=opts||{};
+    var url=SB_URL+path;
+    return fetch(url,{
+      method:opts.method||'GET',
+      headers:Object.assign({},SB_HEADERS,opts.headers||{}),
+      body:opts.body?JSON.stringify(opts.body):undefined
+    }).then(function(r){return r.json()});
+  }
+  function sbRpc(fn){
+    return sbFetch('/rest/v1/rpc/'+fn,{method:'POST',body:{}});
+  }
+  function sbUpload(bucket,fileName,blob){
+    return fetch(SB_URL+'/storage/v1/object/'+bucket+'/'+fileName,{
+      method:'POST',
+      headers:{
+        'apikey':SB_KEY,
+        'Authorization':'Bearer '+SB_KEY,
+        'Content-Type':blob.type,
+        'x-upsert':'true'
+      },
+      body:blob
+    }).then(function(r){return r.json()});
+  }
+  function sbPublicUrl(bucket,path){
+    return SB_URL+'/storage/v1/object/public/'+bucket+'/'+path;
+  }
+
+  var BG=['BACKGROUNDS/coffee.jpg','BACKGROUNDS/italo.jpg','BACKGROUNDS/sun.jpg','BACKGROUNDS/fc7c5841b4c129d0408f9ba2e7c46c1e.jpg','BACKGROUNDS/original_8d84e36822d69f3babb8a64f86366b97.jpg'];
+  var ST=['STICKERS/Sticker1.png','STICKERS/Sticker2.png'];
+  var bi=0,si=0;
+
+  var el=document.getElementById('eu'),
+      pv=document.getElementById('euPv'),
+      bg=document.getElementById('euBg'),
+      st=document.getElementById('euSt'),
+      cv=document.getElementById('euC'),
+      cx=cv.getContext('2d');
+
+  bg.style.backgroundImage='url('+BG[0]+')';
+
+  // Toggle (with auto-shuffle on first open + counter animation)
+  var firstOpen=true;
+  var approvalBase=0;
+  // Fetch live count on load
+  sbRpc('get_approval_count').then(function(count){
+    approvalBase=parseInt(count)||0;
+    // Update the static display if already open
+    var barCount=document.getElementById('euBarCount');
+    if(barCount&&el.classList.contains('is-open')){
+      barCount.textContent=approvalBase.toLocaleString();
+    }
+  }).catch(function(){approvalBase=12847;});
+  function animateCounter(target){
+    var countEl=document.getElementById('euBarCount');
+    var approvedEl=document.getElementById('euBarApproved');
+    // start from 0, rip through numbers fast
+    var start=0;
+    var duration=2000;
+    var t0=performance.now();
+    // trigger the scale-in after a tiny delay
+    setTimeout(function(){approvedEl.classList.add('is-visible');},50);
+    function tick(now){
+      var p=Math.min(1,(now-t0)/duration);
+      // ease-in then snap to end — fast acceleration, dramatic landing
+      var eased=p<0.7 ? Math.pow(p/0.7,0.4)*0.92 : 0.92+(p-0.7)/0.3*0.08;
+      var val=Math.round(start+eased*target);
+      countEl.textContent=val.toLocaleString();
+      if(p<1) requestAnimationFrame(tick);
+      else countEl.textContent=target.toLocaleString();
+    }
+    requestAnimationFrame(tick);
+  }
+  function autoScrollGates(){
+    var scene=document.getElementById('euGateScene');
+    if(!scene) return;
+    var rect=scene.getBoundingClientRect();
+    var sceneTop=window.scrollY+rect.top;
+    var scrollEnd=sceneTop+rect.height-window.innerHeight;
+    // gentle scroll — ease through the gate reveal
+    var startY=window.scrollY;
+    var targetY=scrollEnd;
+    var duration=2500;
+    var startDelay=500;
+    setTimeout(function(){
+      var t0=performance.now();
+      function scrollStep(now){
+        var elapsed=now-t0;
+        var p=Math.min(1,elapsed/duration);
+        // ease-in-out cubic
+        var eased=p<0.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+        window.scrollTo(0,startY+(targetY-startY)*eased);
+        if(p<1) requestAnimationFrame(scrollStep);
+        else{
+          var hint=document.getElementById('euScrollHint');
+          if(hint) hint.classList.remove('is-hidden');
+        }
+      }
+      requestAnimationFrame(scrollStep);
+    },startDelay);
+  }
+  document.getElementById('euBtn').onclick=function(){
+    if(el.classList.contains('is-open')) return; // no toggle off
+    el.classList.add('is-open');
+    // Increment counter in Supabase
+    sbRpc('increment_and_get_count').then(function(count){
+      var total=parseInt(count)||approvalBase+1;
+      animateCounter(total);
+      document.getElementById('euCounterNum').textContent=total.toLocaleString();
+    }).catch(function(){
+      // Fallback if Supabase is down
+      animateCounter(approvalBase+1);
+      document.getElementById('euCounterNum').textContent=(approvalBase+1).toLocaleString();
+    });
+    // auto-scroll through the gate reveal
+    autoScrollGates();
+    if(firstOpen){
+      firstOpen=false;
+      setTimeout(sh,400);
+    }
+  };
+
+  // Sharables foldout toggle
+  document.getElementById('euSharablesBtn').onclick=function(){
+    document.getElementById('euSharables').classList.toggle('is-open');
+  };
+
+  // ═══ Music Player ═══
+  (function(){
+    var tracks=[
+      {name:'BASELOAD',src:'MUSIC/Okay Okay - Pino A\'angio.mp3'},
+      {name:'MERIT ORDER',src:'MUSIC/Dolce Vita - Ryan Murphy.mp3'},
+      {name:'50 HERTZ',src:'MUSIC/AutoBahn (single version) - Kraftwerk.m4a'},
+      {name:'PEAK DEMAND',src:'MUSIC/Smack My Bitch Up - Prodigy.mp3'}
+    ];
+    var audio=new Audio();
+    var ci=0;
+    var playing=false;
+    var nowEl=document.getElementById('euPlayerNow');
+    var playBtn=document.getElementById('euPlayerPlay');
+    var progressEl=document.getElementById('euPlayerProgress');
+    var trackEls=document.querySelectorAll('.eu-player__track');
+    var barEl=document.querySelector('.eu-player__bar');
+
+    function loadTrack(i){
+      ci=i;
+      audio.src=tracks[ci].src;
+      nowEl.textContent=tracks[ci].name;
+      trackEls.forEach(function(t,idx){
+        t.classList.toggle('is-active',idx===ci);
       });
-  </script>
-</body>
-</html>
+      progressEl.style.width='0%';
+    }
+
+    function togglePlay(){
+      if(playing){
+        audio.pause();
+        playing=false;
+        playBtn.innerHTML='&#9654;';
+      }else{
+        audio.play();
+        playing=true;
+        playBtn.innerHTML='&#10074;&#10074;';
+      }
+    }
+
+    playBtn.addEventListener('click',togglePlay);
+
+    document.getElementById('euPlayerNext').addEventListener('click',function(){
+      loadTrack((ci+1)%tracks.length);
+      if(playing){audio.play();}
+    });
+
+    document.getElementById('euPlayerPrev').addEventListener('click',function(){
+      loadTrack((ci-1+tracks.length)%tracks.length);
+      if(playing){audio.play();}
+    });
+
+    trackEls.forEach(function(el){
+      el.addEventListener('click',function(){
+        loadTrack(parseInt(el.getAttribute('data-idx')));
+        audio.play();
+        playing=true;
+        playBtn.innerHTML='&#10074;&#10074;';
+      });
+    });
+
+    audio.addEventListener('timeupdate',function(){
+      if(audio.duration){
+        progressEl.style.width=(audio.currentTime/audio.duration*100)+'%';
+      }
+    });
+
+    audio.addEventListener('ended',function(){
+      loadTrack((ci+1)%tracks.length);
+      audio.play();
+    });
+
+    barEl.addEventListener('click',function(e){
+      if(audio.duration){
+        var rect=barEl.getBoundingClientRect();
+        var pct=(e.clientX-rect.left)/rect.width;
+        audio.currentTime=pct*audio.duration;
+      }
+    });
+
+    loadTrack(0);
+    // Autoplay on first user interaction
+    function autoplayOnce(){
+      audio.play().then(function(){
+        playing=true;
+        playBtn.innerHTML='&#10074;&#10074;';
+      }).catch(function(){});
+      document.removeEventListener('click',autoplayOnce);
+      document.removeEventListener('scroll',autoplayOnce);
+    }
+    document.addEventListener('click',autoplayOnce);
+    document.addEventListener('scroll',autoplayOnce);
+
+    // Expose for sound toggle + next track
+    var soundBtn=document.getElementById('euSoundToggle');
+    var soundControls=document.getElementById('euSoundControls');
+    var soundNextBtn=document.getElementById('euSoundNext');
+    var soundOn=document.getElementById('euSoundOn');
+    var soundOff=document.getElementById('euSoundOff');
+    var muted=false;
+    soundBtn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(muted){
+        audio.muted=false;
+        muted=false;
+        soundOn.style.display='';
+        soundOff.style.display='none';
+      }else{
+        audio.muted=true;
+        muted=true;
+        soundOn.style.display='none';
+        soundOff.style.display='';
+      }
+    });
+    soundNextBtn.addEventListener('click',function(e){
+      e.stopPropagation();
+      loadTrack((ci+1)%tracks.length);
+      audio.play();
+      playing=true;
+      playBtn.innerHTML='&#10074;&#10074;';
+    });
+
+    // Show sound controls only after scrolling past the music player
+    var playerEl=document.querySelector('.eu-player');
+    if(playerEl&&soundControls){
+      var euRoot=document.getElementById('eu');
+      var obsStarted=false;
+      function startPlayerObs(){
+        if(obsStarted)return;
+        obsStarted=true;
+        var obs=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting){
+              soundControls.classList.add('is-visible');
+            }else{
+              soundControls.classList.remove('is-visible');
+            }
+          });
+        },{threshold:0});
+        obs.observe(playerEl);
+      }
+      var classObs=new MutationObserver(function(){
+        if(euRoot&&euRoot.classList.contains('is-open')){
+          setTimeout(startPlayerObs,1500);
+          classObs.disconnect();
+        }
+      });
+      if(euRoot) classObs.observe(euRoot,{attributes:true,attributeFilter:['class']});
+    }
+  })();
+
+  // EU flag color rotation
+  (function(){
+    var flags=[
+      {name:'Italy',colors:['#009246','#fff','#CE2B37']},
+      {name:'France',colors:['#002395','#fff','#ED2939']},
+      {name:'Germany',colors:['#000','#DD0000','#FFCC00']},
+      {name:'Ireland',colors:['#169B62','#fff','#FF883E']},
+      {name:'Belgium',colors:['#000','#FAE042','#ED2939']},
+      {name:'Netherlands',colors:['#AE1C28','#fff','#21468B']},
+      {name:'Austria',colors:['#ED2939','#fff','#ED2939']},
+      {name:'Romania',colors:['#002B7F','#FCD116','#CE1126']},
+      {name:'Hungary',colors:['#CE2939','#fff','#477050']},
+      {name:'Bulgaria',colors:['#fff','#00966E','#D62612']},
+      {name:'Sweden',colors:['#006AA7','#FECC00','#006AA7']},
+      {name:'Finland',colors:['#fff','#003580','#fff']},
+      {name:'Denmark',colors:['#C60C30','#fff','#C60C30']},
+      {name:'Greece',colors:['#0D5EAF','#fff','#0D5EAF']},
+      {name:'Poland',colors:['#fff','#fff','#DC143C']},
+      {name:'Portugal',colors:['#006600','#FF0000','#FF0000']},
+      {name:'Spain',colors:['#AA151B','#F1BF00','#AA151B']},
+      {name:'Czechia',colors:['#fff','#11457E','#D7141A']},
+      {name:'Croatia',colors:['#FF0000','#fff','#171796']},
+      {name:'Luxembourg',colors:['#ED2939','#fff','#00A1DE']},
+      {name:'Slovakia',colors:['#fff','#0B4EA2','#EE1C25']},
+      {name:'Slovenia',colors:['#fff','#003DA5','#ED1C24']},
+      {name:'Lithuania',colors:['#FDB913','#006A44','#C1272D']},
+      {name:'Latvia',colors:['#9E3039','#fff','#9E3039']},
+      {name:'Estonia',colors:['#0072CE','#000','#fff']},
+      {name:'Cyprus',colors:['#fff','#D47600','#fff']},
+      {name:'Malta',colors:['#fff','#fff','#CF3A3A']}
+    ];
+    var btn=document.getElementById('euSharablesBtn');
+    var fi=0;
+    function applyFlag(){
+      var f=flags[fi];
+      btn.style.background='linear-gradient(180deg,'+f.colors[0]+' 0%,'+f.colors[0]+' 33%,'+f.colors[1]+' 33%,'+f.colors[1]+' 66%,'+f.colors[2]+' 66%,'+f.colors[2]+' 100%)';
+      // pick text color that contrasts with middle stripe
+      var mid=f.colors[1];
+      btn.style.color=(mid==='#fff'||mid==='#FECC00'||mid==='#FCD116'||mid==='#FAE042'||mid==='#F1BF00'||mid==='#FDB913'||mid==='#D47600')?'#000':'#fff';
+      fi=(fi+1)%flags.length;
+    }
+    applyFlag();
+    setInterval(applyFlag,4000);
+  })();
+
+  // Sharables tab navigation
+  var navItems=document.querySelectorAll('.eu-pap__nav-item');
+  var papSections=document.querySelectorAll('.eu-pap__section');
+  navItems.forEach(function(tab){
+    tab.addEventListener('click',function(e){
+      e.stopPropagation();
+      navItems.forEach(function(t){t.classList.remove('is-active')});
+      tab.classList.add('is-active');
+      var cat=tab.getAttribute('data-cat');
+      papSections.forEach(function(s){
+        s.style.display=s.getAttribute('data-section')===cat?'block':'none';
+      });
+    });
+  });
+
+  // Preload images
+  BG.forEach(function(src){var i=new Image();i.src=src});
+  ST.forEach(function(src){var i=new Image();i.src=src});
+
+  // Shuffle
+  var shuffling=false;
+  function sh(){
+    if(shuffling)return;
+    shuffling=true;
+    var c=0,total=10;
+    var iv=setInterval(function(){
+      bi=Math.floor(Math.random()*BG.length);
+      si=Math.floor(Math.random()*ST.length);
+      bg.style.backgroundImage='url('+BG[bi]+')';
+      st.src=ST[si];
+      if(++c>=total){clearInterval(iv);shuffling=false}
+    },70);
+  }
+  // Byline live preview
+  var bylineInput=document.getElementById('euBylineInput');
+  var bylinePreview=document.getElementById('euBylinePreview');
+  bylineInput.addEventListener('input',function(){
+    bylinePreview.textContent=bylineInput.value;
+  });
+
+  pv.onclick=sh;
+  document.getElementById('euShuffle').onclick=sh;
+
+  // Download PNG
+  document.getElementById('euDl').onclick=function(e){
+    e.preventDefault();
+    var W=1080,H=1350,im=new Image();im.crossOrigin='anonymous';
+    im.onload=function(){
+      var r=Math.max(W/im.width,H/im.height);
+      cx.drawImage(im,(W-im.width*r)/2,(H-im.height*r)/2,im.width*r,im.height*r);
+      var s=new Image();s.crossOrigin='anonymous';
+      s.onload=function(){
+        cx.drawImage(s,0,0,W,H);
+        // Render byline
+        var byline=bylineInput.value.trim();
+        if(byline){
+          cx.save();
+          cx.font='32px "Times Eighteen", Georgia, serif';
+          cx.fillStyle='#ffffff';
+          cx.shadowColor='rgba(0,0,0,0.6)';
+          cx.shadowBlur=6;
+          cx.shadowOffsetY=2;
+          cx.textAlign='center';
+          cx.fillText(byline,W/2,H-80);
+          cx.restore();
+        }
+        var a=document.createElement('a');
+        a.download='electro-union-postcard.png';
+        a.href=cv.toDataURL('image/png');a.click();
+      };s.src=ST[si];
+    };im.src=BG[bi];
+  };
+
+  // ═══ Drawing tool ═══
+  /* ── Drawing tool with animation + GIF export ── */
+  var drawCanvas=document.getElementById('euDrawCanvas');
+  var drawWrap=drawCanvas.parentElement;
+  var drawCtx=drawCanvas.getContext('2d');
+  var activeStamp=0;
+  var animMode='none';
+  var placements=[];
+  var animRAF=null;
+
+  var sizeSlider=document.getElementById('euDrawSize');
+  var bgImageSrc='Updated Imagery/Greenlogo.png';
+  var bgColor='#ffffff';
+  var bgImg=new Image();bgImg.src=bgImageSrc;
+
+  // Background selectors — sticker + color are independent, both always apply
+  var bgOpts=document.querySelectorAll('.eu-draw__bg-opt');
+  var bgColorPicker=document.getElementById('euBgColorPicker');
+  var bgSwatch=document.getElementById('euBgSwatch');
+
+  // First sticker click sets the background watermark; after that only changes active stamp
+  var bgStickerLocked=false;
+  bgOpts.forEach(function(o){
+    o.onclick=function(){
+      bgOpts.forEach(function(x){x.classList.remove('is-active')});
+      o.classList.add('is-active');
+      // Only change background sticker if no placements yet
+      if(!bgStickerLocked){
+        bgImageSrc=o.getAttribute('data-bg');
+        bgImg=new Image();bgImg.src=bgImageSrc;
+        bgImg.onload=function(){renderAll();};
+      }
+      // Always set as active stamp for placing on canvas
+      var si=o.getAttribute('data-sticker');
+      if(si!==null){
+        activeStamp=stickerStartIdx+parseInt(si);
+        // Deselect pastry stamps
+        stamps.forEach(function(x){x.classList.remove('is-active')});
+      }
+    };
+  });
+
+  // Background preset picks
+  var bgPicks=document.querySelectorAll('.eu-draw__bg-pick');
+  var bgColorEl=document.querySelector('.eu-draw__bg-color');
+  bgPicks.forEach(function(p){
+    p.onclick=function(){
+      bgPicks.forEach(function(x){x.classList.remove('is-active')});
+      if(bgColorEl)bgColorEl.classList.remove('is-active');
+      p.classList.add('is-active');
+      bgColor=p.getAttribute('data-bgc');
+      if(bgSwatch)bgSwatch.style.background=bgColor;
+      if(bgColorPicker)bgColorPicker.value=bgColor;
+      renderAll();
+    };
+  });
+  if(bgColorPicker){
+    bgColorPicker.addEventListener('input',function(){
+      bgColor=bgColorPicker.value;
+      bgSwatch.style.background=bgColor;
+      bgPicks.forEach(function(x){x.classList.remove('is-active')});
+      if(bgColorEl)bgColorEl.classList.add('is-active');
+      renderAll();
+    });
+  }
+
+  var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava_udate.png','Updated Imagery/kürtőskalács.png','Updated Imagery/pngimg.com - croissant_PNG46722.png','Updated Imagery/danish.png','Updated Imagery/pastelnata.webp','Updated Imagery/sernik.png'];
+  // Sticker sources (placeable on canvas via tap)
+  var stickerSrcs=['Updated Imagery/Greenlogo.png','Updated Imagery/Blue logo.png','STICKERS/Sticker1.png','STICKERS/Sticker2.png'];
+  var stickerStartIdx=stampSrcs.length;
+  var allSrcs=stampSrcs.concat(stickerSrcs);
+  var stampImgs=[];
+  allSrcs.forEach(function(src){
+    var img=new Image();img.src=src;
+    stampImgs.push(img);
+  });
+
+  function resizeDrawCanvas(){
+    drawCanvas.width=drawWrap.clientWidth;
+    drawCanvas.height=drawWrap.clientHeight;
+    if(placements.length>0) renderAll();
+    else drawBg(drawCtx,drawCanvas.width,drawCanvas.height);
+  }
+
+  // Stamp selectors
+  var stamps=document.querySelectorAll('.eu-draw__stamp');
+  stamps.forEach(function(s){
+    s.onclick=function(){
+      stamps.forEach(function(x){x.classList.remove('is-active')});
+      s.classList.add('is-active');
+      activeStamp=parseInt(s.getAttribute('data-stamp'));
+      // Deselect sticker options and upload
+      bgOpts.forEach(function(x){x.classList.remove('is-active')});
+      if(uploadLabel)uploadLabel.classList.remove('is-active');
+    };
+  });
+
+  // Upload custom sticker
+  var uploadStickerInput=document.getElementById('euDrawUploadStickerInput');
+  var uploadStickerLabel=document.getElementById('euDrawUploadSticker');
+  var uploadStickerIdx=-1;
+  uploadStickerInput.onchange=function(e){
+    var file=e.target.files[0];
+    if(!file)return;
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var img=new Image();
+      img.onload=function(){
+        if(uploadStickerIdx<0){
+          uploadStickerIdx=stampImgs.length;
+          stampImgs.push(img);
+        }else{
+          stampImgs[uploadStickerIdx]=img;
+        }
+        activeStamp=uploadStickerIdx;
+        stamps.forEach(function(x){x.classList.remove('is-active')});
+        bgOpts.forEach(function(x){x.classList.remove('is-active')});
+        uploadStickerLabel.classList.add('is-active');
+        uploadStickerLabel.innerHTML='<img src="'+ev.target.result+'" alt="Custom" style="width:100%;height:100%;object-fit:contain">';
+        uploadStickerLabel.appendChild(uploadStickerInput);
+      };
+      img.src=ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+  uploadStickerLabel.onclick=function(e){
+    if(uploadStickerIdx>=0&&e.target!==uploadStickerInput){
+      activeStamp=uploadStickerIdx;
+      stamps.forEach(function(x){x.classList.remove('is-active')});
+      bgOpts.forEach(function(x){x.classList.remove('is-active')});
+      uploadStickerLabel.classList.add('is-active');
+    }
+  };
+
+  // Upload custom background image
+  var uploadBgInput=document.getElementById('euDrawUploadBgInput');
+  var uploadBgLabel=document.getElementById('euDrawUploadBg');
+  uploadBgInput.onchange=function(e){
+    var file=e.target.files[0];
+    if(!file)return;
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var img=new Image();
+      img.onload=function(){
+        bgImg=img;
+        bgImageSrc=ev.target.result;
+        bgPicks.forEach(function(x){x.classList.remove('is-active')});
+        if(bgColorEl)bgColorEl.classList.remove('is-active');
+        uploadBgLabel.classList.add('is-active');
+        uploadBgLabel.innerHTML='<img src="'+ev.target.result+'" alt="Custom BG" style="width:100%;height:100%;object-fit:cover;border-radius:2px">';
+        uploadBgLabel.appendChild(uploadBgInput);
+        renderAll();
+      };
+      img.src=ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  };
+
+  // Animation selectors
+  var animBtns=document.querySelectorAll('.eu-draw__anim');
+  animBtns.forEach(function(b){
+    b.onclick=function(){
+      animBtns.forEach(function(x){x.classList.remove('is-active')});
+      b.classList.add('is-active');
+      animMode=b.getAttribute('data-anim');
+      if(animMode!=='none'&&!animRAF) startAnimLoop();
+      if(animMode==='none'){cancelAnimationFrame(animRAF);animRAF=null;renderAll();}
+    };
+  });
+
+  // Render all placements with optional animation
+  function drawBg(ctx,w,h){
+    ctx.fillStyle=bgColor;
+    ctx.fillRect(0,0,w,h);
+    if(bgImg.complete&&bgImg.naturalWidth>0){
+      var scale=Math.min(w*0.5/bgImg.naturalWidth,h*0.5/bgImg.naturalHeight);
+      var bw=bgImg.naturalWidth*scale;
+      var bh=bgImg.naturalHeight*scale;
+      ctx.drawImage(bgImg,(w-bw)/2,(h-bh)/2,bw,bh);
+    }
+  }
+
+  function renderAll(timeOverride){
+    var t=(timeOverride!==undefined)?timeOverride:Date.now()/1000;
+    drawCtx.clearRect(0,0,drawCanvas.width,drawCanvas.height);
+    drawBg(drawCtx,drawCanvas.width,drawCanvas.height);
+    for(var i=0;i<placements.length;i++){
+      var p=placements[i];
+      var img=stampImgs[p.si];
+      if(!img.complete) continue;
+      var cx=p.x,cy=p.y,s=p.sz,rot=0,sc=1;
+      var phase=i*0.4;
+      if(animMode==='bounce'){
+        cy+=Math.sin(t*4+phase)*p.sz*0.3;
+      }else if(animMode==='beat'){
+        sc=1+Math.sin(t*5+phase)*0.25;
+      }else if(animMode==='rotate'){
+        rot=Math.sin(t*3+phase)*0.5;
+      }
+      drawCtx.save();
+      drawCtx.translate(cx,cy);
+      if(rot) drawCtx.rotate(rot);
+      if(sc!==1) drawCtx.scale(sc,sc);
+      var iw=img.naturalWidth||1,ih=img.naturalHeight||1;
+      var ar=iw/ih;
+      var dw=ar>=1?s:s*ar;
+      var dh=ar>=1?s/ar:s;
+      drawCtx.drawImage(img,-dw/2,-dh/2,dw,dh);
+      drawCtx.restore();
+    }
+  }
+
+  function startAnimLoop(){
+    function tick(){
+      renderAll();
+      animRAF=requestAnimationFrame(tick);
+    }
+    animRAF=requestAnimationFrame(tick);
+  }
+
+  // Draw on click/drag — stores placements
+  var drawing=false;
+  var lastPlaceTime=0;
+  function addPlacement(x,y){
+    var now=Date.now();
+    if(drawing&&now-lastPlaceTime<30) return;
+    lastPlaceTime=now;
+    var size=Math.max(30,drawCanvas.width*0.06)*parseFloat(sizeSlider.value);
+    placements.push({x:x,y:y,sz:size,si:activeStamp});
+    bgStickerLocked=true;
+    if(animMode==='none') renderAll();
+  }
+
+  drawCanvas.addEventListener('mousedown',function(e){
+    resizeDrawCanvas();drawing=true;
+    var r=drawCanvas.getBoundingClientRect();
+    addPlacement(e.clientX-r.left,e.clientY-r.top);
+  });
+  drawCanvas.addEventListener('mousemove',function(e){
+    if(!drawing) return;
+    var r=drawCanvas.getBoundingClientRect();
+    addPlacement(e.clientX-r.left,e.clientY-r.top);
+  });
+  drawCanvas.addEventListener('mouseup',function(){drawing=false});
+  drawCanvas.addEventListener('mouseleave',function(){drawing=false});
+  drawCanvas.addEventListener('touchstart',function(e){
+    e.preventDefault();resizeDrawCanvas();drawing=true;
+    var r=drawCanvas.getBoundingClientRect();
+    var t=e.touches[0];
+    addPlacement(t.clientX-r.left,t.clientY-r.top);
+  });
+  drawCanvas.addEventListener('touchmove',function(e){
+    e.preventDefault();if(!drawing) return;
+    var r=drawCanvas.getBoundingClientRect();
+    var t=e.touches[0];
+    addPlacement(t.clientX-r.left,t.clientY-r.top);
+  });
+  drawCanvas.addEventListener('touchend',function(){drawing=false});
+
+  // Undo last stamp
+  document.getElementById('euDrawUndo').onclick=function(){
+    if(placements.length>0){
+      placements.pop();
+      renderAll();
+    }
+  };
+
+  // Clear all
+  document.getElementById('euDrawClear').onclick=function(){
+    placements=[];
+    bgStickerLocked=false;
+    renderAll();
+  };
+
+  // ── GIF Encoder ──
+  function lzwEncode(pixels,minCode){
+    var clr=1<<minCode,eoi=clr+1,cs=minCode+1,nx=eoi+1;
+    var dict={},bits=0,bc=0,out=[];
+    function emit(c){bits|=(c<<bc);bc+=cs;while(bc>=8){out.push(bits&0xff);bits>>=8;bc-=8;}}
+    function reset(){dict={};for(var i=0;i<clr;i++)dict[String.fromCharCode(i)]=i;nx=eoi+1;cs=minCode+1;}
+    reset();emit(clr);
+    var w=String.fromCharCode(pixels[0]);
+    for(var i=1;i<pixels.length;i++){
+      var c=String.fromCharCode(pixels[i]),wc=w+c;
+      if(dict[wc]!==undefined){w=wc;}
+      else{emit(dict[w]);if(nx<4096){dict[wc]=nx++;if(nx>(1<<cs)&&cs<12)cs++;}else{emit(clr);reset();}w=c;}
+    }
+    emit(dict[w]);emit(eoi);
+    if(bc>0)out.push(bits&0xff);
+    return out;
+  }
+
+  function buildGIF(frames,w,h,delay,palette){
+    var buf=[];
+    function ws(s){for(var i=0;i<s.length;i++)buf.push(s.charCodeAt(i));}
+    function w16(v){buf.push(v&0xff,(v>>8)&0xff);}
+    function wb(v){buf.push(v&0xff);}
+    // Use adaptive palette
+    var pal=[];
+    for(var i=0;i<256;i++){pal.push(palette[i][0],palette[i][1],palette[i][2]);}
+    // header
+    ws('GIF89a');w16(w);w16(h);wb(0xf7);wb(0);wb(0);
+    for(var i=0;i<768;i++)wb(pal[i]);
+    // NETSCAPE loop
+    wb(0x21);wb(0xff);wb(11);ws('NETSCAPE2.0');wb(3);wb(1);w16(0);wb(0);
+    // frames
+    for(var f=0;f<frames.length;f++){
+      wb(0x21);wb(0xf9);wb(4);wb(0x00);w16(delay);wb(0);wb(0);
+      wb(0x2c);w16(0);w16(0);w16(w);w16(h);wb(0);
+      wb(8);
+      var comp=lzwEncode(frames[f],8);
+      var p=0;
+      while(p<comp.length){var bl=Math.min(255,comp.length-p);wb(bl);for(var j=0;j<bl;j++)wb(comp[p++]);}
+      wb(0);
+    }
+    wb(0x3b);
+    return new Blob([new Uint8Array(buf)],{type:'image/gif'});
+  }
+
+  // ── Adaptive palette: median-cut quantisation for better GIF quality ──
+  function buildAdaptivePalette(imgData,maxColors){
+    maxColors=maxColors||256;
+    var data=imgData.data,n=data.length/4;
+    // Sample pixels (every 4th for speed)
+    var pixels=[];
+    for(var i=0;i<n;i+=4){
+      pixels.push([data[i*4],data[i*4+1],data[i*4+2]]);
+    }
+    // Median-cut
+    function vol(box){
+      var rn=box.rMax-box.rMin,gn=box.gMax-box.gMin,bn=box.bMax-box.bMin;
+      return rn*gn*bn;
+    }
+    function makeBox(px){
+      var rMin=255,rMax=0,gMin=255,gMax=0,bMin=255,bMax=0;
+      for(var i=0;i<px.length;i++){
+        var p=px[i];
+        if(p[0]<rMin)rMin=p[0];if(p[0]>rMax)rMax=p[0];
+        if(p[1]<gMin)gMin=p[1];if(p[1]>gMax)gMax=p[1];
+        if(p[2]<bMin)bMin=p[2];if(p[2]>bMax)bMax=p[2];
+      }
+      return {px:px,rMin:rMin,rMax:rMax,gMin:gMin,gMax:gMax,bMin:bMin,bMax:bMax};
+    }
+    function splitBox(box){
+      var rr=box.rMax-box.rMin,gr=box.gMax-box.gMin,br=box.bMax-box.bMin;
+      var ch=rr>=gr&&rr>=br?0:(gr>=br?1:2);
+      box.px.sort(function(a,b){return a[ch]-b[ch];});
+      var mid=Math.floor(box.px.length/2);
+      return [makeBox(box.px.slice(0,mid)),makeBox(box.px.slice(mid))];
+    }
+    var boxes=[makeBox(pixels)];
+    while(boxes.length<maxColors){
+      var best=-1,bestVol=-1;
+      for(var i=0;i<boxes.length;i++){
+        if(boxes[i].px.length>1){
+          var v=vol(boxes[i]);
+          if(v>bestVol){bestVol=v;best=i;}
+        }
+      }
+      if(best<0)break;
+      var pair=splitBox(boxes[best]);
+      boxes.splice(best,1,pair[0],pair[1]);
+    }
+    // Build palette from box averages
+    var palette=[];
+    for(var i=0;i<boxes.length;i++){
+      var bx=boxes[i],rs=0,gs=0,bs=0;
+      for(var j=0;j<bx.px.length;j++){rs+=bx.px[j][0];gs+=bx.px[j][1];bs+=bx.px[j][2];}
+      var c=bx.px.length;
+      palette.push([Math.round(rs/c),Math.round(gs/c),Math.round(bs/c)]);
+    }
+    while(palette.length<256)palette.push([0,0,0]);
+    return palette;
+  }
+
+  function quantizeFrameAdaptive(ctx,w,h,palette){
+    var data=ctx.getImageData(0,0,w,h).data;
+    var idx=new Uint8Array(w*h);
+    // Build lookup cache for speed
+    var cache={};
+    for(var i=0;i<w*h;i++){
+      var r=data[i*4],g=data[i*4+1],b=data[i*4+2];
+      // Reduce to 5-bit per channel for cache key
+      var key=((r>>3)<<10)|((g>>3)<<5)|(b>>3);
+      if(cache[key]!==undefined){idx[i]=cache[key];continue;}
+      var bestD=Infinity,bestJ=0;
+      for(var j=0;j<256;j++){
+        var dr=r-palette[j][0],dg=g-palette[j][1],db=b-palette[j][2];
+        var d=dr*dr+dg*dg+db*db;
+        if(d<bestD){bestD=d;bestJ=j;}
+      }
+      cache[key]=bestJ;
+      idx[i]=bestJ;
+    }
+    return idx;
+  }
+
+  // Scale factor for 1080x1080 export
+  function getExportScale(){
+    return 1080/drawCanvas.width;
+  }
+
+  // Sign-it input removed — signing integrated into guestbook flow
+
+  // Render placements to an export canvas at 1080x1080
+  function renderExportFrame(tmpCtx,mode,t){
+    var sc=getExportScale();
+    var ew=1080,eh=1080;
+    tmpCtx.clearRect(0,0,ew,eh);
+    // Draw bg scaled
+    tmpCtx.save();
+    tmpCtx.fillStyle=bgColor;
+    tmpCtx.fillRect(0,0,ew,eh);
+    if(bgImg.complete&&bgImg.naturalWidth>0){
+      var bw=bgImg.naturalWidth,bh=bgImg.naturalHeight;
+      var bs=Math.min(ew*0.4/bw,eh*0.4/bh);
+      tmpCtx.globalAlpha=0.12;
+      tmpCtx.drawImage(bgImg,(ew-bw*bs)/2,(eh-bh*bs)/2,bw*bs,bh*bs);
+      tmpCtx.globalAlpha=1;
+    }
+    tmpCtx.restore();
+    // Draw placements scaled
+    for(var i=0;i<placements.length;i++){
+      var p=placements[i];
+      var img=stampImgs[p.si];
+      if(!img.complete)continue;
+      var cx=p.x*sc,cy=p.y*sc,s=p.sz*sc,rot=0,psc=1;
+      var phase=i*0.4;
+      if(mode==='bounce'){cy+=Math.sin(t*4+phase)*s*0.3;}
+      else if(mode==='beat'){psc=1+Math.sin(t*5+phase)*0.25;}
+      else if(mode==='rotate'){rot=Math.sin(t*3+phase)*0.5;}
+      tmpCtx.save();
+      tmpCtx.translate(cx,cy);
+      if(rot)tmpCtx.rotate(rot);
+      if(psc!==1)tmpCtx.scale(psc,psc);
+      var eiw=img.naturalWidth||1,eih=img.naturalHeight||1;
+      var ear=eiw/eih;
+      var edw=ear>=1?s:s*ear;
+      var edh=ear>=1?s/ear:s;
+      tmpCtx.drawImage(img,-edw/2,-edh/2,edw,edh);
+      tmpCtx.restore();
+    }
+    // Message text removed — signing happens via guestbook
+  }
+
+  // Download GIF (animated) or PNG (if no animation)
+  document.getElementById('euDrawDl').onclick=function(){
+    if(placements.length===0) return;
+    var ew=1080,eh=1080;
+    if(animMode==='none'){
+      // Export as PNG at 1080x1080
+      var tmpCanvas=document.createElement('canvas');
+      tmpCanvas.width=ew;tmpCanvas.height=eh;
+      var tmpCtx=tmpCanvas.getContext('2d');
+      renderExportFrame(tmpCtx,'none',0);
+      var link=document.createElement('a');
+      link.download='electro-union-drawing.png';
+      link.href=tmpCanvas.toDataURL('image/png');
+      link.click();
+      return;
+    }
+    // Render animation frames to GIF at 1080x1080 with adaptive palette
+    var tmpCanvas=document.createElement('canvas');
+    tmpCanvas.width=ew;tmpCanvas.height=eh;
+    var tmpCtx=tmpCanvas.getContext('2d');
+    var numFrames=36;
+    var cycleDur=2;
+    var savedMode=animMode;
+    // Build adaptive palette from first frame
+    renderExportFrame(tmpCtx,savedMode,0);
+    var palette=buildAdaptivePalette(tmpCtx.getImageData(0,0,ew,eh),256);
+    // Quantize all frames with this palette
+    var gifFrames=[];
+    for(var f=0;f<numFrames;f++){
+      var t=f*(cycleDur/numFrames);
+      renderExportFrame(tmpCtx,savedMode,t);
+      gifFrames.push(quantizeFrameAdaptive(tmpCtx,ew,eh,palette));
+    }
+    var delay=Math.round(cycleDur/numFrames*100);
+    var blob=buildGIF(gifFrames,ew,eh,delay,palette);
+    var link=document.createElement('a');
+    link.download='electro-union-drawing.gif';
+    link.href=URL.createObjectURL(blob);
+    link.click();
+    setTimeout(function(){URL.revokeObjectURL(link.href);},5000);
+  };
+
+  // Download PNG (always still, 1080x1080)
+  document.getElementById('euDrawDlPng').onclick=function(){
+    if(placements.length===0) return;
+    var ew=1080,eh=1080;
+    var tmpCanvas=document.createElement('canvas');
+    tmpCanvas.width=ew;tmpCanvas.height=eh;
+    var tmpCtx=tmpCanvas.getContext('2d');
+    renderExportFrame(tmpCtx,'none',0);
+    var link=document.createElement('a');
+    link.download='electro-union-drawing.png';
+    link.href=tmpCanvas.toDataURL('image/png');
+    link.click();
+  };
+
+  // ── Guestbook ──
+  var gbModal=document.getElementById('euGbModal');
+  var gbPreview=document.getElementById('euGbPreview');
+  var gbMsg=document.getElementById('euGbMsg');
+  var gbName=document.getElementById('euGbName');
+  var gbCountry=document.getElementById('euGbCountry');
+  var gbSubmit=document.getElementById('euGbSubmit');
+  var gbClose=document.getElementById('euGbClose');
+  var gbGrid=document.getElementById('euGbGrid');
+  var gbCountEl=document.getElementById('euGbCount');
+  var gbEntries=[];
+  var gbPendingDataUrl=null;
+  var gbPendingIsGif=false;
+
+  function renderGuestbook(){
+    if(!gbGrid)return;
+    if(gbEntries.length===0){
+      gbGrid.innerHTML='<div class="eu-guestbook__empty">The Pastry Art Gallery: make one above and add it.</div>';
+    }else{
+      gbGrid.innerHTML='';
+      for(var i=0;i<gbEntries.length;i++){
+        var e=gbEntries[i];
+        var card=document.createElement('div');
+        card.className='eu-guestbook__card';
+        var imgWrap=document.createElement('div');
+        imgWrap.className='eu-guestbook__card-img';
+        var img=document.createElement('img');
+        img.src=e.image_url;img.alt='Gallery entry';
+        imgWrap.appendChild(img);
+        card.appendChild(imgWrap);
+        if(e.message){
+          var msg=document.createElement('div');
+          msg.className='eu-guestbook__card-msg';
+          msg.textContent=e.message;
+          card.appendChild(msg);
+        }
+        if(e.name||e.country){
+          var nameLine=document.createElement('div');
+          nameLine.className='eu-guestbook__card-name';
+          var parts=[];
+          if(e.name)parts.push(e.name);
+          if(e.country)parts.push(e.country);
+          nameLine.textContent=parts.join(', ');
+          card.appendChild(nameLine);
+        }
+        var meta=document.createElement('div');
+        meta.className='eu-guestbook__card-meta';
+        var d=new Date(e.created_at);
+        meta.textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+        card.appendChild(meta);
+        gbGrid.appendChild(card);
+      }
+    }
+    if(gbCountEl)gbCountEl.textContent=gbEntries.length+' entr'+(gbEntries.length===1?'y':'ies');
+  }
+
+  // Load gallery from Supabase
+  function loadGallery(){
+    sbFetch('/rest/v1/gallery?order=created_at.desc&select=*').then(function(data){
+      if(Array.isArray(data)){
+        gbEntries=data;
+        renderGuestbook();
+      }
+    }).catch(function(){renderGuestbook();});
+  }
+  loadGallery();
+
+  // "Add to guestbook" — generate GIF or PNG preview at 1080x1080
+  document.getElementById('euDrawGuestbook').onclick=function(){
+    if(placements.length===0)return;
+    var ew=1080,eh=1080;
+    var tmpCanvas=document.createElement('canvas');
+    tmpCanvas.width=ew;tmpCanvas.height=eh;
+    var tmpCtx=tmpCanvas.getContext('2d');
+
+    if(animMode!=='none'){
+      // Build animated GIF for guestbook
+      gbPendingIsGif=true;
+      var numFrames=24;
+      var cycleDur=1.5;
+      renderExportFrame(tmpCtx,animMode,0);
+      var palette=buildAdaptivePalette(tmpCtx.getImageData(0,0,ew,eh),256);
+      var gifFrames=[];
+      for(var f=0;f<numFrames;f++){
+        var t=f*(cycleDur/numFrames);
+        renderExportFrame(tmpCtx,animMode,t);
+        gifFrames.push(quantizeFrameAdaptive(tmpCtx,ew,eh,palette));
+      }
+      var delay=Math.round(cycleDur/numFrames*100);
+      var blob=buildGIF(gifFrames,ew,eh,delay,palette);
+      var reader=new FileReader();
+      reader.onload=function(){
+        gbPendingDataUrl=reader.result;
+        gbPreview.innerHTML='<img src="'+gbPendingDataUrl+'" alt="Preview">';
+      };
+      reader.readAsDataURL(blob);
+    }else{
+      gbPendingIsGif=false;
+      renderExportFrame(tmpCtx,'none',0);
+      gbPendingDataUrl=tmpCanvas.toDataURL('image/png');
+      gbPreview.innerHTML='<img src="'+gbPendingDataUrl+'" alt="Preview">';
+    }
+    if(gbMsg)gbMsg.value='';
+    if(gbName)gbName.value='';
+    if(gbCountry)gbCountry.value='';
+    gbModal.classList.add('is-open');
+  };
+
+  // Close modal
+  if(gbClose)gbClose.onclick=function(){gbModal.classList.remove('is-open');};
+  if(gbModal)gbModal.onclick=function(e){if(e.target===gbModal)gbModal.classList.remove('is-open');};
+
+  // Submit entry — upload image to Supabase Storage, then insert gallery row
+  if(gbSubmit)gbSubmit.onclick=function(){
+    if(!gbPendingDataUrl)return;
+    gbSubmit.disabled=true;
+    gbSubmit.textContent='Uploading…';
+
+    // Convert dataURL to blob
+    var parts=gbPendingDataUrl.split(',');
+    var mime=parts[0].match(/:(.*?);/)[1];
+    var bstr=atob(parts[1]);
+    var n=bstr.length;
+    var u8=new Uint8Array(n);
+    for(var j=0;j<n;j++)u8[j]=bstr.charCodeAt(j);
+    var blob=new Blob([u8],{type:mime});
+
+    var ext=gbPendingIsGif?'gif':'png';
+    var fileName=Date.now()+'_'+Math.random().toString(36).substr(2,6)+'.'+ext;
+
+    sbUpload('gallery-images',fileName,blob).then(function(res){
+      if(res.error){throw new Error(res.error.message||'Upload failed');}
+      var publicUrl=sbPublicUrl('gallery-images',fileName);
+      var row={
+        image_url:publicUrl,
+        message:gbMsg?gbMsg.value.trim():'',
+        name:gbName?gbName.value.trim():'',
+        country:gbCountry?gbCountry.value.trim():''
+      };
+      // Remove empty optional fields
+      if(!row.message)delete row.message;
+      if(!row.name)delete row.name;
+      if(!row.country)delete row.country;
+      return sbFetch('/rest/v1/gallery',{method:'POST',body:row,headers:{'Prefer':'return=representation'}});
+    }).then(function(inserted){
+      gbModal.classList.remove('is-open');
+      loadGallery();
+      var gbSection=document.getElementById('euGuestbook');
+      if(gbSection)gbSection.scrollIntoView({behavior:'smooth'});
+    }).catch(function(err){
+      console.error('Gallery submit error:',err);
+      alert('Could not upload — please try again.');
+    }).then(function(){
+      gbSubmit.disabled=false;
+      gbSubmit.textContent='Submit to gallery';
+    });
+  };
+
+  // Init canvas size on first open
+  var drawObserver=new MutationObserver(function(){
+    if(el.classList.contains('is-open')){
+      setTimeout(resizeDrawCanvas,100);
+      setTimeout(resizeDrawCanvas,500);
+      setTimeout(resizeDrawCanvas,1500);
+    }
+  });
+  drawObserver.observe(el,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('resize',resizeDrawCanvas);
+  // ═══ GATE SCROLL ANIMATION (CSS sticky — no JS pinning) ═══
+  var gateScene=document.getElementById('euGateScene');
+  var gateLeft=document.getElementById('euGateLeft');
+  var gateRight=document.getElementById('euGateRight');
+  var gateLogo=gateScene?gateScene.querySelector('.eu-gate-scene__logo'):null;
+  var gateTagline=gateScene?gateScene.querySelector('.eu-gate-scene__tagline'):null;
+  if(gateScene&&gateLeft&&gateRight&&gateLogo&&gateTagline){
+    // approval crack — gates start slightly open (5% of max offset)
+    var CRACK=0.05;
+    function updateGate(){
+      var rect=gateScene.getBoundingClientRect();
+      var vh=window.innerHeight;
+      var scrollableDistance=rect.height-vh;
+      var scrolled=-rect.top;
+      var raw=Math.max(0,Math.min(1,scrolled/scrollableDistance));
+      // blend: start from crack, scroll opens the rest
+      var progress=CRACK+raw*(1-CRACK);
+      // gates
+      var maxOff=window.innerWidth*0.6;
+      gateLeft.style.transform='translateX('+ -(progress*maxOff) +'px)';
+      gateRight.style.transform='translateX('+ (progress*maxOff) +'px)';
+      // logo leads — starts slightly visible
+      var logoP=Math.min(1,progress*1.3);
+      gateLogo.style.transform='scale('+(0.25+logoP*0.85)+')';
+      // tagline lags + fades
+      var tagP=Math.max(0,(progress-0.15)/0.85);
+      gateTagline.style.transform='scale('+(0.3+tagP*0.7)+')';
+      gateTagline.style.opacity=Math.min(1,tagP*1.5);
+      // hide scroll hint after 30% progress
+      if(raw>0.3){
+        var hint=document.getElementById('euScrollHint');
+        if(hint) hint.classList.add('is-hidden');
+      }
+    }
+    window.addEventListener('scroll',function(){requestAnimationFrame(updateGate);},{passive:true});
+    updateGate();
+  }
+
+  // ═══ Scroll reveal — progressive early-web load ═══
+  (function(){
+    // Target: images, merch items, cards, widget, draw workspace elements
+    var revealSelectors=[
+      '.eu-gen .eu-photo',
+      '.eu-gen .eu-gen__sign',
+      '.eu-gen .eu-gen__dl-wrap',
+      '.eu-gen .eu-gen__caption',
+      '.eu-gen .eu-sticker',
+      '.eu-merch .eu-widget',
+      '.eu-merch .eu-shop-header',
+      '.eu-merch__item',
+      '.eu-draw__marquee',
+      '.eu-draw__framed',
+      '.eu-draw__panel-col',
+      '.eu-guestbook__header',
+      '.eu-guestbook__card',
+      '.eu-statement',
+      '.eu-ticker'
+    ];
+
+    revealSelectors.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(el){
+        el.classList.add('eu-reveal');
+      });
+    });
+
+    function progressiveLoad(el){
+      // Generate random crop stops
+      var stops=[];
+      var numStops=3+Math.floor(Math.random()*3); // 3-5 steps
+      for(var s=0;s<numStops;s++){
+        stops.push(Math.floor(10+Math.random()*80));
+      }
+      stops.sort(function(a,b){return a-b;});
+      stops.push(100);
+
+      el.classList.add('eu-loading');
+      el.style.clipPath='inset(0 0 '+(100-stops[0])+'% 0)';
+
+      var i=1;
+      function nextStep(){
+        if(i>=stops.length) return;
+        var pct=stops[i];
+        if(pct>=100){
+          el.classList.add('eu-load-done');
+          el.style.clipPath='';
+        }else{
+          el.style.clipPath='inset(0 0 '+(100-pct)+'% 0)';
+        }
+        i++;
+        if(i<=stops.length){
+          var delay=50+Math.random()*150;
+          setTimeout(nextStep,delay);
+        }
+      }
+      var firstDelay=40+Math.random()*120;
+      setTimeout(nextStep,firstDelay);
+    }
+
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var delay=Math.random()*250;
+          setTimeout(function(){
+            progressiveLoad(entry.target);
+          },delay);
+          obs.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.01, rootMargin:'0px 0px -20px 0px'});
+
+    document.querySelectorAll('.eu-reveal').forEach(function(el){
+      obs.observe(el);
+    });
+  })();
+
+  // ═══ Sticky toolkit link ═══
+  (function(){
+    var stickyEl=document.getElementById('euToolkitSticky');
+    var sharablesEl=document.getElementById('euSharables');
+    var euRoot=document.getElementById('eu');
+    if(!stickyEl||!sharablesEl) return;
+
+    var obsStarted=false;
+    function startToolkitObs(){
+      if(obsStarted) return;
+      obsStarted=true;
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting){
+            // Check if user scrolled PAST (below) the sharables
+            var rect=sharablesEl.getBoundingClientRect();
+            if(rect.bottom<0){
+              stickyEl.classList.add('is-visible');
+            }else{
+              stickyEl.classList.remove('is-visible');
+            }
+          }else{
+            stickyEl.classList.remove('is-visible');
+          }
+        });
+      },{threshold:0});
+      obs.observe(sharablesEl);
+    }
+
+    // Only start after fold opens
+    var classObs=new MutationObserver(function(){
+      if(euRoot&&euRoot.classList.contains('is-open')){
+        setTimeout(startToolkitObs,2000);
+        classObs.disconnect();
+      }
+    });
+    if(euRoot) classObs.observe(euRoot,{attributes:true,attributeFilter:['class']});
+
+    // Click to scroll to toolkit
+    stickyEl.addEventListener('click',function(e){
+      e.stopPropagation();
+      sharablesEl.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  })();
+
+})();
+</script>

@@ -2448,6 +2448,39 @@
 
 <script>
 (function(){
+  // ═══ SUPABASE CONFIG ═══
+  var SB_URL='https://qqaiqevsygqwlfnvnhiu.supabase.co';
+  var SB_KEY='sb_publishable_LQBAlgmAKbdfQBCh5xHuNw_6gYMvHcz';
+  var SB_HEADERS={'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'};
+
+  function sbFetch(path,opts){
+    opts=opts||{};
+    var url=SB_URL+path;
+    return fetch(url,{
+      method:opts.method||'GET',
+      headers:Object.assign({},SB_HEADERS,opts.headers||{}),
+      body:opts.body?JSON.stringify(opts.body):undefined
+    }).then(function(r){return r.json()});
+  }
+  function sbRpc(fn){
+    return sbFetch('/rest/v1/rpc/'+fn,{method:'POST',body:{}});
+  }
+  function sbUpload(bucket,fileName,blob){
+    return fetch(SB_URL+'/storage/v1/object/'+bucket+'/'+fileName,{
+      method:'POST',
+      headers:{
+        'apikey':SB_KEY,
+        'Authorization':'Bearer '+SB_KEY,
+        'Content-Type':blob.type,
+        'x-upsert':'true'
+      },
+      body:blob
+    }).then(function(r){return r.json()});
+  }
+  function sbPublicUrl(bucket,path){
+    return SB_URL+'/storage/v1/object/public/'+bucket+'/'+path;
+  }
+
   var BG=['BACKGROUNDS/coffee.jpg','BACKGROUNDS/italo.jpg','BACKGROUNDS/sun.jpg','BACKGROUNDS/fc7c5841b4c129d0408f9ba2e7c46c1e.jpg','BACKGROUNDS/original_8d84e36822d69f3babb8a64f86366b97.jpg'];
   var ST=['STICKERS/Sticker1.png','STICKERS/Sticker2.png'];
   var bi=0,si=0;
@@ -2463,7 +2496,16 @@
 
   // Toggle (with auto-shuffle on first open + counter animation)
   var firstOpen=true;
-  var approvalBase=12847;
+  var approvalBase=0;
+  // Fetch live count on load
+  sbRpc('get_approval_count').then(function(count){
+    approvalBase=parseInt(count)||0;
+    // Update the static display if already open
+    var barCount=document.getElementById('euBarCount');
+    if(barCount&&el.classList.contains('is-open')){
+      barCount.textContent=approvalBase.toLocaleString();
+    }
+  }).catch(function(){approvalBase=12847;});
   function animateCounter(target){
     var countEl=document.getElementById('euBarCount');
     var approvedEl=document.getElementById('euBarApproved');
@@ -2515,10 +2557,16 @@
   document.getElementById('euBtn').onclick=function(){
     if(el.classList.contains('is-open')) return; // no toggle off
     el.classList.add('is-open');
-    // animate counter ticking up to your number
-    animateCounter(approvalBase+1);
-    // update the "You are European #" text
-    document.getElementById('euCounterNum').textContent=(approvalBase+1).toLocaleString();
+    // Increment counter in Supabase
+    sbRpc('increment_and_get_count').then(function(count){
+      var total=parseInt(count)||approvalBase+1;
+      animateCounter(total);
+      document.getElementById('euCounterNum').textContent=total.toLocaleString();
+    }).catch(function(){
+      // Fallback if Supabase is down
+      animateCounter(approvalBase+1);
+      document.getElementById('euCounterNum').textContent=(approvalBase+1).toLocaleString();
+    });
     // auto-scroll through the gate reveal
     autoScrollGates();
     if(firstOpen){
@@ -3311,7 +3359,7 @@
   var gbClose=document.getElementById('euGbClose');
   var gbGrid=document.getElementById('euGbGrid');
   var gbCountEl=document.getElementById('euGbCount');
-  var gbEntries=JSON.parse(localStorage.getItem('eu-guestbook')||'[]');
+  var gbEntries=[];
   var gbPendingDataUrl=null;
   var gbPendingIsGif=false;
 
@@ -3321,20 +3369,20 @@
       gbGrid.innerHTML='<div class="eu-guestbook__empty">The Pastry Art Gallery: make one above and add it.</div>';
     }else{
       gbGrid.innerHTML='';
-      for(var i=gbEntries.length-1;i>=0;i--){
+      for(var i=0;i<gbEntries.length;i++){
         var e=gbEntries[i];
         var card=document.createElement('div');
         card.className='eu-guestbook__card';
         var imgWrap=document.createElement('div');
         imgWrap.className='eu-guestbook__card-img';
         var img=document.createElement('img');
-        img.src=e.img;img.alt='Guestbook entry';
+        img.src=e.image_url;img.alt='Gallery entry';
         imgWrap.appendChild(img);
         card.appendChild(imgWrap);
-        if(e.msg){
+        if(e.message){
           var msg=document.createElement('div');
           msg.className='eu-guestbook__card-msg';
-          msg.textContent=e.msg;
+          msg.textContent=e.message;
           card.appendChild(msg);
         }
         if(e.name||e.country){
@@ -3348,7 +3396,7 @@
         }
         var meta=document.createElement('div');
         meta.className='eu-guestbook__card-meta';
-        var d=new Date(e.ts);
+        var d=new Date(e.created_at);
         meta.textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
         card.appendChild(meta);
         gbGrid.appendChild(card);
@@ -3356,7 +3404,17 @@
     }
     if(gbCountEl)gbCountEl.textContent=gbEntries.length+' entr'+(gbEntries.length===1?'y':'ies');
   }
-  renderGuestbook();
+
+  // Load gallery from Supabase
+  function loadGallery(){
+    sbFetch('/rest/v1/gallery?order=created_at.desc&select=*').then(function(data){
+      if(Array.isArray(data)){
+        gbEntries=data;
+        renderGuestbook();
+      }
+    }).catch(function(){renderGuestbook();});
+  }
+  loadGallery();
 
   // "Add to guestbook" — generate GIF or PNG preview at 1080x1080
   document.getElementById('euDrawGuestbook').onclick=function(){
@@ -3403,21 +3461,50 @@
   if(gbClose)gbClose.onclick=function(){gbModal.classList.remove('is-open');};
   if(gbModal)gbModal.onclick=function(e){if(e.target===gbModal)gbModal.classList.remove('is-open');};
 
-  // Submit entry
+  // Submit entry — upload image to Supabase Storage, then insert gallery row
   if(gbSubmit)gbSubmit.onclick=function(){
     if(!gbPendingDataUrl)return;
-    gbEntries.push({
-      img:gbPendingDataUrl,
-      msg:gbMsg?gbMsg.value.trim():'',
-      name:gbName?gbName.value.trim():'',
-      country:gbCountry?gbCountry.value.trim():'',
-      ts:Date.now()
+    gbSubmit.disabled=true;
+    gbSubmit.textContent='Uploading…';
+
+    // Convert dataURL to blob
+    var parts=gbPendingDataUrl.split(',');
+    var mime=parts[0].match(/:(.*?);/)[1];
+    var bstr=atob(parts[1]);
+    var n=bstr.length;
+    var u8=new Uint8Array(n);
+    for(var j=0;j<n;j++)u8[j]=bstr.charCodeAt(j);
+    var blob=new Blob([u8],{type:mime});
+
+    var ext=gbPendingIsGif?'gif':'png';
+    var fileName=Date.now()+'_'+Math.random().toString(36).substr(2,6)+'.'+ext;
+
+    sbUpload('gallery-images',fileName,blob).then(function(res){
+      if(res.error){throw new Error(res.error.message||'Upload failed');}
+      var publicUrl=sbPublicUrl('gallery-images',fileName);
+      var row={
+        image_url:publicUrl,
+        message:gbMsg?gbMsg.value.trim():'',
+        name:gbName?gbName.value.trim():'',
+        country:gbCountry?gbCountry.value.trim():''
+      };
+      // Remove empty optional fields
+      if(!row.message)delete row.message;
+      if(!row.name)delete row.name;
+      if(!row.country)delete row.country;
+      return sbFetch('/rest/v1/gallery',{method:'POST',body:row,headers:{'Prefer':'return=representation'}});
+    }).then(function(inserted){
+      gbModal.classList.remove('is-open');
+      loadGallery();
+      var gbSection=document.getElementById('euGuestbook');
+      if(gbSection)gbSection.scrollIntoView({behavior:'smooth'});
+    }).catch(function(err){
+      console.error('Gallery submit error:',err);
+      alert('Could not upload — please try again.');
+    }).then(function(){
+      gbSubmit.disabled=false;
+      gbSubmit.textContent='Submit to gallery';
     });
-    localStorage.setItem('eu-guestbook',JSON.stringify(gbEntries));
-    gbModal.classList.remove('is-open');
-    renderGuestbook();
-    var gbSection=document.getElementById('euGuestbook');
-    if(gbSection)gbSection.scrollIntoView({behavior:'smooth'});
   };
 
   // Init canvas size on first open
