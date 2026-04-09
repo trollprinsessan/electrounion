@@ -1299,18 +1299,45 @@
 }
 .eu-draw__dl-btn--primary:hover{background:none;color:#000;border-bottom-color:#000}
 .eu-draw__dl-btn--guestbook{
-  background:none;
-  color:#000;
-  border-bottom:1px solid #ccc;
+  background:#000;
+  color:#fff;
+  border-bottom:none;
+  text-align:center;
+  margin-top:clamp(4px,.6vw,8px);
 }
 .eu-draw__dl-btn--guestbook::after{
   content:'→';
+  opacity:.6;
 }
 .eu-draw__dl-btn--guestbook:hover{
-  background:none;
-  color:#000;
-  border-bottom-color:#000;
+  background:#333;
+  color:#fff;
+  border-bottom:none;
 }
+
+/* ═══ STICKY TOOLKIT LINK ═══ */
+.eu-toolkit-sticky{
+  position:fixed;
+  bottom:16px;
+  right:16px;
+  z-index:99998;
+  display:none;
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,10px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#000;
+  background:#fff;
+  border:none;
+  padding:8px 14px;
+  cursor:pointer;
+  transition:opacity .15s;
+  line-height:1;
+}
+.eu-toolkit-sticky:hover{
+  opacity:.6;
+}
+.eu-toolkit-sticky.is-visible{display:block}
 
 /* ═══ SOUND TOGGLE ═══ */
 .eu-sound-controls{
@@ -1341,6 +1368,17 @@
 }
 .eu-sound-toggle:hover,.eu-sound-next:hover{opacity:1}
 .eu-sound-toggle svg,.eu-sound-next svg{width:14px;height:14px}
+
+/* ═══ SCROLL REVEAL — progressive top-to-bottom load ═══ */
+.eu-reveal{
+  visibility:hidden;
+}
+.eu-reveal.eu-loading,.eu-reveal.eu-load-done{
+  visibility:visible;
+}
+.eu-reveal.eu-load-done{
+  clip-path:none !important;
+}
 
 /* ═══ WELCOME ═══ */
 /* ═══ ROMAN GATE (scroll-driven) ═══ */
@@ -1717,7 +1755,33 @@
   .eu-guestbook{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
 
   /* Generator */
-  .eu-gen__framed{max-width:90%}
+  .eu-gen{padding:clamp(10px,2vw,20px) clamp(16px,4vw,28px) clamp(40px,6vw,80px)}
+  .eu-gen__framed{max-width:100%;z-index:1}
+  .eu-gen__caption{margin-top:clamp(12px,3vw,18px)}
+  .eu-gen__shuffle-link{font-size:clamp(11px,3vw,14px)}
+  .eu-gen__sign{
+    flex-direction:column;
+    align-items:stretch;
+    max-width:100%;
+    margin-top:clamp(14px,3.5vw,20px);
+    gap:6px;
+  }
+  .eu-gen__sign-label{
+    text-align:center;
+    font-size:clamp(9px,2.4vw,11px);
+  }
+  .eu-gen__byline{
+    text-align:center;
+    font-size:clamp(14px,3.8vw,16px);
+    padding:8px 10px;
+  }
+  .eu-gen__dl-wrap{margin-top:clamp(12px,3vw,18px)}
+  .eu-gen-dl{
+    max-width:100%;
+    font-size:clamp(12px,3.2vw,15px);
+    padding:clamp(12px,3.5vw,18px) 20px;
+  }
+
 
   /* Cards grid */
   .eu-pap__grid{grid-template-columns:repeat(2,1fr)}
@@ -1732,6 +1796,7 @@
     padding:0;
   }
   .eu-draw__area{max-width:100%}
+  .eu-draw__framed{min-height:280px}
   .eu-draw__panel-col{
     flex:none;
     width:100%;
@@ -1799,11 +1864,11 @@
     gap:clamp(12px,3vw,18px);
   }
   .eu-guestbook__gif{width:clamp(140px,40vw,200px)}
-  .eu-guestbook__header{flex-direction:column;align-items:flex-start}
+  .eu-guestbook__header{flex-direction:column;align-items:center}
   .eu-guestbook__header-text{text-align:left}
   .eu-guestbook__header{
     flex-direction:column;
-    align-items:flex-start;
+    align-items:center;
     gap:8px;
   }
 
@@ -1817,13 +1882,22 @@
 
   /* Music player */
   .eu-player{
-    padding:clamp(12px,3vw,18px);
+    padding:clamp(10px,2.5vw,14px);
+    width:clamp(160px,50vw,240px);
   }
+  .eu-player__now{font-size:clamp(14px,4vw,22px)}
+  .eu-player__btn{font-size:clamp(10px,2.5vw,14px)}
+  .eu-player__btn--play{
+    width:clamp(24px,7vw,32px);
+    height:clamp(24px,7vw,32px);
+    font-size:clamp(12px,3vw,18px);
+  }
+  .eu-player__track{font-size:clamp(7px,2vw,10px)}
 
   /* Gate scene */
   .eu-gate-scene{height:160vh}
   .eu-gate-scene__tagline{
-    font-size:clamp(22px,7vw,40px);
+    font-size:clamp(30px,9.5vw,50px);
     max-width:90%;
   }
   .eu-gate-scene__logo{width:70px}
@@ -1832,7 +1906,8 @@
     font-size:clamp(12px,3.5vw,15px);
   }
   .eu-gate-scene__preamble-btn{
-    max-width:clamp(200px,55vw,300px);
+    max-width:clamp(240px,65vw,340px);
+    margin-top:clamp(18px,5vw,32px);
   }
   .eu-gate-scene__left img,
   .eu-gate-scene__right img{
@@ -1844,6 +1919,36 @@
     font-size:clamp(11px,3vw,16px);
     padding:clamp(10px,3vw,16px) clamp(12px,4vw,24px);
   }
+  .eu-sharables{margin-bottom:clamp(20px,5vw,40px)}
+
+  /* Statement spacing */
+  .eu-statement{margin-bottom:clamp(20px,5vw,40px)}
+
+  /* Generator badges — repositioned for mobile, still background-slapped */
+  .eu-gen__badge--heart{
+    width:clamp(90px,26vw,130px);
+    right:-20px;
+    top:55%;
+    z-index:0;
+  }
+  .eu-gen__badge--green{
+    display:none;
+  }
+  .eu-gen__badge--plugin{
+    display:none;
+  }
+
+  /* Drawing canvas centered */
+  .eu-draw__area{margin:0 auto}
+  .eu-draw__framed{margin:0 auto}
+
+  /* I approve button — single row */
+  .eu-bar__cta{font-size:clamp(18px,5.5vw,32px);white-space:nowrap}
+  .eu-checkbox{
+    width:clamp(22px,5.5vw,32px);
+    height:clamp(22px,5.5vw,32px);
+  }
+  .eu-bar__initial{gap:clamp(8px,2vw,14px)}
 
   /* Intro title */
   .eu-draw__intro-title{
@@ -1878,6 +1983,9 @@
   .eu-bar__cta{font-size:clamp(18px,6vw,28px)}
 }
 </style>
+
+<!-- ═══ STICKY TOOLKIT LINK ═══ -->
+<div class="eu-toolkit-sticky" id="euToolkitSticky">↑ Take me to the toolkit</div>
 
 <!-- ═══ SOUND CONTROLS ═══ -->
 <div class="eu-sound-controls" id="euSoundControls">
@@ -1914,13 +2022,13 @@
           <div class="eu-gate-scene__tagline">The good life deserves to be resilient.</div>
           <div class="eu-gate-scene__counter" id="euCounter">You and <span id="euCounterNum">12,848</span> others agree.</div>
           <div class="eu-gate-scene__preamble" id="euGatePreamble">
-            <div class="eu-gate-scene__preamble-text">Saying so out loud is half the point. In here, you will find pr&ecirc;t-&agrave;-porter sharables for your feeds or tools to generate your own version. All free, all yours, and for however you wish to plug it in.</div>
+            <div class="eu-gate-scene__preamble-text">Welcome to the Electro Union: a home for everyone who knows Europe's future runs on its own energy. In here you'll find sharables for your feeds and tools to make your own. All free, all yours, and for however you wish to plug it in.</div>
             <img class="eu-gate-scene__preamble-btn" src="Updated Imagery/animated-text-zoom.gif" alt="Download the Electro-Union Sharing Package">
           </div>
         </div>
         <div class="eu-gate-scene__scroll-hint" id="euScrollHint">
           <span>scroll</span>
-          <svg width="20" height="28" viewBox="0 0 20 28" fill="none"><path d="M10 2 L10 24 M3 18 L10 25 L17 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="20" height="18" viewBox="0 0 20 18" fill="none"><path d="M10 2 L10 12 M4 9 L10 16 L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="eu-gate-scene__left" id="euGateLeft">
           <img src="Updated Imagery/magnificent-roman-columns-isolated-white-background_787273-60762-removebg-preview.png" alt="">
@@ -1933,6 +2041,7 @@
 
     <!-- Generator -->
     <div class="eu-gen">
+      <div class="eu-gen__headline" style="font-family:var(--mono);font-size:clamp(9px,1vw,11px);text-transform:uppercase;letter-spacing:.06em;color:var(--ink);text-align:center;margin-bottom:clamp(14px,2vw,24px);">Make your own postcard</div>
       <div class="eu-gen__framed">
         <img class="eu-gen__frame" src="Updated Imagery/FRAME1 UPDATED.png" alt="">
         <div class="eu-photo" id="euPv">
@@ -1949,7 +2058,7 @@
         <input type="text" class="eu-gen__byline" id="euBylineInput" placeholder="your name, city, or message" maxlength="40">
       </div>
       <div class="eu-gen__dl-wrap">
-        <div class="eu-gen-dl" id="euDl">Download your postcard</div>
+        <div class="eu-gen-dl" id="euDl">Download</div>
       </div>
       <img class="eu-gen__badge eu-gen__badge--heart" src="Updated Imagery/Screenshot 2026-04-07 at 15.03.03.png" alt="I love Electro Union">
       <img class="eu-gen__badge eu-gen__badge--green" src="Updated Imagery/Greenlogo.png" alt="Electro Union green badge">
@@ -1958,7 +2067,7 @@
 
     <!-- View all sharables (foldout) -->
     <div class="eu-sharables" id="euSharables">
-      <div class="eu-sharables__toggle" id="euSharablesBtn">OPEN THE TOOLKIT — HERE'S EVERYTHING YOU NEED TO SPREAD THE WORD <span class="eu-sharables__arrow">&#9660;</span></div>
+      <div class="eu-sharables__toggle" id="euSharablesBtn">CLICK HERE TO OPEN THE TOOLKIT <span class="eu-sharables__arrow">&#9660;</span></div>
       <div class="eu-sharables__content">
         <div class="eu-sharables__inner">
           <div class="eu-pap__nav">
@@ -2091,7 +2200,7 @@
       <div class="eu-shop-header">
         <div class="eu-shop-header__title">Shop</div>
         <div class="eu-shop-header__meta">
-          <span class="eu-shop-header__launch">Launching Q3 2026</span>
+          <span class="eu-shop-header__launch">Coming in 2026: Pre-order opens soon</span>
           <select class="eu-shop-header__currency">
             <option>EUR &euro;</option>
             <option>SEK kr</option>
@@ -2174,7 +2283,7 @@
           <span>Pick a pencil. Make it dance. Put your name on it.</span>
           <img src="Updated Imagery/045.png" alt="Kanelbulle">
           <span>This is your grid.</span>
-          <img src="Updated Imagery/baklava.png" alt="Baklava">
+          <img src="Updated Imagery/baklava_udate.png" alt="Baklava">
           <img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette">
           <img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács">
           <img src="Updated Imagery/danish.png" alt="Danish">
@@ -2187,7 +2296,7 @@
           <span>Pick a pencil. Make it dance. Put your name on it.</span>
           <img src="Updated Imagery/045.png" alt="Kanelbulle">
           <span>This is your grid.</span>
-          <img src="Updated Imagery/baklava.png" alt="Baklava">
+          <img src="Updated Imagery/baklava_udate.png" alt="Baklava">
           <img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette">
           <img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács">
           <img src="Updated Imagery/danish.png" alt="Danish">
@@ -2211,7 +2320,7 @@
               <div class="eu-draw__stamp is-active" data-stamp="0"><img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette"></div>
               <div class="eu-draw__stamp" data-stamp="1"><img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel"></div>
               <div class="eu-draw__stamp" data-stamp="2"><img src="Updated Imagery/045.png" alt="Kanelbulle"></div>
-              <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava.png" alt="Baklava"></div>
+              <div class="eu-draw__stamp" data-stamp="3"><img src="Updated Imagery/baklava_udate.png" alt="Baklava"></div>
               <div class="eu-draw__stamp" data-stamp="4"><img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács"></div>
               <div class="eu-draw__stamp" data-stamp="5"><img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant"></div>
               <div class="eu-draw__stamp" data-stamp="6"><img src="Updated Imagery/danish.png" alt="Danish"></div>
@@ -2281,7 +2390,7 @@
         </div>
       </div>
       <div class="eu-guestbook__grid" id="euGbGrid">
-        <div class="eu-guestbook__empty">No entries yet. Be the first to sign.</div>
+        <div class="eu-guestbook__empty">The Pastry Art Gallery: make one above and add it.</div>
       </div>
     </div>
 
@@ -2296,7 +2405,7 @@
         <input class="eu-gb-modal__input" id="euGbName" type="text" placeholder="Your name or organisation" maxlength="60">
         <label class="eu-gb-modal__label">Country</label>
         <input class="eu-gb-modal__input" id="euGbCountry" type="text" placeholder="Sweden, France, Germany..." maxlength="40">
-        <div class="eu-gb-modal__submit" id="euGbSubmit">Add to guestbook</div>
+        <div class="eu-gb-modal__submit" id="euGbSubmit">Add to gallery</div>
       </div>
     </div>
 
@@ -2711,14 +2820,19 @@
   var bgColorPicker=document.getElementById('euBgColorPicker');
   var bgSwatch=document.getElementById('euBgSwatch');
 
+  // First sticker click sets the background watermark; after that only changes active stamp
+  var bgStickerLocked=false;
   bgOpts.forEach(function(o){
     o.onclick=function(){
       bgOpts.forEach(function(x){x.classList.remove('is-active')});
       o.classList.add('is-active');
-      bgImageSrc=o.getAttribute('data-bg');
-      bgImg=new Image();bgImg.src=bgImageSrc;
-      bgImg.onload=function(){renderAll();};
-      // Also set as active stamp for placing on canvas
+      // Only change background sticker if no placements yet
+      if(!bgStickerLocked){
+        bgImageSrc=o.getAttribute('data-bg');
+        bgImg=new Image();bgImg.src=bgImageSrc;
+        bgImg.onload=function(){renderAll();};
+      }
+      // Always set as active stamp for placing on canvas
       var si=o.getAttribute('data-sticker');
       if(si!==null){
         activeStamp=stickerStartIdx+parseInt(si);
@@ -2752,7 +2866,7 @@
     });
   }
 
-  var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava.png','Updated Imagery/kürtőskalács.png','Updated Imagery/pngimg.com - croissant_PNG46722.png','Updated Imagery/danish.png','Updated Imagery/pastelnata.webp','Updated Imagery/sernik.png'];
+  var stampSrcs=['Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp','Updated Imagery/DSC_0410-a.png','Updated Imagery/045.png','Updated Imagery/baklava_udate.png','Updated Imagery/kürtőskalács.png','Updated Imagery/pngimg.com - croissant_PNG46722.png','Updated Imagery/danish.png','Updated Imagery/pastelnata.webp','Updated Imagery/sernik.png'];
   // Sticker sources (placeable on canvas via tap)
   var stickerSrcs=['Updated Imagery/Greenlogo.png','Updated Imagery/Blue logo.png','STICKERS/Sticker1.png','STICKERS/Sticker2.png'];
   var stickerStartIdx=stampSrcs.length;
@@ -2915,6 +3029,7 @@
     lastPlaceTime=now;
     var size=Math.max(30,drawCanvas.width*0.06)*parseFloat(sizeSlider.value);
     placements.push({x:x,y:y,sz:size,si:activeStamp});
+    bgStickerLocked=true;
     if(animMode==='none') renderAll();
   }
 
@@ -2955,6 +3070,7 @@
   // Clear all
   document.getElementById('euDrawClear').onclick=function(){
     placements=[];
+    bgStickerLocked=false;
     renderAll();
   };
 
@@ -3202,7 +3318,7 @@
   function renderGuestbook(){
     if(!gbGrid)return;
     if(gbEntries.length===0){
-      gbGrid.innerHTML='<div class="eu-guestbook__empty">No entries yet. Be the first to sign.</div>';
+      gbGrid.innerHTML='<div class="eu-guestbook__empty">The Pastry Art Gallery: make one above and add it.</div>';
     }else{
       gbGrid.innerHTML='';
       for(var i=gbEntries.length-1;i>=0;i--){
@@ -3308,9 +3424,12 @@
   var drawObserver=new MutationObserver(function(){
     if(el.classList.contains('is-open')){
       setTimeout(resizeDrawCanvas,100);
+      setTimeout(resizeDrawCanvas,500);
+      setTimeout(resizeDrawCanvas,1500);
     }
   });
   drawObserver.observe(el,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('resize',resizeDrawCanvas);
   // ═══ GATE SCROLL ANIMATION (CSS sticky — no JS pinning) ═══
   var gateScene=document.getElementById('euGateScene');
   var gateLeft=document.getElementById('euGateLeft');
@@ -3348,6 +3467,128 @@
     window.addEventListener('scroll',function(){requestAnimationFrame(updateGate);},{passive:true});
     updateGate();
   }
+
+  // ═══ Scroll reveal — progressive early-web load ═══
+  (function(){
+    // Target: images, merch items, cards, widget, draw workspace elements
+    var revealSelectors=[
+      '.eu-gen .eu-photo',
+      '.eu-gen .eu-gen__sign',
+      '.eu-gen .eu-gen__dl-wrap',
+      '.eu-gen .eu-gen__caption',
+      '.eu-gen .eu-sticker',
+      '.eu-merch .eu-widget',
+      '.eu-merch .eu-shop-header',
+      '.eu-merch__item',
+      '.eu-draw__marquee',
+      '.eu-draw__framed',
+      '.eu-draw__panel-col',
+      '.eu-guestbook__header',
+      '.eu-guestbook__card',
+      '.eu-statement',
+      '.eu-ticker'
+    ];
+
+    revealSelectors.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(el){
+        el.classList.add('eu-reveal');
+      });
+    });
+
+    function progressiveLoad(el){
+      // Generate random crop stops
+      var stops=[];
+      var numStops=3+Math.floor(Math.random()*3); // 3-5 steps
+      for(var s=0;s<numStops;s++){
+        stops.push(Math.floor(10+Math.random()*80));
+      }
+      stops.sort(function(a,b){return a-b;});
+      stops.push(100);
+
+      el.classList.add('eu-loading');
+      el.style.clipPath='inset(0 0 '+(100-stops[0])+'% 0)';
+
+      var i=1;
+      function nextStep(){
+        if(i>=stops.length) return;
+        var pct=stops[i];
+        if(pct>=100){
+          el.classList.add('eu-load-done');
+          el.style.clipPath='';
+        }else{
+          el.style.clipPath='inset(0 0 '+(100-pct)+'% 0)';
+        }
+        i++;
+        if(i<=stops.length){
+          var delay=50+Math.random()*150;
+          setTimeout(nextStep,delay);
+        }
+      }
+      var firstDelay=40+Math.random()*120;
+      setTimeout(nextStep,firstDelay);
+    }
+
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          var delay=Math.random()*250;
+          setTimeout(function(){
+            progressiveLoad(entry.target);
+          },delay);
+          obs.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.01, rootMargin:'0px 0px -20px 0px'});
+
+    document.querySelectorAll('.eu-reveal').forEach(function(el){
+      obs.observe(el);
+    });
+  })();
+
+  // ═══ Sticky toolkit link ═══
+  (function(){
+    var stickyEl=document.getElementById('euToolkitSticky');
+    var sharablesEl=document.getElementById('euSharables');
+    var euRoot=document.getElementById('eu');
+    if(!stickyEl||!sharablesEl) return;
+
+    var obsStarted=false;
+    function startToolkitObs(){
+      if(obsStarted) return;
+      obsStarted=true;
+      var obs=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(!entry.isIntersecting){
+            // Check if user scrolled PAST (below) the sharables
+            var rect=sharablesEl.getBoundingClientRect();
+            if(rect.bottom<0){
+              stickyEl.classList.add('is-visible');
+            }else{
+              stickyEl.classList.remove('is-visible');
+            }
+          }else{
+            stickyEl.classList.remove('is-visible');
+          }
+        });
+      },{threshold:0});
+      obs.observe(sharablesEl);
+    }
+
+    // Only start after fold opens
+    var classObs=new MutationObserver(function(){
+      if(euRoot&&euRoot.classList.contains('is-open')){
+        setTimeout(startToolkitObs,2000);
+        classObs.disconnect();
+      }
+    });
+    if(euRoot) classObs.observe(euRoot,{attributes:true,attributeFilter:['class']});
+
+    // Click to scroll to toolkit
+    stickyEl.addEventListener('click',function(e){
+      e.stopPropagation();
+      sharablesEl.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  })();
 
 })();
 </script>
