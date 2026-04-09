@@ -1534,6 +1534,12 @@
   width:clamp(280px,36vw,420px);
   height:auto;
   display:block;
+  animation:eu-swing 3s ease-in-out infinite;
+  transform-origin:50% 0%;
+}
+@keyframes eu-swing{
+  0%,100%{transform:rotate(-4deg)}
+  50%{transform:rotate(4deg)}
 }
 .eu-guestbook__intro{
   font-family:var(--mono);
@@ -2417,7 +2423,7 @@
     <!-- Guestbook -->
     <div class="eu-guestbook" id="euGuestbook">
       <div class="eu-guestbook__header">
-        <img class="eu-guestbook__welcome" src="Updated Imagery/welcome.gif" alt="Welcome">
+        <img class="eu-guestbook__welcome" src="Updated Imagery/welcome.png" alt="Welcome">
         <div class="eu-guestbook__header-bar">
           <div class="eu-guestbook__intro">The Pastry Art Gallery</div>
           <div class="eu-guestbook__count" id="euGbCount">0 entries</div>
