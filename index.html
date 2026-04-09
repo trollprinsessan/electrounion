@@ -3563,8 +3563,8 @@
     for(var j=0;j<n;j++)u8[j]=bstr.charCodeAt(j);
     var blob=new Blob([u8],{type:mime});
 
-    // Reject uploads over 10 MB (safety net — generated GIFs at 1080x1080 can be 3-6 MB)
-    if(blob.size>10*1024*1024){
+    // Reject uploads over 20 MB
+    if(blob.size>20*1024*1024){
       alert('Image is too large to upload.');
       gbSubmit.disabled=false;
       gbSubmit.textContent='Add to gallery';
