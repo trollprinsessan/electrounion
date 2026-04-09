@@ -36,6 +36,7 @@
   --ink:#1a1a1a;
   --dim:#777;
   --mono:'ABC Schengen Mono','Courier New',monospace;
+  --eu-cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='24' viewBox='0 0 32 24'%3E%3Crect width='32' height='24' fill='%23003399'/%3E%3Cg fill='%23FFD700'%3E%3Cpolygon points='16,3.5 16.7,5.6 18.9,5.6 17.1,6.9 17.8,9 16,7.7 14.2,9 14.9,6.9 13.1,5.6 15.3,5.6'/%3E%3Cpolygon points='10.2,4.5 10.9,6.6 13.1,6.6 11.3,7.9 12,10 10.2,8.7 8.4,10 9.1,7.9 7.3,6.6 9.5,6.6'/%3E%3Cpolygon points='21.8,4.5 22.5,6.6 24.7,6.6 22.9,7.9 23.6,10 21.8,8.7 20,10 20.7,7.9 18.9,6.6 21.1,6.6'/%3E%3Cpolygon points='7.5,9 8.2,11.1 10.4,11.1 8.6,12.4 9.3,14.5 7.5,13.2 5.7,14.5 6.4,12.4 4.6,11.1 6.8,11.1'/%3E%3Cpolygon points='24.5,9 25.2,11.1 27.4,11.1 25.6,12.4 26.3,14.5 24.5,13.2 22.7,14.5 23.4,12.4 21.6,11.1 23.8,11.1'/%3E%3Cpolygon points='10.2,15 10.9,17.1 13.1,17.1 11.3,18.4 12,20.5 10.2,19.2 8.4,20.5 9.1,18.4 7.3,17.1 9.5,17.1'/%3E%3Cpolygon points='21.8,15 22.5,17.1 24.7,17.1 22.9,18.4 23.6,20.5 21.8,19.2 20,20.5 20.7,18.4 18.9,17.1 21.1,17.1'/%3E%3Cpolygon points='16,16 16.7,18.1 18.9,18.1 17.1,19.4 17.8,21.5 16,20.2 14.2,21.5 14.9,19.4 13.1,18.1 15.3,18.1'/%3E%3C/g%3E%3C/svg%3E") 4 4, pointer;
   color:var(--ink);
   background:var(--cream);
   position:relative;
@@ -45,7 +46,7 @@
 .eu-bar{
   background:#fff;
   padding:clamp(28px,5vw,56px) 20px;
-  cursor:pointer;user-select:none;
+  cursor:var(--eu-cursor);user-select:none;
   position:relative;
   border-bottom:none;
   transition:background .15s;
@@ -154,7 +155,7 @@
 }
 .eu-gate-scene__preamble-btn{
   max-width:clamp(280px,40vw,420px);
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   transition:opacity .2s;
   margin-top:clamp(8px,1.5vw,16px);
 }
@@ -240,7 +241,7 @@
   overflow:hidden;
   background:#ddd;
   box-shadow:2px 4px 16px rgba(0,0,0,.15);
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   z-index:1;
 }
 .eu-photo__bg{
@@ -295,52 +296,56 @@
 }
 .eu-gen__shuffle-link{
   font-family:var(--mono);
-  font-size:clamp(10px,1vw,12px);
+  font-size:clamp(13px,1.5vw,17px);
   text-transform:uppercase;
   letter-spacing:.06em;
-  color:var(--dim);
-  cursor:pointer;
-  text-decoration:none;
-  transition:color .15s;
+  color:var(--ink);
+  cursor:var(--eu-cursor);
+  text-decoration:underline;
+  transition:opacity .15s;
 }
 .eu-gen__shuffle-link:hover{
-  color:var(--ink);
-  text-decoration:underline;
+  opacity:.6;
 }
 /* sign it section */
 .eu-gen__sign{
   display:flex;
   align-items:center;
-  justify-content:center;
   gap:clamp(8px,1.2vw,14px);
   margin-top:clamp(16px,2.5vw,28px);
+  width:100%;
+  max-width:350px;
+  margin-left:auto;
+  margin-right:auto;
 }
 .eu-gen__sign-label{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(12px,1.4vw,16px);
-  font-style:italic;
-  color:var(--dim);
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  font-style:normal;
+  color:var(--ink);
+  text-transform:uppercase;
+  letter-spacing:.06em;
   white-space:nowrap;
 }
 .eu-gen__byline{
-  font-family:var(--mono);
-  font-size:clamp(11px,1.2vw,13px);
+  font-family:'Times New Roman',Times,serif;
+  font-size:clamp(12px,1.3vw,14px);
   font-weight:normal;
-  border:none;
-  border-bottom:1.5px solid #ccc;
-  background:transparent;
-  color:var(--ink);
-  padding:4px 2px;
-  width:clamp(200px,28vw,340px);
+  border:2px inset #ccc;
+  background:#fff;
+  color:#000;
+  padding:3px 4px;
+  flex:1;
   outline:none;
-  letter-spacing:0.02em;
+  letter-spacing:0;
+  box-shadow:inset 1px 1px 2px rgba(0,0,0,.15);
 }
 .eu-gen__byline::placeholder{
-  color:#bbb;
-  font-style:italic;
+  color:#888;
+  font-style:normal;
 }
 .eu-gen__byline:focus{
-  border-color:var(--ink);
+  border-color:#000;
 }
 /* download CTA */
 .eu-gen__dl-wrap{
@@ -348,24 +353,29 @@
   margin-top:clamp(14px,2vw,24px);
 }
 .eu-gen-dl{
-  display:inline-block;
+  display:block;
+  width:100%;
+  max-width:350px;
+  margin-left:auto;
+  margin-right:auto;
+  box-sizing:border-box;
   font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
-  font-size:clamp(13px,1.6vw,18px);
+  font-size:clamp(11px,1.35vw,15px);
   font-weight:normal;
   text-transform:uppercase;
-  letter-spacing:.03em;
+  letter-spacing:.06em;
   text-align:center;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   line-height:1;
-  padding:clamp(10px,1.4vw,16px) clamp(28px,5vw,60px);
-  transition:background .15s;
+  padding:clamp(10px,1.4vw,16px) clamp(16px,2.5vw,28px);
+  transition:opacity .15s;
   text-decoration:none;
   border:none;
-  background:var(--blue);
+  background:#000;
   color:#fff;
 }
 .eu-gen-dl:hover{
-  background:#001a66;
+  opacity:.7;
 }
 
 /* ═══ SHARABLES FOLDOUT ═══ */
@@ -379,7 +389,7 @@
   text-transform:uppercase;
   letter-spacing:.03em;
   color:#009246;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -423,7 +433,7 @@
   text-transform:uppercase;
   letter-spacing:0.03em;
   color:#000;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   padding:4px 0;
   border:none;
   border-bottom:2px solid transparent;
@@ -490,7 +500,7 @@
   border:none;
   color:#fff;
   background:var(--blue);
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   transition:opacity .15s;
   text-decoration:none;
   text-align:center;
@@ -519,7 +529,7 @@
   line-height:1.5;
   color:var(--ink);
   position:relative;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
 }
 .eu-pap__msg:hover{background:#f4f4f4}
 .eu-pap__msg-copy{
@@ -534,7 +544,7 @@
   background:#fff;
   border:1px solid var(--blue);
   padding:3px 8px;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
 }
 .eu-pap__msg-copy:hover{background:var(--blue);color:#fff}
 
@@ -614,7 +624,7 @@
 .eu-player__btn{
   font-size:clamp(12px,1.6vw,18px);
   color:var(--ink);
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   user-select:none;
   transition:opacity .1s;
   line-height:1;
@@ -636,7 +646,7 @@
   height:3px;
   background:#ddd;
   margin-bottom:clamp(10px,1.5vw,16px);
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   position:relative;
 }
 .eu-player__progress{
@@ -655,7 +665,7 @@
   letter-spacing:.04em;
   color:#999;
   padding:clamp(3px,.4vw,5px) 0;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   transition:color .1s;
   border-bottom:1px solid #eee;
 }
@@ -685,11 +695,141 @@
 
 /* ═══ MERCHANDISE ═══ */
 .eu-merch{
-  padding:clamp(30px,5vw,60px) clamp(40px,6vw,80px);
+  padding:clamp(40px,6vw,80px) clamp(24px,4vw,80px);
+  max-width:1200px;
+  margin:0 auto;
+}
+/* ═══ SHOP HEADER ═══ */
+.eu-shop-header{
+  display:flex;
+  justify-content:flex-end;
+  align-items:baseline;
+  margin-bottom:clamp(30px,4vw,50px);
+}
+.eu-shop-header__title{
+  display:none;
+}
+.eu-shop-header__meta{
+  display:flex;
+  align-items:baseline;
+  gap:clamp(16px,2.5vw,32px);
+}
+.eu-shop-header__launch{
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--dim);
+}
+.eu-shop-header__currency{
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+  border:1px solid #ddd;
+  padding:4px 10px;
+  background:none;
+  cursor:var(--eu-cursor);
+}
+.eu-shop-header__currency:hover{border-color:#000;color:#000}
+/* ═══ PRODUCT GRID ═══ */
+.eu-merch__grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:clamp(30px,5vw,60px);
+}
+.eu-merch-item{
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  position:relative;
+  overflow:hidden;
+}
+.eu-merch-item__img{
+  width:100%;
+  aspect-ratio:1/1;
+  background:transparent;
+  display:flex;align-items:center;justify-content:center;
+  overflow:visible;
+  position:relative;
+}
+.eu-merch-item__img img{
+  max-width:70%;max-height:70%;
+  object-fit:contain;
+  position:relative;
+  z-index:1;
+  transition:transform .3s ease;
+}
+.eu-merch-item:hover .eu-merch-item__img img{
+  transform:scale(1.04);
+}
+.eu-merch-item--scarf .eu-merch-item__img img{
+  max-width:95%;max-height:95%;
+}
+.eu-merch-item--scarf .eu-merch-item__fireworks{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.eu-merch-item--scarf .eu-merch-item__fireworks img{
+  width:80%;height:80%;
+  object-fit:contain;
+}
+.eu-merch-item__info{
+  padding:clamp(6px,1vw,12px) 0 0;
+}
+.eu-merch-item__name{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(11px,1.1vw,14px);
+  font-weight:normal;
+  color:#000;
+  line-height:1.3;
+  text-transform:none;
+  margin-bottom:clamp(2px,.3vw,4px);
+  white-space:nowrap;
+}
+.eu-merch-item__price{
+  font-family:var(--mono);
+  font-size:clamp(10px,1.1vw,13px);
+  color:var(--dim);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:clamp(8px,1vw,12px);
+}
+.eu-merch-item__cart{
+  display:block;
+  width:100%;
+  font-family:var(--mono);
+  font-size:clamp(8px,.85vw,10px);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  padding:clamp(8px,1vw,12px) 0;
+  border:none;
+  background:none;
+  color:#bbb;
+  text-align:left;
+  cursor:not-allowed;
+  transition:all .15s;
+}
+.eu-merch-item__tag{
+  position:absolute;
+  top:clamp(8px,1vw,14px);
+  right:clamp(8px,1vw,14px);
+  font-family:var(--mono);
+  font-size:clamp(7px,.7vw,9px);
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#fff;
+  background:#000;
+  padding:3px 8px;
+  z-index:2;
 }
 /* ═══ 2000s WEB BADGE ═══ */
 .eu-widget{
-  margin:0 auto clamp(40px,5vw,60px);
+  margin:0 auto clamp(50px,7vw,80px);
   text-align:center;
 }
 .eu-widget__badge{
@@ -736,87 +876,9 @@
   0%,100%{visibility:hidden}
   50%{visibility:visible}
 }
-.eu-merch__title{
-  font-family:var(--mono);
-  font-size:clamp(12px,1.6vw,20px);
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  color:var(--red);
-  margin-bottom:clamp(20px,3vw,36px);
-  text-align:center;
-}
-.eu-merch-marquee{
-  overflow:hidden;
-  white-space:nowrap;
-  margin-bottom:clamp(20px,3vw,36px);
-}
-.eu-merch-marquee__inner{
-  display:inline-block;
-  animation:eu-merch-scroll 14s linear infinite;
-  font-family:var(--mono);
-  font-size:clamp(11px,1.4vw,16px);
-  text-transform:uppercase;
-  letter-spacing:.12em;
-  color:var(--red);
-}
-.eu-merch-marquee__inner span{
-  margin:0 clamp(10px,1.5vw,18px);
-}
-@keyframes eu-merch-scroll{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
-.eu-merch__grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:clamp(30px,5vw,60px);
-}
-.eu-merch-item{
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-}
-.eu-merch-item__img{
-  width:100%;
-  aspect-ratio:1/1;
-  background:transparent;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:clamp(6px,1vw,12px);
-  overflow:visible;
-  position:relative;
-}
-.eu-merch-item__img img{
-  max-width:80%;max-height:80%;
-  object-fit:contain;
-  position:relative;
-  z-index:1;
-}
-.eu-merch-item--scarf .eu-merch-item__img{
-  overflow:visible;
-}
-.eu-merch-item--scarf .eu-merch-item__img img{
-  max-width:120%;max-height:120%;
-}
-.eu-merch-item--scarf .eu-merch-item__fireworks{
-  position:absolute;
-  inset:0;
-  left:-60px;
-  z-index:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.eu-merch-item--scarf .eu-merch-item__fireworks img{
-  width:100%;height:100%;
-  object-fit:contain;
-  max-width:100%;max-height:100%;
-}
-.eu-merch-item__name{
-  font-family:var(--mono);
-  font-size:clamp(9px,1.1vw,14px);
-  text-transform:uppercase;
-  color:var(--ink);
-  line-height:1.3;
-}
+/* legacy marquee/title hidden */
+.eu-merch-marquee{display:none}
+.eu-merch__title{display:none}
 
 /* ═══ DRAWING SECTION ═══ */
 .eu-draw{
@@ -831,22 +893,38 @@
   margin-left:auto;
   margin-right:auto;
 }
-.eu-draw__intro-title{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(32px,5.5vw,70px);
-  font-weight:bold;
-  font-style:normal;
-  color:var(--blue);
-  line-height:1.2;
-  text-transform:uppercase;
-  letter-spacing:-0.02em;
-  margin-bottom:clamp(8px,1vw,12px);
+.eu-draw__intro-title{display:none}
+.eu-draw__intro-text{display:none}
+.eu-draw__marquee{
+  border:none;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:clamp(10px,1.5vw,18px) 0;
+  margin-bottom:clamp(30px,4vw,50px);
 }
-.eu-draw__intro-text{
+.eu-draw__marquee-inner{
+  display:inline-flex;
+  align-items:center;
+  animation:eu-pastry-scroll 28s linear infinite;
+}
+.eu-draw__marquee-inner span{
   font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(13px,1.4vw,16px);
-  color:#333;
-  line-height:1.45;
+  font-size:clamp(13px,1.6vw,18px);
+  font-style:italic;
+  color:var(--ink);
+  margin:0 clamp(10px,1.5vw,20px);
+  white-space:nowrap;
+}
+.eu-draw__marquee-inner img{
+  height:clamp(32px,4.5vw,56px);
+  width:auto;
+  object-fit:contain;
+  flex-shrink:0;
+  margin:0 clamp(6px,1vw,12px);
+}
+@keyframes eu-pastry-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 /* workspace: canvas left, controls right */
 .eu-draw__workspace{
@@ -867,15 +945,15 @@
   display:flex;
   flex-direction:column;
   gap:clamp(10px,1.4vw,14px);
-  border:1px solid #000;
-  padding:clamp(14px,2vw,22px);
-  border-radius:2px;
+  padding:0;
 }
 .eu-draw__section-title{
-  font-family:'Times Eighteen',Georgia,serif;
-  font-size:clamp(11px,1.3vw,14px);
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
   font-weight:normal;
   color:var(--ink);
+  text-transform:uppercase;
+  letter-spacing:.06em;
   margin-top:clamp(8px,1.2vw,14px);
 }
 .eu-draw__section-title:first-child{
@@ -939,7 +1017,7 @@
   width:clamp(36px,4.5vw,46px);
   height:clamp(36px,4.5vw,46px);
   flex-shrink:0;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   border:2px solid transparent;
   padding:4px;
   transition:border-color .15s;
@@ -954,16 +1032,18 @@
   display:flex;
   align-items:center;
   justify-content:center;
-  border:2px dashed #ccc;
-  cursor:pointer;
-  transition:border-color .15s;
+  width:clamp(28px,3.5vw,36px);
+  height:clamp(28px,3.5vw,36px);
+  border:1px dashed #000;
+  cursor:var(--eu-cursor);
+  transition:border-color .15s, background .15s;
 }
-.eu-draw__stamp--upload:hover{border-color:var(--blue)}
-.eu-draw__stamp--upload.is-active{border-color:var(--blue);border-style:solid}
+.eu-draw__stamp--upload:hover{border-color:#000;background:rgba(0,0,0,.05)}
+.eu-draw__stamp--upload.is-active{border-color:#000;border-style:solid}
 .eu-draw__upload-icon{
   font-family:var(--mono);
-  font-size:clamp(16px,2vw,22px);
-  color:#aaa;
+  font-size:clamp(12px,1.4vw,16px);
+  color:#000;
   line-height:1;
 }
 /* size slider — inline with label */
@@ -982,13 +1062,13 @@
   width:12px;height:12px;
   background:var(--blue);
   border-radius:50%;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
 }
 .eu-draw__size-slider::-moz-range-thumb{
   width:12px;height:12px;
   background:var(--blue);
   border-radius:50%;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   border:none;
 }
 /* inline row for size: label + slider side by side */
@@ -1031,7 +1111,7 @@
   text-transform:uppercase;
   letter-spacing:.06em;
   line-height:1;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   color:var(--dim);
   border:none;
   background:none;
@@ -1105,7 +1185,7 @@
   font-size:clamp(9px,1vw,11px);
   text-transform:uppercase;
   letter-spacing:.06em;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   color:var(--dim);
   line-height:1;
   transition:color .12s;
@@ -1121,7 +1201,7 @@
 }
 .eu-draw__bg-opt{
   width:30px;height:30px;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   border:2px solid transparent;
   padding:2px;
   background:#fff;
@@ -1139,7 +1219,7 @@
 }
 .eu-draw__bg-pick{
   width:26px;height:26px;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   border:2px solid transparent;
   padding:0;
 }
@@ -1152,7 +1232,7 @@
   width:26px;height:26px;
   border:2px solid transparent;
   padding:0;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
   background:#fff;
   position:relative;
 }
@@ -1162,7 +1242,7 @@
   inset:0;
   width:100%;height:100%;
   opacity:0;
-  cursor:pointer;
+  cursor:var(--eu-cursor);
 }
 .eu-draw__bg-color__swatch{
   width:100%;height:100%;
@@ -1188,37 +1268,79 @@
   display:block;
   width:100%;
   box-sizing:border-box;
-  font-family:'Times Eighteen',Georgia,'Times New Roman',serif;
-  font-size:clamp(13px,1.4vw,16px);
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
   font-weight:normal;
   line-height:1;
-  text-align:center;
-  cursor:pointer;
-  color:var(--ink);
-  border:1px solid #000;
+  text-align:left;
+  cursor:var(--eu-cursor);
+  color:#000;
+  border:none;
+  border-bottom:1px solid #ccc;
   transition:all .15s;
   background:none;
   text-transform:uppercase;
-  letter-spacing:.03em;
-  padding:clamp(10px,1.2vw,14px) clamp(14px,2vw,20px);
+  letter-spacing:.06em;
+  padding:clamp(8px,1vw,12px) 0;
   text-decoration:none;
 }
-.eu-draw__dl-btn:hover{background:#000;color:#fff;border-color:#000}
-.eu-draw__dl-btn--primary{
-  background:var(--blue);
-  color:#fff;
-  border-color:var(--blue);
+.eu-draw__dl-btn::after{
+  content:'↓';
+  float:right;
+  opacity:.4;
+  transition:opacity .15s;
 }
-.eu-draw__dl-btn--primary:hover{background:#001a66;color:#fff;border-color:#001a66}
+.eu-draw__dl-btn:hover{border-bottom-color:#000}
+.eu-draw__dl-btn:hover::after{opacity:1}
+.eu-draw__dl-btn--primary{
+  background:none;
+  color:#000;
+  border-bottom:1px solid #ccc;
+}
+.eu-draw__dl-btn--primary:hover{background:none;color:#000;border-bottom-color:#000}
 .eu-draw__dl-btn--guestbook{
   background:none;
-  color:var(--blue);
-  border:1px solid var(--blue);
+  color:#000;
+  border-bottom:1px solid #ccc;
+}
+.eu-draw__dl-btn--guestbook::after{
+  content:'→';
 }
 .eu-draw__dl-btn--guestbook:hover{
-  background:var(--blue);
-  color:#fff;
+  background:none;
+  color:#000;
+  border-bottom-color:#000;
 }
+
+/* ═══ SOUND TOGGLE ═══ */
+.eu-sound-controls{
+  position:fixed;
+  bottom:16px;
+  left:16px;
+  z-index:99999;
+  display:none;
+  align-items:center;
+  gap:6px;
+}
+.eu-sound-controls.is-visible{display:flex}
+.eu-sound-toggle,.eu-sound-next{
+  width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:none;
+  border:none;
+  cursor:pointer;
+  font-size:14px;
+  line-height:1;
+  color:#000;
+  opacity:.5;
+  transition:opacity .15s;
+  padding:0;
+}
+.eu-sound-toggle:hover,.eu-sound-next:hover{opacity:1}
+.eu-sound-toggle svg,.eu-sound-next svg{width:14px;height:14px}
 
 /* ═══ WELCOME ═══ */
 /* ═══ ROMAN GATE (scroll-driven) ═══ */
@@ -1324,7 +1446,199 @@
 }
 
 /* ═══ TICKER ═══ */
+/* ═══ GUESTBOOK ═══ */
+.eu-guestbook{
+  padding:clamp(40px,6vw,80px) clamp(24px,4vw,80px);
+  max-width:1200px;
+  margin:0 auto;
+}
+.eu-guestbook__header{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-bottom:clamp(30px,4vw,50px);
+  gap:clamp(10px,1.4vw,16px);
+}
+.eu-guestbook__header-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  width:100%;
+}
+.eu-guestbook__welcome{
+  width:clamp(280px,36vw,420px);
+  height:auto;
+  display:block;
+}
+.eu-guestbook__intro{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.eu-guestbook__header-text{
+  text-align:right;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(4px,.6vw,8px);
+}
+.eu-guestbook__title{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(18px,2.4vw,30px);
+  color:var(--ink);
+  font-weight:normal;
+}
+.eu-guestbook__subtitle{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+}
+.eu-guestbook__count{
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--dim);
+}
+.eu-guestbook__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:clamp(16px,2.5vw,28px);
+}
+.eu-guestbook__card{
+  display:flex;
+  flex-direction:column;
+}
+.eu-guestbook__card-img{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#f5f5f5;
+  overflow:hidden;
+  margin-bottom:clamp(6px,.8vw,10px);
+}
+.eu-guestbook__card-img img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.eu-guestbook__card-msg{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(12px,1.2vw,15px);
+  font-style:normal;
+  color:var(--ink);
+  line-height:1.35;
+  margin-bottom:clamp(2px,.3vw,4px);
+}
+.eu-guestbook__card-name{
+  font-family:var(--mono);
+  font-size:clamp(8px,.9vw,11px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.eu-guestbook__card-meta{
+  font-family:var(--mono);
+  font-size:clamp(7px,.75vw,9px);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--ink);
+}
+.eu-guestbook__empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:clamp(40px,6vw,80px) 0;
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(16px,2vw,22px);
+  font-style:italic;
+  color:#bbb;
+}
+/* guestbook modal overlay */
+.eu-gb-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.5);
+  align-items:center;
+  justify-content:center;
+}
+.eu-gb-modal.is-open{
+  display:flex;
+}
+.eu-gb-modal__box{
+  background:#fff;
+  width:clamp(320px,40vw,480px);
+  padding:clamp(24px,3vw,40px);
+  position:relative;
+}
+.eu-gb-modal__close{
+  position:absolute;
+  top:12px;right:16px;
+  font-family:var(--mono);
+  font-size:14px;
+  cursor:var(--eu-cursor);
+  color:var(--dim);
+  background:none;border:none;
+}
+.eu-gb-modal__close:hover{color:#000}
+.eu-gb-modal__preview{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#f5f5f5;
+  margin-bottom:clamp(14px,2vw,22px);
+  overflow:hidden;
+}
+.eu-gb-modal__preview img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.eu-gb-modal__label{
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.4vw,16px);
+  color:#000;
+  margin-bottom:clamp(6px,.8vw,10px);
+  display:block;
+}
+.eu-gb-modal__input{
+  width:100%;
+  box-sizing:border-box;
+  font-family:'Times Eighteen',Georgia,serif;
+  font-size:clamp(13px,1.4vw,16px);
+  font-style:italic;
+  border:none;
+  border-bottom:1px solid #ccc;
+  padding:8px 0;
+  outline:none;
+  color:var(--ink);
+  background:none;
+  margin-bottom:clamp(16px,2vw,24px);
+}
+.eu-gb-modal__input:focus{border-bottom-color:#000}
+.eu-gb-modal__input::placeholder{color:#bbb}
+.eu-gb-modal__submit{
+  display:block;
+  width:100%;
+  font-family:var(--mono);
+  font-size:clamp(9px,1vw,12px);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  padding:clamp(10px,1.2vw,14px) 0;
+  border:1px solid #000;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  cursor:var(--eu-cursor);
+  transition:all .15s;
+}
+.eu-gb-modal__submit:hover{background:var(--blue);border-color:var(--blue)}
+
 .eu-ticker{
+  display:none;
   background:var(--blue);
   color:var(--cream);
   overflow:hidden;
@@ -1348,15 +1662,233 @@
   image-rendering:pixelated;
 }
 
+/* ═══ TABLET ═══ */
+@media(max-width:1024px){
+  .eu-draw__workspace{
+    flex-direction:column;
+    margin:0;
+    padding:0;
+  }
+  .eu-draw__area{
+    max-width:100%;
+  }
+  .eu-draw__panel-col{
+    flex:none;
+    width:100%;
+    margin-top:clamp(20px,3vw,30px);
+  }
+  .eu-draw__panel{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(14px,2vw,20px);
+  }
+  .eu-draw__section-title{
+    grid-column:1/-1;
+    margin-top:clamp(4px,.6vw,8px);
+  }
+  .eu-draw__stamp-row{
+    grid-column:1/-1;
+  }
+  .eu-draw__size-slider{
+    grid-column:1/-1;
+  }
+  .eu-draw__options-row{grid-column:1/-1}
+  .eu-draw__bg-picker-row{grid-column:1/-1}
+  .eu-draw__anim-row{grid-column:1/-1}
+  .eu-draw__undo-row{grid-column:1/-1}
+  .eu-draw__actions{
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:100%;
+    gap:clamp(8px,1.2vw,12px);
+  }
+  .eu-draw__dl-btn{
+    flex:1;
+    min-width:140px;
+  }
+  .eu-merch__grid{grid-template-columns:repeat(2,1fr)}
+}
+
 /* ═══ MOBILE ═══ */
 @media(max-width:700px){
-  .eu-pap__grid{grid-template-columns:repeat(2,1fr)}
+  /* General spacing */
+  .eu-draw{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
+  .eu-merch{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
+  .eu-guestbook{padding:clamp(24px,5vw,40px) clamp(16px,4vw,24px)}
+
+  /* Generator */
   .eu-gen__framed{max-width:90%}
-  .eu-merch__grid{grid-template-columns:repeat(2,1fr)}
+
+  /* Cards grid */
+  .eu-pap__grid{grid-template-columns:repeat(2,1fr)}
+
+  /* Statement */
+  .eu-statement{padding:clamp(40px,8vw,60px) clamp(16px,4vw,24px)}
+
+  /* Drawing section */
+  .eu-draw__workspace{
+    flex-direction:column;
+    margin:0;
+    padding:0;
+  }
+  .eu-draw__area{max-width:100%}
+  .eu-draw__panel-col{
+    flex:none;
+    width:100%;
+    margin-top:20px;
+  }
+  .eu-draw__panel{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .eu-draw__stamp{
+    width:clamp(40px,11vw,54px);
+    height:clamp(40px,11vw,54px);
+  }
+  .eu-draw__bg-pick{width:30px;height:30px}
+  .eu-draw__bg-color{width:30px;height:30px}
+  .eu-draw__actions{
+    flex-direction:column;
+    width:100%;
+    padding:0;
+  }
+  .eu-draw__dl-btn{
+    flex:none;
+    min-width:0;
+    width:100%;
+    padding:clamp(12px,2.5vw,16px) 0;
+  }
   .eu-draw__toolbar-group--row{flex-direction:column;align-items:flex-start;gap:8px}
   .eu-draw__toolbar-group--inline{flex-wrap:wrap}
+
+  /* Shop / Merch */
+  .eu-merch__grid{grid-template-columns:repeat(2,1fr);gap:clamp(16px,4vw,24px)}
+  .eu-shop-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+  .eu-shop-header__meta{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .eu-merch-item__img{aspect-ratio:1/1}
+  .eu-merch-item__name{font-size:clamp(10px,2.8vw,13px)}
+  .eu-merch-item__price{font-size:clamp(9px,2.4vw,11px)}
+  .eu-merch-item__cart{font-size:clamp(7px,2vw,9px)}
+  .eu-merch-item__tag{font-size:clamp(6px,1.6vw,8px);padding:2px 6px}
+
+  /* Widget badge */
+  .eu-widget__badge{
+    width:280px;
+    height:54px;
+  }
+  .eu-widget__badge-text{font-size:8px;padding:0 4px}
+
+  /* Nav tabs */
+  .eu-pap__nav{
+    gap:clamp(10px,3vw,16px);
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+
+  /* Guestbook */
+  .eu-guestbook__grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:clamp(12px,3vw,18px);
+  }
+  .eu-guestbook__gif{width:clamp(140px,40vw,200px)}
+  .eu-guestbook__header{flex-direction:column;align-items:flex-start}
+  .eu-guestbook__header-text{text-align:left}
+  .eu-guestbook__header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+  /* Modal */
+  .eu-gb-modal__box{
+    width:calc(100vw - 32px);
+    max-height:90vh;
+    overflow-y:auto;
+    padding:clamp(16px,4vw,24px);
+  }
+
+  /* Music player */
+  .eu-player{
+    padding:clamp(12px,3vw,18px);
+  }
+
+  /* Gate scene */
+  .eu-gate-scene{height:160vh}
+  .eu-gate-scene__tagline{
+    font-size:clamp(22px,7vw,40px);
+    max-width:90%;
+  }
+  .eu-gate-scene__logo{width:70px}
+  .eu-gate-scene__preamble-text{
+    max-width:90%;
+    font-size:clamp(12px,3.5vw,15px);
+  }
+  .eu-gate-scene__preamble-btn{
+    max-width:clamp(200px,55vw,300px);
+  }
+  .eu-gate-scene__left img,
+  .eu-gate-scene__right img{
+    height:70%;
+  }
+
+  /* Sharables toggle */
+  .eu-sharables__toggle{
+    font-size:clamp(11px,3vw,16px);
+    padding:clamp(10px,3vw,16px) clamp(12px,4vw,24px);
+  }
+
+  /* Intro title */
+  .eu-draw__intro-title{
+    font-size:clamp(22px,7vw,40px);
+  }
+  .eu-draw__intro{
+    max-width:100%;
+    padding:0 clamp(8px,2vw,16px);
+  }
+}
+
+/* ═══ SMALL MOBILE ═══ */
+@media(max-width:420px){
+  .eu-merch__grid{grid-template-columns:1fr 1fr;gap:12px}
+  .eu-merch-item__name{font-size:10px}
+  .eu-pap__grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .eu-guestbook__grid{grid-template-columns:1fr 1fr;gap:10px}
+  .eu-draw__stamp{
+    width:36px;
+    height:36px;
+    padding:2px;
+  }
+  .eu-draw__bg-pick{width:24px;height:24px}
+  .eu-draw__bg-color{width:24px;height:24px}
+  .eu-draw__bg-opt{width:24px;height:24px}
+  .eu-draw__section-title{font-size:11px}
+  .eu-widget__badge{
+    width:240px;
+    height:46px;
+  }
+  .eu-widget__badge-text{font-size:7px}
+  .eu-bar__cta{font-size:clamp(18px,6vw,28px)}
 }
 </style>
+
+<!-- ═══ SOUND CONTROLS ═══ -->
+<div class="eu-sound-controls" id="euSoundControls">
+  <button class="eu-sound-toggle" id="euSoundToggle" title="Toggle sound">
+    <svg id="euSoundOn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <svg id="euSoundOff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+  <button class="eu-sound-next" id="euSoundNext" title="Next track">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+  </button>
+</div>
 
 <div class="eu" id="eu">
 
@@ -1556,21 +2088,75 @@
           <span class="eu-widget__badge-text eu-widget__badge-text--right">COMING SOON</span>
         </div>
       </div>
+      <div class="eu-shop-header">
+        <div class="eu-shop-header__title">Shop</div>
+        <div class="eu-shop-header__meta">
+          <span class="eu-shop-header__launch">Launching Q3 2026</span>
+          <select class="eu-shop-header__currency">
+            <option>EUR &euro;</option>
+            <option>SEK kr</option>
+            <option>GBP &pound;</option>
+            <option>USD $</option>
+            <option>CHF Fr.</option>
+          </select>
+        </div>
+      </div>
       <div class="eu-merch__grid">
         <div class="eu-merch-item eu-merch-item--scarf">
           <div class="eu-merch-item__img">
             <div class="eu-merch-item__fireworks"><img src="Updated Imagery/WS2k.gif" alt=""></div>
             <img src="Updated Imagery/Scarf.png" alt="">
+            <div class="eu-merch-item__tag">Pre-order</div>
           </div>
-          <div class="eu-merch-item__name">Supporter Scarf &mdash; soon</div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Supporter Scarf</div>
+            <div class="eu-merch-item__price">&euro; 45.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
         </div>
         <div class="eu-merch-item">
-          <div class="eu-merch-item__img"><img src="Updated Imagery/Espressocup.png" alt="" style="max-width:65%;max-height:65%"></div>
-          <div class="eu-merch-item__name">Espresso Cup &mdash; soon</div>
+          <div class="eu-merch-item__img"><img src="Updated Imagery/Espressocup.png" alt=""></div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Espresso Cup &amp; Saucer</div>
+            <div class="eu-merch-item__price">&euro; 28.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
         </div>
         <div class="eu-merch-item">
-          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt="" style="max-width:90%;max-height:90%"></div>
-          <div class="eu-merch-item__name">Napkins &mdash; soon</div>
+          <div class="eu-merch-item__img"><img src="Updated Imagery/napkin.png" alt=""></div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Cocktail Napkins (set of 50)</div>
+            <div class="eu-merch-item__price">&euro; 18.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/FRISBEE.png" alt="">
+            <div class="eu-merch-item__tag">New</div>
+          </div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Campaign Frisbee</div>
+            <div class="eu-merch-item__price">&euro; 22.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/bottle carrier.png" alt=""></div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Six-Pack Carrier</div>
+            <div class="eu-merch-item__price">&euro; 35.00</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
+        </div>
+        <div class="eu-merch-item">
+          <div class="eu-merch-item__img"><img src="Updated Imagery/bubble2.png" alt="">
+            <div class="eu-merch-item__tag">Ltd. Edition</div>
+          </div>
+          <div class="eu-merch-item__info">
+            <div class="eu-merch-item__name">Bubblegum Sticks (13 pcs)</div>
+            <div class="eu-merch-item__price">&euro; 6.50</div>
+            <div class="eu-merch-item__cart">Add to basket</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1579,9 +2165,35 @@
 
     <!-- Drawing section -->
     <div class="eu-draw">
-      <div class="eu-draw__intro">
-        <div class="eu-draw__intro-title">The best bakes of the continent</div>
-        <div class="eu-draw__intro-text">From croissants &amp; stroopwafels to kürtőskalács and pastel de nata. The good life, in pastry form. Pick a pastry pencil, make it dance, share it. This is your grid.</div>
+      <div class="eu-draw__marquee">
+        <div class="eu-draw__marquee-inner">
+          <span>Only one continent puts croissants, stroopwafels, kürtőskalács and pastel de nata in the same single market.</span>
+          <img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant">
+          <span>The good life, in pastry form.</span>
+          <img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel">
+          <span>Pick a pencil. Make it dance. Put your name on it.</span>
+          <img src="Updated Imagery/045.png" alt="Kanelbulle">
+          <span>This is your grid.</span>
+          <img src="Updated Imagery/baklava.png" alt="Baklava">
+          <img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette">
+          <img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács">
+          <img src="Updated Imagery/danish.png" alt="Danish">
+          <img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata">
+          <img src="Updated Imagery/sernik.png" alt="Sernik">
+          <span>Only one continent puts croissants, stroopwafels, kürtőskalács and pastel de nata in the same single market.</span>
+          <img src="Updated Imagery/pngimg.com - croissant_PNG46722.png" alt="Croissant">
+          <span>The good life, in pastry form.</span>
+          <img src="Updated Imagery/DSC_0410-a.png" alt="Stroopwafel">
+          <span>Pick a pencil. Make it dance. Put your name on it.</span>
+          <img src="Updated Imagery/045.png" alt="Kanelbulle">
+          <span>This is your grid.</span>
+          <img src="Updated Imagery/baklava.png" alt="Baklava">
+          <img src="Updated Imagery/ai-generated-baguette-on-transparent-background-image-png.webp" alt="Baguette">
+          <img src="Updated Imagery/kürtőskalács.png" alt="Kürtőskalács">
+          <img src="Updated Imagery/danish.png" alt="Danish">
+          <img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata">
+          <img src="Updated Imagery/sernik.png" alt="Sernik">
+        </div>
       </div>
       <div class="eu-draw__workspace">
         <div class="eu-draw__area">
@@ -1605,10 +2217,6 @@
               <div class="eu-draw__stamp" data-stamp="6"><img src="Updated Imagery/danish.png" alt="Danish"></div>
               <div class="eu-draw__stamp" data-stamp="7"><img src="Updated Imagery/pastelnata.webp" alt="Pastel de Nata"></div>
               <div class="eu-draw__stamp" data-stamp="8"><img src="Updated Imagery/sernik.png" alt="Sernik"></div>
-              <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadLabel" title="Upload your own image">
-                <span class="eu-draw__upload-icon">+</span>
-                <input type="file" accept="image/*" id="euDrawUpload" style="display:none">
-              </label>
             </div>
             <input type="range" class="eu-draw__size-slider" id="euDrawSize" min="0.3" max="7.5" step="0.1" value="1">
             <div class="eu-draw__section-title">Stickers</div>
@@ -1618,6 +2226,10 @@
                 <div class="eu-draw__bg-opt" data-bg="Updated Imagery/Blue logo.png" data-sticker="1"><img src="Updated Imagery/Blue logo.png" alt="Blue Logo"></div>
                 <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker1.png" data-sticker="2"><img src="STICKERS/Sticker1.png" alt="Retro Sticker"></div>
                 <div class="eu-draw__bg-opt" data-bg="STICKERS/Sticker2.png" data-sticker="3"><img src="STICKERS/Sticker2.png" alt="Stars Logo"></div>
+                <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadSticker" title="Upload your own sticker">
+                  <span class="eu-draw__upload-icon">+</span>
+                  <input type="file" accept="image/*" id="euDrawUploadStickerInput" style="display:none">
+                </label>
               </div>
             </div>
             <div class="eu-draw__section-title">Change background</div>
@@ -1633,6 +2245,10 @@
                 <div class="eu-draw__bg-color__swatch" id="euBgSwatch"></div>
                 <input type="color" id="euBgColorPicker" value="#ffffff">
               </div>
+              <label class="eu-draw__stamp eu-draw__stamp--upload" id="euDrawUploadBg" title="Upload background image">
+                <span class="eu-draw__upload-icon">+</span>
+                <input type="file" accept="image/*" id="euDrawUploadBgInput" style="display:none">
+              </label>
             </div>
             <div class="eu-draw__section-title">Animate</div>
             <div class="eu-draw__anim-row">
@@ -1649,9 +2265,38 @@
           <div class="eu-draw__actions">
             <span class="eu-draw__dl-btn eu-draw__dl-btn--primary" id="euDrawDl">Download GIF</span>
             <span class="eu-draw__dl-btn" id="euDrawDlPng">Download PNG</span>
-            <span class="eu-draw__dl-btn eu-draw__dl-btn--guestbook" id="euDrawGuestbook">Add to guestbook</span>
+            <span class="eu-draw__dl-btn eu-draw__dl-btn--guestbook" id="euDrawGuestbook">Add to gallery</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Guestbook -->
+    <div class="eu-guestbook" id="euGuestbook">
+      <div class="eu-guestbook__header">
+        <img class="eu-guestbook__welcome" src="Updated Imagery/welcome.gif" alt="Welcome">
+        <div class="eu-guestbook__header-bar">
+          <div class="eu-guestbook__intro">The Pastry Art Gallery</div>
+          <div class="eu-guestbook__count" id="euGbCount">0 entries</div>
+        </div>
+      </div>
+      <div class="eu-guestbook__grid" id="euGbGrid">
+        <div class="eu-guestbook__empty">No entries yet. Be the first to sign.</div>
+      </div>
+    </div>
+
+    <!-- Guestbook modal -->
+    <div class="eu-gb-modal" id="euGbModal">
+      <div class="eu-gb-modal__box">
+        <button class="eu-gb-modal__close" id="euGbClose">&times;</button>
+        <div class="eu-gb-modal__preview" id="euGbPreview"></div>
+        <label class="eu-gb-modal__label">Message</label>
+        <input class="eu-gb-modal__input" id="euGbMsg" type="text" placeholder="The good life, in pastry form" maxlength="120">
+        <label class="eu-gb-modal__label">Name / Company</label>
+        <input class="eu-gb-modal__input" id="euGbName" type="text" placeholder="Your name or organisation" maxlength="60">
+        <label class="eu-gb-modal__label">Country</label>
+        <input class="eu-gb-modal__input" id="euGbCountry" type="text" placeholder="Sweden, France, Germany..." maxlength="40">
+        <div class="eu-gb-modal__submit" id="euGbSubmit">Add to guestbook</div>
       </div>
     </div>
 
@@ -1869,6 +2514,63 @@
     }
     document.addEventListener('click',autoplayOnce);
     document.addEventListener('scroll',autoplayOnce);
+
+    // Expose for sound toggle + next track
+    var soundBtn=document.getElementById('euSoundToggle');
+    var soundControls=document.getElementById('euSoundControls');
+    var soundNextBtn=document.getElementById('euSoundNext');
+    var soundOn=document.getElementById('euSoundOn');
+    var soundOff=document.getElementById('euSoundOff');
+    var muted=false;
+    soundBtn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(muted){
+        audio.muted=false;
+        muted=false;
+        soundOn.style.display='';
+        soundOff.style.display='none';
+      }else{
+        audio.muted=true;
+        muted=true;
+        soundOn.style.display='none';
+        soundOff.style.display='';
+      }
+    });
+    soundNextBtn.addEventListener('click',function(e){
+      e.stopPropagation();
+      loadTrack((ci+1)%tracks.length);
+      audio.play();
+      playing=true;
+      playBtn.innerHTML='&#10074;&#10074;';
+    });
+
+    // Show sound controls only after scrolling past the music player
+    var playerEl=document.querySelector('.eu-player');
+    if(playerEl&&soundControls){
+      var euRoot=document.getElementById('eu');
+      var obsStarted=false;
+      function startPlayerObs(){
+        if(obsStarted)return;
+        obsStarted=true;
+        var obs=new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if(!entry.isIntersecting){
+              soundControls.classList.add('is-visible');
+            }else{
+              soundControls.classList.remove('is-visible');
+            }
+          });
+        },{threshold:0});
+        obs.observe(playerEl);
+      }
+      var classObs=new MutationObserver(function(){
+        if(euRoot&&euRoot.classList.contains('is-open')){
+          setTimeout(startPlayerObs,1500);
+          classObs.disconnect();
+        }
+      });
+      if(euRoot) classObs.observe(euRoot,{attributes:true,attributeFilter:['class']});
+    }
   })();
 
   // EU flag color rotation
@@ -2081,42 +2783,65 @@
     };
   });
 
-  // Upload custom image
-  var uploadInput=document.getElementById('euDrawUpload');
-  var uploadLabel=document.getElementById('euDrawUploadLabel');
-  var uploadStampIdx=-1;
-  uploadInput.onchange=function(e){
+  // Upload custom sticker
+  var uploadStickerInput=document.getElementById('euDrawUploadStickerInput');
+  var uploadStickerLabel=document.getElementById('euDrawUploadSticker');
+  var uploadStickerIdx=-1;
+  uploadStickerInput.onchange=function(e){
     var file=e.target.files[0];
     if(!file)return;
     var reader=new FileReader();
     reader.onload=function(ev){
       var img=new Image();
       img.onload=function(){
-        if(uploadStampIdx<0){
-          uploadStampIdx=stampImgs.length;
+        if(uploadStickerIdx<0){
+          uploadStickerIdx=stampImgs.length;
           stampImgs.push(img);
         }else{
-          stampImgs[uploadStampIdx]=img;
+          stampImgs[uploadStickerIdx]=img;
         }
-        activeStamp=uploadStampIdx;
+        activeStamp=uploadStickerIdx;
         stamps.forEach(function(x){x.classList.remove('is-active')});
         bgOpts.forEach(function(x){x.classList.remove('is-active')});
-        uploadLabel.classList.add('is-active');
-        // Show thumbnail in the upload button
-        uploadLabel.innerHTML='<img src="'+ev.target.result+'" alt="Custom">';
-        uploadLabel.appendChild(uploadInput);
+        uploadStickerLabel.classList.add('is-active');
+        uploadStickerLabel.innerHTML='<img src="'+ev.target.result+'" alt="Custom" style="width:100%;height:100%;object-fit:contain">';
+        uploadStickerLabel.appendChild(uploadStickerInput);
       };
       img.src=ev.target.result;
     };
     reader.readAsDataURL(file);
   };
-  uploadLabel.onclick=function(e){
-    if(uploadStampIdx>=0&&e.target!==uploadInput){
-      activeStamp=uploadStampIdx;
+  uploadStickerLabel.onclick=function(e){
+    if(uploadStickerIdx>=0&&e.target!==uploadStickerInput){
+      activeStamp=uploadStickerIdx;
       stamps.forEach(function(x){x.classList.remove('is-active')});
       bgOpts.forEach(function(x){x.classList.remove('is-active')});
-      uploadLabel.classList.add('is-active');
+      uploadStickerLabel.classList.add('is-active');
     }
+  };
+
+  // Upload custom background image
+  var uploadBgInput=document.getElementById('euDrawUploadBgInput');
+  var uploadBgLabel=document.getElementById('euDrawUploadBg');
+  uploadBgInput.onchange=function(e){
+    var file=e.target.files[0];
+    if(!file)return;
+    var reader=new FileReader();
+    reader.onload=function(ev){
+      var img=new Image();
+      img.onload=function(){
+        bgImg=img;
+        bgImageSrc=ev.target.result;
+        bgPicks.forEach(function(x){x.classList.remove('is-active')});
+        if(bgColorEl)bgColorEl.classList.remove('is-active');
+        uploadBgLabel.classList.add('is-active');
+        uploadBgLabel.innerHTML='<img src="'+ev.target.result+'" alt="Custom BG" style="width:100%;height:100%;object-fit:cover;border-radius:2px">';
+        uploadBgLabel.appendChild(uploadBgInput);
+        renderAll();
+      };
+      img.src=ev.target.result;
+    };
+    reader.readAsDataURL(file);
   };
 
   // Animation selectors
@@ -2458,6 +3183,125 @@
     link.download='electro-union-drawing.png';
     link.href=tmpCanvas.toDataURL('image/png');
     link.click();
+  };
+
+  // ── Guestbook ──
+  var gbModal=document.getElementById('euGbModal');
+  var gbPreview=document.getElementById('euGbPreview');
+  var gbMsg=document.getElementById('euGbMsg');
+  var gbName=document.getElementById('euGbName');
+  var gbCountry=document.getElementById('euGbCountry');
+  var gbSubmit=document.getElementById('euGbSubmit');
+  var gbClose=document.getElementById('euGbClose');
+  var gbGrid=document.getElementById('euGbGrid');
+  var gbCountEl=document.getElementById('euGbCount');
+  var gbEntries=JSON.parse(localStorage.getItem('eu-guestbook')||'[]');
+  var gbPendingDataUrl=null;
+  var gbPendingIsGif=false;
+
+  function renderGuestbook(){
+    if(!gbGrid)return;
+    if(gbEntries.length===0){
+      gbGrid.innerHTML='<div class="eu-guestbook__empty">No entries yet. Be the first to sign.</div>';
+    }else{
+      gbGrid.innerHTML='';
+      for(var i=gbEntries.length-1;i>=0;i--){
+        var e=gbEntries[i];
+        var card=document.createElement('div');
+        card.className='eu-guestbook__card';
+        var imgWrap=document.createElement('div');
+        imgWrap.className='eu-guestbook__card-img';
+        var img=document.createElement('img');
+        img.src=e.img;img.alt='Guestbook entry';
+        imgWrap.appendChild(img);
+        card.appendChild(imgWrap);
+        if(e.msg){
+          var msg=document.createElement('div');
+          msg.className='eu-guestbook__card-msg';
+          msg.textContent=e.msg;
+          card.appendChild(msg);
+        }
+        if(e.name||e.country){
+          var nameLine=document.createElement('div');
+          nameLine.className='eu-guestbook__card-name';
+          var parts=[];
+          if(e.name)parts.push(e.name);
+          if(e.country)parts.push(e.country);
+          nameLine.textContent=parts.join(', ');
+          card.appendChild(nameLine);
+        }
+        var meta=document.createElement('div');
+        meta.className='eu-guestbook__card-meta';
+        var d=new Date(e.ts);
+        meta.textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+        card.appendChild(meta);
+        gbGrid.appendChild(card);
+      }
+    }
+    if(gbCountEl)gbCountEl.textContent=gbEntries.length+' entr'+(gbEntries.length===1?'y':'ies');
+  }
+  renderGuestbook();
+
+  // "Add to guestbook" — generate GIF or PNG preview at 1080x1080
+  document.getElementById('euDrawGuestbook').onclick=function(){
+    if(placements.length===0)return;
+    var ew=1080,eh=1080;
+    var tmpCanvas=document.createElement('canvas');
+    tmpCanvas.width=ew;tmpCanvas.height=eh;
+    var tmpCtx=tmpCanvas.getContext('2d');
+
+    if(animMode!=='none'){
+      // Build animated GIF for guestbook
+      gbPendingIsGif=true;
+      var numFrames=24;
+      var cycleDur=1.5;
+      renderExportFrame(tmpCtx,animMode,0);
+      var palette=buildAdaptivePalette(tmpCtx.getImageData(0,0,ew,eh),256);
+      var gifFrames=[];
+      for(var f=0;f<numFrames;f++){
+        var t=f*(cycleDur/numFrames);
+        renderExportFrame(tmpCtx,animMode,t);
+        gifFrames.push(quantizeFrameAdaptive(tmpCtx,ew,eh,palette));
+      }
+      var delay=Math.round(cycleDur/numFrames*100);
+      var blob=buildGIF(gifFrames,ew,eh,delay,palette);
+      var reader=new FileReader();
+      reader.onload=function(){
+        gbPendingDataUrl=reader.result;
+        gbPreview.innerHTML='<img src="'+gbPendingDataUrl+'" alt="Preview">';
+      };
+      reader.readAsDataURL(blob);
+    }else{
+      gbPendingIsGif=false;
+      renderExportFrame(tmpCtx,'none',0);
+      gbPendingDataUrl=tmpCanvas.toDataURL('image/png');
+      gbPreview.innerHTML='<img src="'+gbPendingDataUrl+'" alt="Preview">';
+    }
+    if(gbMsg)gbMsg.value='';
+    if(gbName)gbName.value='';
+    if(gbCountry)gbCountry.value='';
+    gbModal.classList.add('is-open');
+  };
+
+  // Close modal
+  if(gbClose)gbClose.onclick=function(){gbModal.classList.remove('is-open');};
+  if(gbModal)gbModal.onclick=function(e){if(e.target===gbModal)gbModal.classList.remove('is-open');};
+
+  // Submit entry
+  if(gbSubmit)gbSubmit.onclick=function(){
+    if(!gbPendingDataUrl)return;
+    gbEntries.push({
+      img:gbPendingDataUrl,
+      msg:gbMsg?gbMsg.value.trim():'',
+      name:gbName?gbName.value.trim():'',
+      country:gbCountry?gbCountry.value.trim():'',
+      ts:Date.now()
+    });
+    localStorage.setItem('eu-guestbook',JSON.stringify(gbEntries));
+    gbModal.classList.remove('is-open');
+    renderGuestbook();
+    var gbSection=document.getElementById('euGuestbook');
+    if(gbSection)gbSection.scrollIntoView({behavior:'smooth'});
   };
 
   // Init canvas size on first open
