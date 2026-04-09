@@ -127,7 +127,7 @@ VALUES (
   'gallery-images',
   'gallery-images',
   true,
-  2097152,  -- 2 MB max file size
+  10485760,  -- 10 MB max file size (animated GIFs at 1080x1080 can be 3-6 MB)
   ARRAY['image/png','image/jpeg','image/gif','image/webp']
 )
 ON CONFLICT (id) DO UPDATE SET
